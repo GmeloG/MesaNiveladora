@@ -1,0 +1,117 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Projeto e Arquitetura do Sistema}{21}{chapter.3}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:arquitetura}{{3}{21}{Projeto e Arquitetura do Sistema}{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Arquitetura geral}{21}{section.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de blocos do sistema (sinal a cheio, energia a tracejado).}}{22}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:blocos}{{3.1}{22}{Diagrama de blocos do sistema (sinal a cheio, energia a tracejado)}{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Estrutura mecânica}{22}{section.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Modelo 3D da plataforma montada (OpenSCAD).}}{23}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:cad-montagem}{{3.2}{23}{Modelo 3D da plataforma montada (OpenSCAD)}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Vista explodida: caixa (azul), tampa com torres (cinzento), quadro de \textit  {roll} (laranja), plataforma de \textit  {pitch} (verde) e servos (preto).}}{23}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:cad-explodida}{{3.3}{23}{Vista explodida: caixa (azul), tampa com torres (cinzento), quadro de \textit {roll} (laranja), plataforma de \textit {pitch} (verde) e servos (preto)}{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Peças impressas em 3D, na orientação de impressão.}}{24}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:cad-pecas}{{3.4}{24}{Peças impressas em 3D, na orientação de impressão}{figure.caption.22}{}}
+\citation{gy85}
+\citation{gy85datasheet}
+\citation{mg996r}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Peças da estrutura mecânica.}}{25}{table.caption.23}\protected@file@percent }
+\newlabel{tab:pecas}{{3.1}{25}{Peças da estrutura mecânica}{table.caption.23}{}}
+\@writefile{brf}{\backcite{gy85}{{25}{3.2}{table.caption.23}}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Arquitetura de hardware}{25}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Unidade de processamento}{25}{subsection.3.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Sensor inercial}{25}{subsection.3.3.2}\protected@file@percent }
+\@writefile{brf}{\backcite{gy85datasheet}{{25}{3.3.2}{subsection.3.3.2}}}
+\citation{hm12}
+\citation{hobbywingubec}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Atuadores}{26}{subsection.3.3.3}\protected@file@percent }
+\@writefile{brf}{\backcite{mg996r}{{26}{3.3.3}{subsection.3.3.3}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Comunicação}{26}{subsection.3.3.4}\protected@file@percent }
+\@writefile{brf}{\backcite{hm12}{{26}{3.3.4}{subsection.3.3.4}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Alimentação}{26}{subsection.3.3.5}\protected@file@percent }
+\@writefile{brf}{\backcite{hobbywingubec}{{26}{3.3.5}{subsection.3.3.5}}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Balanço energético estimado.}}{27}{table.caption.24}\protected@file@percent }
+\newlabel{tab:energia}{{3.2}{27}{Balanço energético estimado}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Esquema elétrico}{27}{section.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Esquema elétrico: ligações de sinal entre a NUCLEO-F767ZI e os módulos.}}{27}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:esq-sinal}{{3.5}{27}{Esquema elétrico: ligações de sinal entre a NUCLEO-F767ZI e os módulos}{figure.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Esquema elétrico: circuito de alimentação. S2a e S2b são os dois contactos normalmente fechados do mesmo botão de emergência.}}{28}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:esq-alim}{{3.6}{28}{Esquema elétrico: circuito de alimentação. S2a e S2b são os dois contactos normalmente fechados do mesmo botão de emergência}{figure.caption.26}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Atribuição de pinos (NUCLEO-F767ZI).}}{28}{table.caption.27}\protected@file@percent }
+\newlabel{tab:pinos}{{3.3}{28}{Atribuição de pinos (NUCLEO-F767ZI)}{table.caption.27}{}}
+\citation{px4ctrl}
+\citation{ardupilotatt}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Arquitetura de software}{29}{section.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Organização em camadas}{29}{subsection.3.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Camadas do software.}}{29}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:camadas}{{3.7}{29}{Camadas do software}{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Execução e temporização}{29}{subsection.3.5.2}\protected@file@percent }
+\@writefile{brf}{\backcite{px4ctrl,ardupilotatt}{{29}{3.5.2}{subsection.3.5.2}}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Tarefas e frequências de execução.}}{30}{table.caption.29}\protected@file@percent }
+\newlabel{tab:tarefas}{{3.4}{30}{Tarefas e frequências de execução}{table.caption.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}Malha de controlo}{30}{subsection.3.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Malha de controlo de um eixo.}}{30}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:malha}{{3.8}{30}{Malha de controlo de um eixo}{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.4}Máquina de estados}{31}{subsection.3.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Máquina de estados da aplicação. Em qualquer estado armado, \texttt  {DISARM} leva ao estado Desarmado.}}{31}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:estados}{{3.9}{31}{Máquina de estados da aplicação. Em qualquer estado armado, \texttt {DISARM} leva ao estado Desarmado}{figure.caption.31}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces Estados da aplicação.}}{31}{table.caption.32}\protected@file@percent }
+\newlabel{tab:estados}{{3.5}{31}{Estados da aplicação}{table.caption.32}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.5}Protocolo de comunicação}{31}{subsection.3.5.5}\protected@file@percent }
+\citation{android}
+\@writefile{lot}{\contentsline {table}{\numberline {3.6}{\ignorespaces Mensagens do protocolo.}}{32}{table.caption.33}\protected@file@percent }
+\newlabel{tab:protocolo}{{3.6}{32}{Mensagens do protocolo}{table.caption.33}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.6}Aplicação do telemóvel}{32}{subsection.3.5.6}\protected@file@percent }
+\@writefile{brf}{\backcite{android}{{32}{3.5.6}{subsection.3.5.6}}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Módulos do sistema}{32}{section.3.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.7}{\ignorespaces Módulos do sistema e respetivas interfaces.}}{33}{table.caption.34}\protected@file@percent }
+\newlabel{tab:modulos}{{3.7}{33}{Módulos do sistema e respetivas interfaces}{table.caption.34}{}}
+\@setckpt{chapters/03_arquitetura}{
+\setcounter{page}{34}
+\setcounter{equation}{0}
+\setcounter{enumi}{7}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{3}
+\setcounter{section}{6}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{9}
+\setcounter{table}{7}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+\setcounter{caption@flags}{2}
+\setcounter{continuedfloat}{0}
+\setcounter{section@level}{1}
+\setcounter{Item}{7}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{84}
+\setcounter{lstnumber}{1}
+\setcounter{parentequation}{0}
+\setcounter{@pps}{0}
+\setcounter{@ppsavesec}{0}
+\setcounter{@ppsaveapp}{0}
+\setcounter{ALG@line}{0}
+\setcounter{ALG@rem}{0}
+\setcounter{ALG@nested}{0}
+\setcounter{ALG@Lnr}{2}
+\setcounter{ALG@blocknr}{10}
+\setcounter{ALG@storecount}{0}
+\setcounter{ALG@tmpcounter}{0}
+\setcounter{float@type}{16}
+\setcounter{algorithm}{0}
+\setcounter{theorem}{0}
+\setcounter{corollary}{0}
+\setcounter{lemma}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{lstlisting}{0}
+}

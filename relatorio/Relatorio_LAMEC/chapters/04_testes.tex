@@ -1,0 +1,194 @@
+\chapter{Procedimentos e Vetores de Teste}
+\label{ch:testes}
+
+Cada módulo é testado isoladamente antes da integração, seguindo a organização do capítulo~\ref{ch:arquitetura}. Para cada módulo define-se o objetivo, o procedimento e um conjunto de vetores de teste, ou seja, entradas concretas com o resultado esperado e o critério de aceitação. Os identificadores dos testes ligam-se aos requisitos das tabelas~\ref{tab:rf} e~\ref{tab:rnf}. As tolerâncias são valores iniciais e podem ser ajustadas depois dos primeiros ensaios.
+
+\section{Metodologia e equipamento}
+Os testes usam o seguinte equipamento: um inclinómetro digital (ou um telemóvel com aplicação de nível, previamente comparado com uma superfície de referência) para medir a inclinação real; uma superfície inclinável com ângulos fixos de referência; um multímetro; um osciloscópio ou analisador lógico para os sinais \gls{pwm}, \gls{i2c} e \gls{uart}; e um PC que recebe os dados de registo pela porta série do ST-LINK.
+
+Cada ensaio de medida é repetido pelo menos cinco vezes e são registados a média e o desvio-padrão. Os dados de registo são guardados em ficheiros CSV, para que os gráficos e as métricas possam ser recalculados.
+
+\section{Sensor inercial (T-IMU)}
+\textbf{Objetivo:} verificar a comunicação com os três sensores do GY-85, a escala das medidas e o ruído em repouso (RF1, RF6).
+
+\textbf{Procedimento:} fazer um varrimento do barramento \gls{i2c} e ler os registos de identificação de cada sensor. Com o módulo fixo numa superfície plana, registar 10~s de dados a \SI{200}{\hertz}. Repetir com o sensor orientado segundo cada um dos seis sentidos dos eixos, para verificar que o acelerómetro mede $\pm1\,g$ no eixo vertical.
+
+\begin{table}[H]
+\centering\small
+\caption{Vetores de teste do sensor inercial.}
+\begin{tabularx}{\textwidth}{p{1.6cm}YYY}
+\toprule
+ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
+IMU-01 & Varrimento do barramento \acrshort{i2c} & Respostas em 0x53, 0x68 (ou 0x69) e 0x1E & Três dispositivos encontrados; endereços registados\\
+IMU-02 & Leitura do registo DEVID do ADXL345 & 0xE5 & Valor igual\\
+IMU-03 & Leitura do registo WHO\_AM\_I do ITG-3205 & Igual ao endereço do giroscópio & Valor igual\\
+IMU-04 & Leitura dos registos de identificação do HMC5883L & \texttt{H}, \texttt{4}, \texttt{3} & Valores iguais (caso contrário, verificar se é QMC5883L)\\
+IMU-05 & Sensor horizontal, eixo $z$ para cima & $a_z = +1\,g$; $a_x$, $a_y \approx 0$ & $|a_z - 1| < 0{,}05\,g$\\
+IMU-06 & Sensor virado, eixo $z$ para baixo & $a_z = -1\,g$ & $|a_z + 1| < 0{,}05\,g$\\
+IMU-07 & Eixos $x$ e $y$ na vertical (4 posições) & $\pm1\,g$ no eixo vertical & Erro $< 0{,}05\,g$\\
+IMU-08 & Sensor parado durante 10~s & $\omega \approx 0$ & Desvio médio registado; desvio-padrão $< \SI{0.5}{\degree\per\second}$\\
+IMU-09 & Desligar o fio SDA com o sistema a correr & Erro de comunicação detetado & Transição para o estado de falha\\
+\bottomrule
+\end{tabularx}
+\label{tab:t-imu}
+\end{table}
+
+\section{Fusão sensorial (T-FUS)}
+\textbf{Objetivo:} verificar a exatidão da estimativa de atitude em repouso e em movimento, a deriva e a frequência de atualização (RF1, RNF3).
+
+\textbf{Procedimento:} colocar a \gls{imu} sobre a superfície inclinável, nos ângulos de referência, e comparar a estimativa com o inclinómetro. Para o ensaio dinâmico, rodar à mão entre dois ângulos e verificar que a estimativa acompanha o movimento sem atraso visível e volta ao valor certo quando para. Medir com o osciloscópio, através de um pino comutado em cada ciclo, o período e o tempo de cálculo.
+
+\begin{table}[H]
+\centering\small
+\caption{Vetores de teste da fusão sensorial.}
+\begin{tabularx}{\textwidth}{p{1.6cm}YYY}
+\toprule
+ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
+FUS-01 & Inclinação de \SI{0}{\degree} em ambos os eixos & $\phi = \theta = \SI{0}{\degree}$ & Erro $< \SI{0.5}{\degree}$\\
+FUS-02 & \textit{Roll} de $\pm\SI{10}{\degree}$, $\pm\SI{20}{\degree}$ e $\pm\SI{30}{\degree}$ & Igual à referência & Erro $< \SI{1}{\degree}$\\
+FUS-03 & \textit{Pitch} de $\pm\SI{10}{\degree}$, $\pm\SI{20}{\degree}$ e $\pm\SI{30}{\degree}$ & Igual à referência & Erro $< \SI{1}{\degree}$\\
+FUS-04 & Sensor parado durante 10~min & Ângulo constante & Deriva $< \SI{1}{\degree}$\\
+FUS-05 & Rotação de \SI{0}{\degree} a \SI{20}{\degree} em cerca de 1~s & Estimativa acompanha e estabiliza & Erro final $< \SI{1}{\degree}$ em menos de 1~s\\
+FUS-06 & Servos a funcionar com a plataforma travada & Ângulo constante & Oscilação $< \SI{0.5}{\degree}$ (efeito da vibração)\\
+FUS-07 & Medição do ciclo com o osciloscópio & Período de \SI{5}{\milli\second} & Frequência $\geq \SI{100}{\hertz}$; tempo de cálculo $< \SI{1}{\milli\second}$\\
+\bottomrule
+\end{tabularx}
+\label{tab:t-fus}
+\end{table}
+
+\section{Servomotores (T-SRV)}
+\textbf{Objetivo:} verificar o sinal \gls{pwm}, calibrar a relação entre largura de impulso e inclinação da plataforma e medir a gama de movimento (RF6, RNF1).
+
+\textbf{Procedimento:} primeiro, sem servos ligados, medir com o osciloscópio a frequência e a largura dos impulsos. Depois, com a plataforma montada, aplicar larguras de impulso crescentes a um eixo de cada vez e medir a inclinação com o inclinómetro. Os pares (largura, ângulo) dão $t_0$ e $k$ por regressão linear e mostram onde estão os limites mecânicos.
+
+\begin{table}[H]
+\centering\small
+\caption{Vetores de teste dos servomotores.}
+\begin{tabularx}{\textwidth}{p{1.6cm}YYY}
+\toprule
+ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
+SRV-01 & Comando de \SI{1500}{\micro\second} (osciloscópio) & Impulso de \SI{1500}{\micro\second} a \SI{50}{\hertz} & Erro $< \SI{5}{\micro\second}$; período \SI{20}{\milli\second}\\
+SRV-02 & Comandos de 1000, 1250, 1500, 1750 e \SI{2000}{\micro\second} & Larguras iguais às pedidas & Erro $< \SI{5}{\micro\second}$\\
+SRV-03 & Varrimento em passos de \SI{25}{\micro\second} num eixo & Relação linear largura--ângulo & Coeficiente de determinação $R^2 > 0{,}98$ na gama útil\\
+SRV-04 & Comando de $\pm\SI{20}{\degree}$ após calibração & Plataforma a $\pm\SI{20}{\degree}$ & Erro $< \SI{2}{\degree}$, sem tocar nos batentes\\
+SRV-05 & Comando acima do limite ($\pm\SI{40}{\degree}$) & Comando saturado no limite & Largura de impulso nunca sai da janela calibrada\\
+SRV-06 & Comando num eixo, outro fixo & Outro eixo não se move & Acoplamento $< 10\,\%$ do ângulo pedido\\
+SRV-07 & Aproximar a \SI{+10}{\degree} vindo de cima e de baixo & Mesmo ângulo final & Diferença (folga) registada\\
+\bottomrule
+\end{tabularx}
+\label{tab:t-srv}
+\end{table}
+
+\section{Comunicação (T-COM)}
+\textbf{Objetivo:} verificar a receção e validação das mensagens, a frequência de receção e a deteção de perda de ligação (RF2, RF7, RNF4, RNF5, RNF8).
+
+\textbf{Procedimento:} com uma aplicação de terminal Bluetooth, enviar mensagens escritas à mão e verificar a resposta no registo. Depois, com a aplicação final, enviar referências continuamente e medir no registo o intervalo entre mensagens válidas. Para a perda de ligação, desligar o Bluetooth do telemóvel ou afastá-lo até perder o sinal e medir o tempo até ao modo seguro.
+
+\begin{table}[H]
+\centering\small
+\caption{Vetores de teste da comunicação.}
+\begin{tabularx}{\textwidth}{p{1.6cm}YYY}
+\toprule
+ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
+COM-01 & \texttt{\$REF,-12.5,4.3,57*63} & Referência aceite: $-12{,}5$ e $4{,}3$ & Valores corretos no registo\\
+COM-02 & \texttt{\$REF,-12.5,4.3,57*00} (\textit{checksum} errado) & Mensagem rejeitada & Referência anterior mantida\\
+COM-03 & \texttt{\$REF,-80.0,0.0,58*65} (fora de gama) & Mensagem rejeitada ou saturada & Plataforma não ultrapassa o limite\\
+COM-04 & Mensagem com número de sequência antigo & Mensagem ignorada & Referência anterior mantida\\
+COM-05 & Mensagem incompleta, sem fim de linha & Ignorada sem bloquear & Mensagem seguinte é aceite\\
+COM-06 & \texttt{\$MODE,2*1D}, \texttt{\$ARM*5E} & Mudança de modo e de estado & Estado correto na telemetria\\
+COM-07 & Envio contínuo a \SI{20}{\hertz} durante 5~min & Mensagens recebidas & Frequência $\geq \SI{20}{\hertz}$; perdas $< 1\,\%$\\
+COM-08 & Corte da ligação em modo de seguimento & Modo seguro & Transição em menos de \SI{0.5}{\second}\\
+COM-09 & Ligação a partir de Android e de iOS & Ligação estabelecida & Referências recebidas nos dois sistemas\\
+\bottomrule
+\end{tabularx}
+\label{tab:t-com}
+\end{table}
+
+\section{Controlo (T-CTL)}
+\textbf{Objetivo:} afinar os controladores e medir o desempenho em seguimento e em nivelamento (RF3, RF4, RNF2).
+
+\textbf{Procedimento:} aplicar degraus de referência a um eixo de cada vez e registar referência, ângulo medido e comando. Calcular o tempo de subida (10--90\,\%), a sobre-elevação, o tempo de estabelecimento (banda de 5\,\%) e o erro em regime permanente. Nos ensaios de nivelamento, inclinar a base sobre a superfície inclinável e medir o erro máximo e o tempo de recuperação. Repetir os mesmos ensaios para cada abordagem de controlo (\gls{pid} e \gls{pid} com \textit{feedforward}), com a mesma carga.
+
+\begin{table}[H]
+\centering\small
+\caption{Vetores de teste do controlo.}
+\begin{tabularx}{\textwidth}{p{1.6cm}YYY}
+\toprule
+ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
+CTL-01 & Referência \SI{0}{\degree}, base parada & Plataforma horizontal & Erro $< \SI{2}{\degree}$ (RNF2)\\
+CTL-02 & Degrau de \SI{0}{\degree} para \SI{10}{\degree} em \textit{roll} & Seguimento estável & Sobre-elevação $< 20\,\%$; estabelecimento $< \SI{1}{\second}$\\
+CTL-03 & Degrau de \SI{0}{\degree} para \SI{10}{\degree} em \textit{pitch} & Seguimento estável & Idem\\
+CTL-04 & Degrau de \SI{-15}{\degree} para \SI{15}{\degree} & Seguimento com saturação de velocidade & Sem oscilação mantida; sem \textit{windup}\\
+CTL-05 & Referência sinusoidal, \SI{10}{\degree}, \SI{0.5}{\hertz} & Seguimento da sinusoide & Erro de amplitude e atraso registados\\
+CTL-06 & Base inclinada \SI{10}{\degree} (degrau), referência \SI{0}{\degree} & Plataforma volta à horizontal & Erro final $< \SI{2}{\degree}$; recuperação $< \SI{1.5}{\second}$\\
+CTL-07 & Base inclinada lentamente até \SI{20}{\degree} & Plataforma mantém-se horizontal & Erro máximo registado; comparação entre abordagens\\
+CTL-08 & Carga adicional (telemóvel) sobre a plataforma & Comportamento estável & Mesmos critérios de CTL-02 e CTL-06\\
+\bottomrule
+\end{tabularx}
+\label{tab:t-ctl}
+\end{table}
+
+\section{Segurança (T-SEG)}
+\textbf{Objetivo:} verificar as funções de segurança definidas no capítulo~\ref{ch:seguranca} (RF7, RF8, RNF11).
+
+\begin{table}[H]
+\centering\small
+\caption{Vetores de teste de segurança.}
+\begin{tabularx}{\textwidth}{p{1.6cm}YYY}
+\toprule
+ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
+SEG-01 & Ligar o sistema & Arranca desarmado, servos na posição neutra & Nenhum movimento antes de armar\\
+SEG-02 & Premir a paragem de emergência em movimento & Servos sem alimentação; estado de falha & Corte imediato, verificado com multímetro\\
+SEG-03 & Rearmar a emergência & Sistema mantém-se em falha & Só volta a funcionar após reinício\\
+SEG-04 & Bloquear o programa (ciclo infinito de teste) & \textit{Watchdog} reinicia o sistema & Reinício em menos de \SI{100}{\milli\second} e arranque desarmado\\
+SEG-05 & Tensão da bateria abaixo do limiar (fonte regulável) & Aviso e passagem ao modo seguro & Limiar detetado com erro $< \SI{0.1}{\volt}$\\
+SEG-06 & Inspeção da gama de movimento completa & Sem pontos de entalamento acessíveis & Afastamentos mínimos cumpridos\\
+SEG-07 & Mudança de modo durante o movimento & Transição suave & Sem saltos superiores a \SI{2}{\degree}\\
+SEG-08 & Tentar abrir a caixa sem ferramenta & Caixa não abre & Bateria e eletrónica inacessíveis sem chave de fendas\\
+\bottomrule
+\end{tabularx}
+\label{tab:t-seg}
+\end{table}
+
+\section{Alimentação (T-ALIM)}
+\textbf{Objetivo:} verificar as tensões, os consumos e a autonomia (RNF7).
+
+\begin{table}[H]
+\centering\small
+\caption{Vetores de teste da alimentação.}
+\begin{tabularx}{\textwidth}{p{1.6cm}YYY}
+\toprule
+ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
+ALIM-01 & Medição das saídas dos reguladores em vazio e em carga & \SI{5}{\volt} e \SI{6}{\volt} & Desvio $< 5\,\%$\\
+ALIM-02 & Consumo em repouso (desarmado) & Corrente baixa & Valor registado\\
+ALIM-03 & Consumo em nivelamento contínuo & Corrente média & Valor registado; comparação com a tabela~\ref{tab:energia}\\
+ALIM-04 & Movimentos rápidos simultâneos nos dois eixos & Sem reinício do microcontrolador & Tensão de \SI{5}{\volt} nunca abaixo de \SI{4.75}{\volt}\\
+ALIM-05 & Funcionamento contínuo com bateria carregada & Autonomia & $\geq \SI{30}{\minute}$\\
+\bottomrule
+\end{tabularx}
+\label{tab:t-alim}
+\end{table}
+
+\section{Integração (T-INT)}
+Depois de aprovados os testes de cada módulo, o sistema completo é testado em cenários de utilização: ligar, calibrar, armar, seguir o telemóvel, mudar para nivelamento, inclinar a base, perder a ligação e desarmar. Verifica-se, em cada passo, o estado indicado pelos \gls{led} e pela telemetria (RF3, RF4, RF5, RF9).
+
+\begin{table}[H]
+\centering\small
+\caption{Matriz de rastreabilidade entre requisitos e testes.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.2cm}Y}
+\toprule
+Teste & Requisitos verificados\\\midrule
+T-IMU & RF1, RF6\\
+T-FUS & RF1, RNF3\\
+T-SRV & RF6, RNF1\\
+T-COM & RF2, RF7, RNF4, RNF5, RNF8\\
+T-CTL & RF3, RF4, RF10, RNF2\\
+T-SEG & RF7, RF8, RNF11\\
+T-ALIM & RNF7\\
+T-INT & RF3, RF4, RF5, RF9\\
+\bottomrule
+\end{tabularx}
+\label{tab:rastreabilidade}
+\end{table}
+
+\acompletar{resultados dos testes, com os valores medidos e a indicação de aprovado ou reprovado}

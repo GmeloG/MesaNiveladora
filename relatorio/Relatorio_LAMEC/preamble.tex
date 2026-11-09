@@ -1,0 +1,62 @@
+
+% FYI, the following packages are preloaded with the document class:
+% longtable, xcolor, graphicx, booktabs, caption, csquotes, hyperref,
+% calc, listings, datetime2, siunitx, geometry, enumitem
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% extra packages
+\usepackage{amsmath}		% the main package in the AMS-LATEX distribution
+\usepackage{amsfonts}		% extended set of fonts for use in mathematics
+\usepackage{amssymb}		% adds new symbols to be used in math mode
+\usepackage{mathrsfs}		% math fonts, e.g., Laplace
+\usepackage{float}			% provides the H float modifier option
+\usepackage{multirow}		% tables \multirow command
+\usepackage{subcaption}		% enables subfigures
+\usepackage{lscape}			% for landscape mode
+\usepackage{verbatim}		% new verbatim environment, \begin{comment}...\end{comment}, \verbatiminput
+%\usepackage{pgfgantt}		% for Gantt charts, see https://ctan.org/pkg/pgfgantt
+
+%add extra packages if needed here
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% temp packages
+\usepackage{lipsum}						% for fake text
+%\usepackage[textsize=tiny]{todonotes}   % enable To-do notes, use the option "disable" to hide all notes, usage \todo{}
+
+%\usepackage{draftwatermark}			% prints a watermark overlay, uncomment if needed
+%\SetWatermarkText{**DRAFT**}
+%\SetWatermarkScale{1}
+%\SetWatermarkColor[gray]{0.8}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% settings
+\AtBeginDocument{					% Rendered PDF metadata:
+\hypersetup{pdftitle=\ttitle} 		% Sets the PDF title to your dissertation title
+\hypersetup{pdfauthor=\authorname} 	% Sets the PDF author to your name
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% user macros
+
+%....
+
+
+
+
+
+
+
+
+
+% Pacotes adicionais necessários às tabelas, equações e diagrama do conteúdo.
+% Nenhuma redefinição da apresentação da classe original.
+\usepackage{array,tabularx,tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\grau}[1]{#1^{\circ}}
+\newcommand{\sat}{\operatorname{sat}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\vet}[1]{\boldsymbol{#1}}
+\newcommand{\fonte}{\par\smallskip\footnotesize Fonte: elaboração própria.}
+
+% Marcador para partes por completar (aparece a vermelho no PDF)
+\newcommand{\acompletar}[1]{\textcolor{red}{\textit{[A completar: #1]}}}
+\usetikzlibrary{shapes.geometric,fit,backgrounds}
+\usepackage[european]{circuitikz}

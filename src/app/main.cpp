@@ -10,6 +10,9 @@
 //    0 OFF     servos ao centro (+trim), controlo desligado   [arranque]
 //    1 MANUAL  servos comandados diretamente (comando "u")
 //    2 AUTO    PID mantém a plataforma no setpoint (nivelada por defeito)
+//    3 SEGUIR  a plataforma imita a inclinação do telemóvel (comando "f")
+//              - referência suavizada (filtro de 1.ª ordem)
+//              - sem "f" durante 1 s -> volta ao nível
 //
 //  Segurança: em AUTO, se |roll| ou |pitch| > ANG_LIMIT -> passa a OFF.
 //             Se o IMU falhar -> OFF.
@@ -17,7 +20,8 @@
 //  Comandos (Bluetooth ou USB; com ou sem Enter):
 //    ?                 estado completo
 //    h                 ajuda
-//    m <0|1|2>         modo OFF / MANUAL / AUTO
+//    m <0|1|2|3>       modo OFF / MANUAL / AUTO / SEGUIR
+//    f <roll> <pitch>  referência vinda do telemóvel (modo SEGUIR, sem resposta)
 //    sp <roll> <pitch> setpoints em graus (AUTO)          ex: sp 0 5
 //    g <r|p|b> <kp> <ki> <kd>  ganhos do PID (b = ambos)    ex: g b 1.2 0.4 0.05
 //    u <r|p> <graus>   desvio manual do servo (MANUAL)     ex: u r 10
@@ -46,9 +50,11 @@ static constexpr uint8_t  TELEM_DIV      = 20;     // 10 Hz
 static constexpr float    SERVO_LIMIT    = 45.0f;  // desvio máx. do centro [graus]
 static constexpr float    ANG_LIMIT      = 40.0f;  // corte de segurança em AUTO
 static constexpr float    SP_LIMIT       = 20.0f;  // setpoint máximo
+static constexpr uint32_t FOLLOW_TIMEOUT = 1000;   // ms sem "f" -> nível
+static constexpr float    FOLLOW_TAU     = 0.15f;  // s, suavização da referência
 
-enum Mode : uint8_t { OFF = 0, MANUAL = 1, AUTO = 2 };
-static const char *MODE_NAME[] = {"OFF", "MANUAL", "AUTO"};
+enum Mode : uint8_t { OFF = 0, MANUAL = 1, AUTO = 2, FOLLOW = 3 };
+static const char *MODE_NAME[] = {"OFF", "MANUAL", "AUTO", "SEGUIR"};
 
 // ---------------- objetos ----------------
 HardwareSerial BT(BT_RX_PIN, BT_TX_PIN);
@@ -67,6 +73,9 @@ static float    manual[2] = {0, 0};     // desvios em MANUAL
 static float    trim[2]   = {0, 0};     // centro mecânico
 static float    dir[2]    = {1, 1};     // sentido de atuação
 static float    u[2]      = {0, 0};     // comando aplicado (desvio do centro)
+static float    follow[2] = {0, 0};     // referência pedida pelo telemóvel
+static float    followF[2]= {0, 0};     // referência suavizada
+static uint32_t lastFollowMs = 0;
 static uint32_t overruns  = 0, loopCount = 0;
 
 // ---------------- saída para os dois lados ----------------
@@ -82,10 +91,17 @@ static void both(const char *fmt, ...) {
 
 // ---------------- auxiliares ----------------
 static void setMode(Mode m, const char *why = nullptr) {
-  if (m == AUTO && !imuOk) { both("AUTO recusado: IMU indisponivel\r\n"); return; }
+  if ((m == AUTO || m == FOLLOW) && !imuOk) {
+    both("%s recusado: IMU indisponivel\r\n", MODE_NAME[m]); return;
+  }
   mode = m;
   pid[0].reset(); pid[1].reset();
   if (m != MANUAL) { manual[0] = manual[1] = 0; }
+  if (m == FOLLOW) {
+    follow[0] = follow[1] = 0;
+    followF[0] = filt.roll; followF[1] = filt.pitch;   // parte de onde está
+    lastFollowMs = millis();
+  }
   both("modo %s%s%s\r\n", MODE_NAME[m], why ? " - " : "", why ? why : "");
 }
 
@@ -118,7 +134,7 @@ static void status() {
 }
 
 static void help() {
-  both("? h | m 0/1/2 | sp r p | g r/p/b kp ki kd | u r/p deg\r\n");
+  both("? h | m 0/1/2/3 | sp r p | f r p | g r/p/b kp ki kd | u r/p deg\r\n");
   both("t r/p deg | inv r/p | a x | c | s | r | l\r\n");
 }
 
@@ -184,7 +200,15 @@ static void handleCommand(String line) {
 
   if (t[0] == "m" && n == 2 && num(t[1], v1)) {
     int m = (int)v1;
-    if (m >= 0 && m <= 2) setMode((Mode)m);
+    if (m >= 0 && m <= 3) setMode((Mode)m);
+  }
+  else if (t[0] == "f" && n == 3 && num(t[1], v1) && num(t[2], v2)) {
+    // referência do telemóvel: só conta em SEGUIR; sem resposta (vem a 15 Hz)
+    if (mode == FOLLOW) {
+      follow[0] = constrain(v1, -SP_LIMIT, SP_LIMIT);
+      follow[1] = constrain(v2, -SP_LIMIT, SP_LIMIT);
+      lastFollowMs = millis();
+    }
   }
   else if (t[0] == "sp" && n == 3 && num(t[1], v1) && num(t[2], v2)) {
     sp[0] = constrain(v1, -SP_LIMIT, SP_LIMIT);
@@ -308,7 +332,7 @@ void loop() {
   const float rate[2] = {imu.gx, imu.gy};
 
   // ---- segurança ----
-  if (mode == AUTO && (fabsf(ang[0]) > ANG_LIMIT || fabsf(ang[1]) > ANG_LIMIT)) {
+  if ((mode == AUTO || mode == FOLLOW) && (fabsf(ang[0]) > ANG_LIMIT || fabsf(ang[1]) > ANG_LIMIT)) {
     setMode(OFF, "angulo fora do limite");
   }
 
@@ -318,6 +342,12 @@ void loop() {
       case OFF:    u[i] = 0; break;
       case MANUAL: u[i] = manual[i]; break;
       case AUTO:   u[i] = pid[i].update(sp[i] - ang[i], rate[i], dt); break;
+      case FOLLOW: {
+        float target = (millis() - lastFollowMs > FOLLOW_TIMEOUT) ? 0.0f : follow[i];
+        followF[i] += (target - followF[i]) * dt / (FOLLOW_TAU + dt);
+        u[i] = pid[i].update(followF[i] - ang[i], rate[i], dt);
+        break;
+      }
     }
     float cmd = 90.0f + trim[i] + dir[i] * u[i];
     cmd = constrain(cmd, 90.0f - SERVO_LIMIT, 90.0f + SERVO_LIMIT);

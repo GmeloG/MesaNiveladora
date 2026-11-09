@@ -1,0 +1,27 @@
+\chapter{Conclusões e Trabalho Futuro}
+\label{ch:conclusao}
+
+\section{Conclusões}
+Este trabalho tem como objetivo o desenvolvimento de uma plataforma estabilizada de dois eixos, capaz de acompanhar a inclinação de um telemóvel e de se manter nivelada perante perturbações da base.
+
+O estudo do estado da arte mostrou que este tipo de sistema pode ser construído com componentes de baixo custo. Os trabalhos analisados indicam que uma \gls{imu} associada a um filtro de fusão simples permite obter uma estimativa da atitude adequada ao controlo e que um controlador \gls{pid} é, em muitos casos, suficiente para estabilizar plataformas pequenas. Os métodos mais avançados trazem vantagens sobretudo quando existe um modelo fiável do sistema e acesso à velocidade ou à corrente dos atuadores, o que não acontece com servos de modelismo.
+
+O paralelismo com os drones mostrou que o problema da plataforma é, em grande parte, um subconjunto do controlo de atitude de um multirrotor. A separação entre estimação e controlo, a limitação do termo integral, o \textit{failsafe} perante perda de ligação e o passo de armar antes de mover os atuadores foram transpostos diretamente para a arquitetura proposta.
+
+A estrutura mecânica, modelada em OpenSCAD, é um \textit{gimbal} em série com os dois eixos a cruzarem-se no mesmo ponto, o que elimina o acoplamento mecânico entre eixos e simplifica a calibração dos servos. O hardware assenta numa NUCLEO-F767ZI, numa \gls{imu} GY-85, em dois servos MG996R e num módulo Bluetooth de modo duplo, com alimentação por bateria e regulação separada para os servos e para a eletrónica. O esquema elétrico e a atribuição de pinos ficaram definidos. O dimensionamento mostrou que o regulador dos servos tem de suportar os picos de corrente em bloqueio e que a autonomia estimada excede largamente o requisito. O software foi organizado em camadas e módulos com interfaces bem definidas, o que permitiu, por exemplo, trocar de sensor alterando apenas o respetivo \textit{driver}; para cada módulo foram definidos procedimentos e vetores de teste ligados aos requisitos.
+
+O custo estimado do protótipo é de cerca de 143~€, dentro do limite definido. A análise de segurança, feita considerando o equipamento como um brinquedo, mostrou que o protótipo cumpre os requisitos elétricos de base, como a tensão máxima e a inacessibilidade da eletrónica, mas que um produto comercial teria de proteger os pontos de entalamento e usar uma bateria com proteção própria.
+
+\section{Trabalho futuro}
+Os próximos passos do trabalho são os seguintes:
+\begin{itemize}
+\item imprimir e montar a estrutura, confirmando as cotas dos servos e a fixação do GY-85;
+\item implementar e testar cada módulo de acordo com o capítulo~\ref{ch:testes};
+\item calibrar os servos e identificar a dinâmica do conjunto servo--plataforma;
+\item desenvolver a aplicação do telemóvel;
+\item afinar os controladores e comparar o \gls{pid} com e sem compensação antecipativa;
+\item avaliar a utilidade de uma segunda \gls{imu} na base e de algoritmos de fusão mais completos;
+\item rever estas conclusões à luz dos resultados experimentais.
+\end{itemize}
+
+\acompletar{rever as conclusões quando houver resultados}

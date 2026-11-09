@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: front/title.aux
+A level-1 auxiliary file: front/4_frontmatterlists.aux
+A level-1 auxiliary file: chapters/01_introducao.aux
+A level-1 auxiliary file: chapters/02_estado_arte.aux
+A level-1 auxiliary file: chapters/03_arquitetura.aux
+A level-1 auxiliary file: chapters/04_testes.aux
+A level-1 auxiliary file: chapters/05_componentes_custos.aux
+A level-1 auxiliary file: chapters/06_seguranca.aux
+A level-1 auxiliary file: chapters/07_conclusao.aux
+The style file: ieeetr.bst
+Database file #1: referencias.bib
+You've used 55 entries,
+            1876 wiz_defined-function locations,
+            759 strings with 16020 characters,
+and the built_in function-call counts, 10429 in all, are:
+= -- 1119
+> -- 329
+< -- 0
++ -- 142
+- -- 87
+* -- 508
+:= -- 1425
+add.period$ -- 76
+call.type$ -- 55
+change.case$ -- 55
+chr.to.int$ -- 0
+cite$ -- 55
+duplicate$ -- 445
+empty$ -- 1155
+format.name$ -- 87
+if$ -- 2671
+int.to.chr$ -- 0
+int.to.str$ -- 55
+missing$ -- 21
+newline$ -- 225
+num.names$ -- 55
+pop$ -- 307
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 329
+stack$ -- 0
+substring$ -- 396
+swap$ -- 145
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 96
+width$ -- 57
+write$ -- 533

@@ -1,0 +1,81 @@
+\chapter{Segurança e Conformidade}
+\label{ch:seguranca}
+
+Para a análise de segurança considerou-se que a plataforma seria comercializada como um brinquedo educativo, destinado a crianças a partir dos 8 anos, comandado pelo telemóvel. Esta hipótese é a mais exigente, porque os brinquedos têm requisitos próprios de segurança e o utilizador não tem formação técnica. Um protótipo académico, usado apenas em laboratório, não é colocado no mercado e não tem de ostentar a marcação \gls{ce} \cite{blueguide2022}; ainda assim, a análise permitiu incorporar no projeto medidas que um produto certificado teria de ter.
+
+\section{Legislação e normas aplicáveis}
+Como brinquedo elétrico com um emissor Bluetooth e uma bateria, o produto ficaria abrangido pelos atos e normas da tabela~\ref{tab:legislacao}.
+
+\begin{table}[H]
+\centering\small
+\caption{Legislação e normas aplicáveis a um brinquedo com estas características.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.6cm}Y}
+\toprule
+Legislação ou norma & Âmbito\\\midrule
+Diretiva 2009/48/CE \cite{toy2009} & Segurança dos brinquedos; em vigor\\
+Regulamento (UE) 2025/2509 \cite{toy2025} & Substitui a diretiva a partir de 1 de agosto de 2030; introduz o passaporte digital do produto e exige avaliar os riscos dos brinquedos ligados digitalmente \cite{eurofinstoy}\\
+Diretiva 2014/53/UE (\acrshort{red}) \cite{red2014} & Equipamentos de rádio (Bluetooth)\\
+Diretivas 2011/65/UE (\acrshort{rohs}) e 2012/19/UE (\acrshort{reee}) \cite{rohs2011,weee2012} & Substâncias perigosas e fim de vida do equipamento elétrico\\
+Regulamento (UE) 2023/1542 \cite{battery2023} & Baterias\\
+EN 71-1, EN 71-2 e EN 71-3 \cite{en71} & Propriedades mecânicas e físicas, inflamabilidade e migração de elementos químicos\\
+EN IEC 62115 \cite{en62115} & Segurança de brinquedos elétricos\\
+EN 300 328, EN 301 489-1 e -17 \cite{en300328,en301489} & Espetro e compatibilidade eletromagnética do rádio\\
+\bottomrule
+\end{tabularx}
+\label{tab:legislacao}
+\end{table}
+
+\section{Requisitos para brinquedos e resposta do projeto}
+A tabela~\ref{tab:brinquedo} cruza os principais requisitos de segurança dos brinquedos com a situação do protótipo.
+
+\begin{table}[H]
+\centering\small
+\caption{Requisitos de segurança para brinquedos e situação do protótipo.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm}YY}
+\toprule
+Requisito & Situação no protótipo & Alteração para um produto\\\midrule
+Tensão nominal não superior a \SI{24}{\volt} \cite{toy2009} & Cumpre: máximo de \SI{8.4}{\volt} (RNF12) & --\\
+Bateria e eletrónica inacessíveis sem ferramenta & Cumpre: caixa fechada com parafusos (SEG-08) & --\\
+Sem arestas vivas nem pontas (EN 71-1) & Peças impressas com arestas por acabar & Arredondar arestas e rever o acabamento\\
+Sem pontos de entalamento de dedos (EN 71-1) & Folgas entre quadro, plataforma e torres; servos com binário elevado & Proteger as zonas de rotação, limitar velocidade e binário, manter a paragem de emergência\\
+Temperatura das partes acessíveis (EN IEC 62115) & Servos e reguladores podem aquecer em bloqueio & Medir temperaturas; deteção de bloqueio em software\\
+Bateria segura & LiPo sem proteção própria & Usar bateria com circuito de proteção e carregamento integrado, sem intervenção da criança\\
+Materiais (EN 71-2, EN 71-3) & PLA sem tintas & Confirmar inflamabilidade e migração de elementos com o fornecedor do material\\
+Brinquedo ligado & Recebe apenas ângulos; não recolhe dados pessoais & Ligação protegida por emparelhamento; informação ao utilizador\\
+\bottomrule
+\end{tabularx}
+\label{tab:brinquedo}
+\end{table}
+
+O protótipo cumpre os requisitos elétricos de base, mas não está pronto para ser um brinquedo: as maiores lacunas são a bateria LiPo sem proteção e os pontos de entalamento no mecanismo. Ambas têm solução conhecida e baixo custo.
+
+\section{Análise de riscos}
+A análise seguiu o método da EN ISO 12100: identificar os perigos, estimar o risco como produto da gravidade (G) pela probabilidade (P), numa escala de 1 a 3, e definir medidas para o reduzir. Considera-se aceitável um risco residual igual ou inferior a 3.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Análise de riscos.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.4cm}ccc>{\raggedright\arraybackslash}Yc}
+\toprule
+Perigo & G & P & R & Medidas de redução & R res.\\\midrule
+Entalamento de dedos & 2 & 2 & 4 & Limites de amplitude e velocidade; proteção das zonas de rotação; paragem de emergência & 2\\
+Movimento inesperado & 2 & 2 & 4 & Arranque desarmado; armar explícito; \textit{watchdog}; modo seguro & 2\\
+Incêndio da bateria & 3 & 1 & 3 & Fusível; bateria com proteção; monitorização da tensão & 2\\
+Sobreaquecimento dos servos & 1 & 2 & 2 & Limites de comando; deteção de bloqueio & 1\\
+Arestas vivas & 1 & 2 & 2 & Acabamento das peças & 1\\
+Choque elétrico & 1 & 1 & 1 & Muito baixa tensão & 1\\
+\bottomrule
+\end{tabularx}
+\label{tab:riscos}
+\end{table}
+
+\section{Funções de segurança implementadas}
+As medidas anteriores traduzem-se nas seguintes funções, verificadas pelos testes T-SEG (capítulo~\ref{ch:testes}):
+\begin{itemize}
+\item \textbf{Paragem de emergência por hardware:} corta a alimentação dos servos sem depender do microcontrolador.
+\item \textbf{Arranque seguro:} o sistema arranca desarmado e só se move depois de calibrado e armado.
+\item \textbf{Modo seguro:} sem referências válidas durante \SI{300}{\milli\second}, ou com bateria baixa, a plataforma volta suavemente à horizontal.
+\item \textbf{Limites em software:} amplitude, velocidade e largura de impulso dos servos limitadas.
+\item \textbf{\textit{Watchdog}:} reinício automático em caso de bloqueio do programa.
+\item \textbf{Proteção elétrica:} fusível, interruptor geral e eletrónica fechada numa caixa aparafusada.
+\end{itemize}

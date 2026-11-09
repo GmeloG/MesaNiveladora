@@ -1,0 +1,352 @@
+\chapter{Estado da Arte}
+\label{ch:estado-arte}
+
+\section{Panorama atual}
+As plataformas estabilizadas são usadas há várias décadas para manter câmaras, sensores óticos e antenas apontados de forma estável sobre veículos em movimento. Surgiram sobretudo em aplicações militares e aeroespaciais, onde a estabilização da linha de visão era feita com giroscópios e motores dedicados \cite{hilkert2008,masten2008}.
+
+Os métodos de controlo e de estimação usados nestes sistemas têm origens mais antigas. A análise de Minorsky sobre o governo automático de navios é apontada como uma das primeiras formulações do controlador de três termos, que deu origem ao \gls{pid} \cite{minorsky1922}, e o filtro de Kalman, publicado em 1960, está na base da estimação recursiva usada na fusão de sensores inerciais \cite{kalman1960}.
+
+Atualmente, a disponibilidade de sensores inerciais \gls{mems} de baixo custo e de microcontroladores com capacidade de cálculo em vírgula flutuante levou estas técnicas para produtos de consumo, como os estabilizadores de câmaras e de telemóveis, os drones e os protótipos académicos. Uma plataforma deste tipo é composta, em geral, por uma unidade de processamento, um ou mais sensores inerciais, dois ou mais atuadores, um algoritmo de estimação da atitude, um algoritmo de controlo e, quando é comandada à distância, uma ligação de comunicação. As secções seguintes seguem esta decomposição.
+
+\section{Conceitos fundamentais}
+
+\subsection{Atitude e ângulos de Euler}
+A atitude de um corpo é a sua orientação em relação a um referencial fixo, normalmente alinhado com a gravidade. Numa plataforma de dois eixos interessam dois ângulos: \textit{roll} ($\phi$), a rotação em torno do eixo longitudinal, e \textit{pitch} ($\theta$), a rotação em torno do eixo transversal. A rotação em torno da vertical (\textit{yaw}, $\psi$) não altera o nivelamento e, por isso, não é controlada.
+
+\subsection{Inclinação a partir do acelerómetro}
+Com o corpo parado, o acelerómetro mede apenas a gravidade. A partir das três componentes medidas ($a_x$, $a_y$, $a_z$) obtêm-se os dois ângulos:
+\begin{equation}
+\phi = \operatorname{atan2}(a_y,\, a_z), \qquad
+\theta = \operatorname{atan2}\!\left(-a_x,\, \sqrt{a_y^2 + a_z^2}\right).
+\label{eq:acc}
+\end{equation}
+Esta estimativa não acumula erro ao longo do tempo, mas é perturbada por vibrações e por qualquer aceleração do próprio corpo.
+
+\subsection{Integração do giroscópio}
+O giroscópio mede a velocidade angular $\omega$. Integrando-a, obtém-se a variação do ângulo, $\phi_k = \phi_{k-1} + \omega_k\,\Delta t$. Esta estimativa tem pouco ruído a curto prazo, mas qualquer desvio (\textit{bias}) do sensor é integrado e provoca uma deriva que cresce com o tempo. As duas fontes de informação são, portanto, complementares.
+
+\subsection{Filtro complementar}
+O filtro complementar combina as duas estimativas através de uma média ponderada:
+\begin{equation}
+\phi_k = \alpha\left(\phi_{k-1} + \omega_k\,\Delta t\right) + (1-\alpha)\,\phi_{\text{acc},k},
+\label{eq:compl}
+\end{equation}
+em que $\alpha$, próximo de 1, define a constante de tempo $\tau = \alpha\,\Delta t/(1-\alpha)$ a partir da qual se confia mais no acelerómetro. Por exemplo, com $\Delta t = \SI{5}{\milli\second}$ e $\alpha = 0{,}98$, obtém-se $\tau \approx \SI{0.25}{\second}$.
+
+\subsection{Controlo por realimentação}
+Num sistema em malha fechada, o controlador compara a referência $r$ com a medida $y$ e calcula o comando $u$. O controlador \gls{pid} discreto calcula:
+\begin{equation}
+u_k = K_p\, e_k + K_i \sum_{j=0}^{k} e_j\,\Delta t + K_d\,\frac{e_k - e_{k-1}}{\Delta t}, \qquad e_k = r_k - y_k.
+\label{eq:pid}
+\end{equation}
+Quando a perturbação pode ser medida, como a inclinação da base, pode somar-se ao comando uma compensação antecipativa (\textit{feedforward}), que atua antes de o erro aparecer \cite{astrom2021}.
+
+\section{Soluções existentes no mercado}
+
+\subsection{Quanser 2 DOF Ball Balancer}
+O \textit{2 DOF Ball Balancer} da Quanser é um equipamento didático composto por uma placa quadrada de 27,5~cm, inclinada em dois eixos por duas unidades de servo rotativo ligadas através de juntas cardã \cite{quanser2dof}. Uma câmara colocada por cima da placa mede a posição de uma bola a 30 imagens por segundo e os servos dispõem de encoders. É usado no ensino de modelação, linearização, controlo \gls{pid} e malhas múltiplas.
+
+\subsection{Controladores de \textit{gimbal} SimpleBGC}
+A BaseCam Electronics comercializa a família SimpleBGC, controladores dedicados para \textit{gimbals} com motores sem escovas. A versão de 32 bits aciona até três motores, inclui uma \gls{imu} para a câmara e admite uma segunda \gls{imu} no corpo do \textit{gimbal}, cujos dados são usados em simultâneo para melhorar a estabilização \cite{simplebgc,simplebgcman}. Suporta ainda encoders absolutos e afinação automática dos ganhos \gls{pid}.
+
+\subsection{Controladores de voo para drones}
+Os controladores de voo de código aberto, como o PX4 e o ArduPilot, resolvem um problema muito próximo: estimar a atitude com uma \gls{imu} e controlá-la em tempo real \cite{px4ctrl,ardupilotatt}. São analisados em detalhe na secção~\ref{sec:drones}.
+
+\subsection{Comparação}
+\begin{table}[H]
+\centering\small
+\caption{Comparação das soluções existentes no mercado.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.4cm}YYY}
+\toprule
+ & Quanser 2 DOF & SimpleBGC 32-bit & PX4 / ArduPilot\\\midrule
+Aplicação & Ensino de controlo & Estabilização de câmaras & Controlo de voo\\
+Grandeza controlada & Posição da bola & Atitude da câmara & Atitude e posição do drone\\
+Mecânica & Bielas a partir da base & \textit{Gimbal} em série & --\\
+Sensores & Câmara, encoders & 1 ou 2 \acrshort{imu}, encoders & \acrshort{imu}, barómetro, GPS, etc.\\
+Atuadores & Servos com encoder & Motores \acrshort{bldc} & Motores \acrshort{bldc} com \acrshort{esc}\\
+Controlo & \acrshort{pid}, malhas múltiplas & \acrshort{pid} com afinação automática & Cascata ângulo--velocidade\\
+\bottomrule
+\end{tabularx}
+\label{tab:mercado}
+\end{table}
+
+Da comparação retiram-se duas conclusões para este projeto. A primeira é que há duas formas comprovadas de inclinar uma placa em dois eixos com atuadores rotativos: com bielas a partir da base, como no Quanser, ou com um \textit{gimbal} em série, em que o segundo atuador é transportado pelo primeiro, como nos estabilizadores de câmara. Este projeto segue a segunda, que dispensa articulações esféricas e deixa os dois eixos mecanicamente independentes. A segunda conclusão é que o SimpleBGC confirma, num produto comercial, a utilidade de medir também o movimento da base com uma segunda \gls{imu}, o que justifica considerar essa opção no modo de nivelamento.
+
+\section{Soluções académicas}
+A tabela~\ref{tab:academicas} resume os trabalhos académicos mais próximos. Todos incluem validação experimental, embora com equipamentos e condições de ensaio diferentes.
+
+\begin{table}[H]
+\centering\small
+\caption{Trabalhos académicos sobre plataformas estabilizadas e de nivelamento.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.3cm}YYY}
+\toprule
+Trabalho & Plataforma e hardware & Controlo & Relevância para o projeto\\\midrule
+Tawfeeq et al.\ \cite{tawfeeq2022} & Plataforma sobre veículo móvel; Arduino Mega, MPU6050, servos MG995 & Filtro complementar e \acrshort{pid} com ganhos otimizados por algoritmo genético & Alta: hardware muito semelhante\\
+Zhou et al.\ \cite{zhou2016} & Plataforma eletro-ótica de dois eixos; motores de binário, encoders, giroscópios & Cascata de posição, velocidade e corrente & Média: estrutura em cascata\\
+Lee et al.\ \cite{lee2020} & \textit{Gimbal} de dois eixos; servomotores, \acrshort{imu} Xsens, encoders & Compensação do acoplamento entre eixos e controlo $H_\infty$ & Média: acoplamento entre eixos\\
+Fu et al.\ \cite{fu2022} & Plataforma inercialmente estabilizada & Observador de estado estendido adaptativo e modos deslizantes & Baixa: exige modelo e atuador direto\\
+Wang et al.\ \cite{wang2024} & Plataforma eletro-ótica aerotransportada & Observador de ordem elevada para perturbações periódicas & Baixa: perturbações de alta frequência\\
+Guo et al.\ \cite{guo2025} & Plataforma agrícola com \acrshort{imu} e quatro atuadores elétricos & \acrshort{pid} e \acrshort{pid} difuso para nivelamento & Alta: problema de nivelamento\\
+\bottomrule
+\end{tabularx}
+\label{tab:academicas}
+\end{table}
+
+Os trabalhos de Tawfeeq et al.\ e de Guo et al.\ são os mais próximos deste projeto. O primeiro usa hardware do mesmo tipo (uma \gls{imu} \gls{mems} económica e servos da família MG99x) e mostra que um filtro complementar e um \gls{pid} bem afinado bastam para estabilizar uma plataforma pequena. O segundo trata explicitamente o nivelamento e compara um \gls{pid} fixo com um \gls{pid} de ganhos ajustados por lógica difusa.
+
+Os restantes trabalhos usam motores de acionamento direto e sensores de gama mais alta. A sua principal lição é que as estratégias avançadas (cascata com malha de corrente, observadores de perturbação, controlo robusto) dependem de ter acesso à corrente ou à velocidade do motor. Com servos de modelismo, que só aceitam uma referência de posição, essas malhas internas não estão disponíveis, o que reforça a escolha de um \gls{pid} por eixo, eventualmente com compensação antecipativa, como ponto de partida.
+
+\section{Paralelismo com o controlo de drones}
+\label{sec:drones}
+O controlo de atitude de um multirrotor e o de uma plataforma auto-niveladora têm muito em comum. Em ambos os casos é preciso estimar \textit{roll} e \textit{pitch} a partir de uma \gls{imu} de baixo custo e corrigir continuamente a atitude através de atuadores, com uma frequência de atualização elevada.
+
+\subsection{Estimação de atitude}
+Mahony et al.\ \cite{mahony2012} descrevem a modelação, estimação e controlo de quadrirrotores e mostram que filtros complementares não lineares, semelhantes aos usados em plataformas, são adequados à estimação de atitude com sensores \gls{mems}. Os controladores de voo atuais usam soluções mais completas: o PX4 obtém as estimativas a partir de um \gls{ekf} (EKF2), que funde a \gls{imu} com outros sensores \cite{px4ctrl}. Numa plataforma fixa ao solo, sem GPS nem barómetro, um filtro complementar ou de Madgwick é suficiente, porque só é necessário estimar a inclinação.
+
+\subsection{Estrutura de controlo}
+Tanto o PX4 como o ArduPilot usam uma arquitetura em cascata. No PX4, o controlador de atitude usa uma lei proporcional para gerar uma referência de velocidade angular, que é seguida por um controlador \gls{pid} de velocidade com limitação do termo integral \cite{px4ctrl}. No ArduPilot, o erro de ângulo passa por um controlador proporcional com uma curva de raiz quadrada e depois por um \gls{pid} de velocidade, com o ciclo de controlo a correr a \SI{400}{\hertz} na Pixhawk \cite{ardupilotatt}.
+
+Na plataforma, a malha interna de velocidade não é acessível, porque o servo já contém o seu próprio controlador de posição. O servo cumpre assim o papel da malha interna e o microcontrolador fecha apenas a malha externa de ângulo com a \gls{imu}. A analogia sugere, no entanto, duas boas práticas: limitar a velocidade da referência, como faz o ArduPilot com a sua curva de raiz quadrada, e usar compensação antecipativa sempre que o movimento pretendido é conhecido.
+
+\subsection{Comparação}
+\begin{table}[H]
+\centering\small
+\caption{Paralelismo entre o controlo de atitude de um drone e o da plataforma.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.7cm}YY}
+\toprule
+Aspeto & Drone multirrotor & Plataforma auto-niveladora\\\midrule
+Sensor principal & \acrshort{imu} de 6 ou 9 eixos & \acrshort{imu} de 9 eixos (GY-85)\\
+Estimação & \acrshort{ekf} ou filtro complementar & Filtro complementar ou de Madgwick\\
+Malha externa & Ângulo (P) & Ângulo (\acrshort{pid})\\
+Malha interna & Velocidade angular (\acrshort{pid}) & Controlador interno do servo\\
+Atuadores & Motores \acrshort{bldc} com \acrshort{esc} & Servos de posição (\acrshort{pwm})\\
+Mistura & Distribuição pelos motores (\textit{mixer}) & Conversão ângulo--impulso por eixo\\
+Referência & Rádio-comando & Telemóvel (Bluetooth) ou horizontal\\
+Perda de ligação & \textit{Failsafe} (aterrar, regressar) & Estado seguro (posição neutra)\\
+Arranque & Armar antes de rodar os motores & Calibrar e confirmar antes de mover\\
+\bottomrule
+\end{tabularx}
+\label{tab:drones}
+\end{table}
+
+A comparação mostra que o problema da plataforma é, em grande medida, um subconjunto do problema do drone: não há dinâmica de translação nem necessidade de estimar o rumo, e o sistema é estável mesmo sem controlo, pelo que uma falha não tem consequências graves. Ainda assim, há conceitos dos controladores de voo que vale a pena transpor diretamente: a separação entre estimação e controlo, a limitação do termo integral, o \textit{failsafe} perante perda de ligação e a necessidade de um passo explícito de \enquote{armar} antes de mover os atuadores.
+
+\section{Unidades de processamento}
+
+\subsection{Arduino Mega 2560}
+O Arduino Mega 2560 usa um microcontrolador ATmega2560 de 8 bits a 16~MHz, com 256~KB de memória Flash e 8~KB de \gls{sram} \cite{arduinomega}. É simples de programar e tem uma comunidade muito grande, sendo usado em vários protótipos académicos \cite{tawfeeq2022}. Não tem unidade de vírgula flutuante, o que limita algoritmos de fusão e de controlo mais exigentes.
+
+\subsection{STM32F767ZI (NUCLEO-F767ZI)}
+O STM32F767ZI integra um núcleo ARM Cortex-M7 até 216~MHz, com unidade de vírgula flutuante, 2~MB de Flash e 512~KB de \gls{sram} \cite{stm32}. A placa NUCLEO-F767ZI disponibiliza conectores de expansão e depurador ST-LINK integrado \cite{nucleo}. Não inclui comunicação sem fios.
+
+\subsection{ESP32-S3}
+O ESP32-S3 da Espressif tem dois núcleos Xtensa LX7 até 240~MHz e integra Wi-Fi e \gls{ble} no mesmo circuito \cite{esp32s3ds,esp32}. Permite concentrar processamento e comunicação num único componente, embora seja necessário garantir que as tarefas de rádio não afetam a temporização do controlo.
+
+\subsection{Comparação}
+\begin{table}[H]
+\centering\small
+\caption{Comparação das unidades de processamento.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm}YYY}
+\toprule
+ & Arduino Mega 2560 & STM32F767ZI & ESP32-S3\\\midrule
+Núcleo & AVR 8 bits & Cortex-M7 32 bits & 2$\times$ Xtensa LX7 32 bits\\
+Frequência & 16~MHz & 216~MHz & 240~MHz\\
+Vírgula flutuante & Não & Sim & Sim\\
+Comunicação sem fios & Não & Não & Wi-Fi e \acrshort{ble}\\
+Depuração & Limitada & ST-LINK integrado & Por USB/JTAG\\
+Adequação ao projeto & Suficiente para \acrshort{pid} simples & Elevada & Elevada\\
+\bottomrule
+\end{tabularx}
+\label{tab:mcu}
+\end{table}
+
+As três opções conseguem executar um filtro complementar e dois controladores \gls{pid} a algumas centenas de hertz. A diferença está na margem disponível e nas ferramentas. O STM32F767ZI tem folga de sobra para algoritmos mais exigentes, como o filtro de Madgwick ou um \gls{ekf}, e o depurador integrado facilita o desenvolvimento, embora obrigue a um módulo Bluetooth externo. Foi esta a opção escolhida, por estar disponível e por permitir explorar abordagens de controlo mais complexas sem mudar de plataforma.
+
+\section{Sensores inerciais}
+
+\subsection{MPU6050}
+A MPU6050, da TDK InvenSense, combina acelerómetro e giroscópio de três eixos com conversores de 16 bits, gamas configuráveis de $\pm2$ a $\pm\SI{16}{g}$ e de $\pm250$ a $\pm\SI{2000}{\degree\per\second}$, comunicação por \gls{i2c} e um processador de movimento interno \cite{mpu6050}. É muito comum em projetos académicos de baixo custo \cite{tawfeeq2022} e está disponível em módulos como o GY-521.
+
+\subsection{GY-85}
+O GY-85 é um módulo de nove eixos que junta três circuitos independentes no mesmo barramento \gls{i2c}: o acelerómetro ADXL345 (endereço 0x53), o giroscópio ITG-3205 (0x68 ou 0x69, conforme a ligação do pino de endereço) e o magnetómetro HMC5883L (0x1E) \cite{gy85,gy85datasheet}. O ADXL345 tem gamas de $\pm2$ a $\pm\SI{16}{g}$ e um modo de resolução total de até 13 bits; o ITG-3205 funciona com uma gama de $\pm\SI{2000}{\degree\per\second}$. O módulo inclui regulador e funciona com alimentação de 3 a \SI{5}{\volt}. Algumas versões recentes trazem o QMC5883L em vez do HMC5883L, com endereço e registos diferentes, pelo que convém confirmar o circuito montado.
+
+\subsection{BMI270}
+A BMI270, da Bosch Sensortec, é uma \gls{imu} de seis eixos de baixo consumo que fornece os dados brutos do acelerómetro e do giroscópio por \gls{spi} ou \gls{i2c}, deixando a fusão para o microcontrolador \cite{bmi270}.
+
+\subsection{BNO055}
+A BNO055, também da Bosch Sensortec, junta acelerómetro, giroscópio e magnetómetro a um microcontrolador interno que executa a fusão sensorial e entrega diretamente a orientação, por \gls{i2c} ou \gls{uart} \cite{bno055}. Reduz o trabalho de software, mas dá menos controlo sobre o algoritmo e a latência.
+
+\subsection{Sensores do telemóvel}
+Os telemóveis incluem sensores de orientação acessíveis através do sistema operativo \cite{android}. Kuhlmann et al.\ \cite{kuhlmann2021} mostram, no entanto, que a precisão da orientação varia bastante entre modelos, o que aconselha uma calibração inicial da posição neutra.
+
+\subsection{Comparação}
+\begin{table}[H]
+\centering\small
+\caption{Comparação dos sensores inerciais.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}YYYY}
+\toprule
+ & MPU6050 & GY-85 & BMI270 & BNO055\\\midrule
+Eixos & 6 & 9 & 6 & 9\\
+Circuitos & 1 & 3 (ADXL345, ITG-3205, HMC5883L) & 1 & 1\\
+Fusão interna & Parcial & Não & Não & Sim\\
+Interfaces & \acrshort{i2c} & \acrshort{i2c} & \acrshort{spi}, \acrshort{i2c} & \acrshort{i2c}, \acrshort{uart}\\
+Controlo sobre o algoritmo & Elevado & Elevado & Elevado & Reduzido\\
+Documentação e exemplos & Muito elevada & Elevada & Média & Elevada\\
+\bottomrule
+\end{tabularx}
+\label{tab:imu}
+\end{table}
+
+Para nivelar a plataforma bastam o acelerómetro e o giroscópio, porque o \textit{yaw} não é controlado. A BNO055 oferece a fusão já feita, mas tira o controlo sobre o algoritmo e a latência. A MPU6050, a BMI270 e o GY-85 deixam a fusão para o microcontrolador, o que permite comparar algoritmos. O sensor escolhido foi o GY-85: fornece os dados brutos de cada sensor, é muito documentado e o magnetómetro, embora não seja necessário para \textit{roll} e \textit{pitch}, fica disponível para uma eventual estimação do rumo. Em contrapartida, como são três circuitos distintos, a leitura exige três sequências de configuração e as amostras do acelerómetro e do giroscópio não são adquiridas exatamente no mesmo instante, o que é irrelevante às frequências usadas neste projeto.
+
+\section{Algoritmos de fusão sensorial}
+
+\subsection{Filtro complementar}
+É a solução mais simples (equação~\eqref{eq:compl}). Tem custo computacional muito baixo, um único parâmetro de afinação e é usado em vários protótipos \cite{tawfeeq2022}.
+
+\subsection{Filtro de Mahony}
+Mahony et al.\ \cite{mahony2008} generalizaram o filtro complementar para rotações tridimensionais, com uma correção proporcional-integral que estima também o desvio do giroscópio.
+
+\subsection{Filtro de Madgwick}
+Madgwick et al.\ \cite{madgwick2011} propuseram um filtro em quaterniões baseado em descida do gradiente, com custo computacional baixo e muito usado em microcontroladores. Valenti et al.\ \cite{valenti2015} apresentam uma variante que separa a correção da inclinação da correção de rumo.
+
+\subsection{Filtro de Kalman}
+O filtro de Kalman \cite{kalman1960} e a sua versão estendida, o \gls{ekf}, ponderam a confiança no modelo e nas medidas através das covariâncias dos ruídos. São usados nos controladores de voo \cite{px4ctrl}, mas são mais exigentes de ajustar e implementar.
+
+\subsection{Comparação}
+\begin{table}[H]
+\centering\small
+\caption{Comparação dos algoritmos de fusão sensorial.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}YYYY}
+\toprule
+ & Complementar & Mahony & Madgwick & Kalman / \acrshort{ekf}\\\midrule
+Custo computacional & Muito baixo & Baixo & Baixo & Médio a elevado\\
+Parâmetros a afinar & 1 ($\alpha$) & 2 ($K_p$, $K_i$) & 1 ($\beta$) & Matrizes de covariância\\
+Estima desvio do giroscópio & Não & Sim & Parcialmente & Sim\\
+Usa magnetómetro & Não & Opcional & Opcional & Opcional\\
+Adequação ao projeto & Ponto de partida & Boa & Boa & Desnecessária na 1.ª fase\\
+\bottomrule
+\end{tabularx}
+\label{tab:fusao}
+\end{table}
+
+Como a plataforma só precisa de \textit{roll} e \textit{pitch} e os ângulos de trabalho são moderados, o filtro complementar é suficiente para uma primeira versão. O filtro de Madgwick ou o de Mahony são a evolução natural se a deriva do giroscópio se revelar um problema, e ambos podem usar o magnetómetro do GY-85 se vier a ser necessário estimar o rumo. O \gls{ekf} não traz vantagens claras neste contexto.
+
+\section{Atuadores}
+
+\subsection{Servos de modelismo}
+São comandados por um impulso, repetido normalmente a \SI{50}{\hertz}, cuja largura define a posição pretendida; o controlo de posição é feito internamente. São baratos e simples de usar, mas não devolvem a posição real. O TowerPro MG996R, com engrenagens metálicas, tem um binário de bloqueio de 9,4~kgf\,cm a \SI{4.8}{\volt} e 11~kgf\,cm a \SI{6}{\volt}, uma velocidade de \SI{0.14}{\second} por \SI{60}{\degree} a \SI{6}{\volt} e uma corrente de bloqueio de \SI{2.5}{\ampere} \cite{mg996r}. O Hitec HS-5645MG é um servo digital com 12,1~kgf\,cm de binário de bloqueio a \SI{6}{\volt} \cite{hitec}.
+
+\subsection{Servos inteligentes}
+Comunicam por barramento série e devolvem posição, velocidade e outros dados. O DYNAMIXEL XL430-W250 tem encoder de 4096 contagens por volta e modos de controlo de posição, velocidade e \gls{pwm} \cite{robotis}.
+
+\subsection{Motores DC e BLDC com encoder}
+Os motores \gls{dc} e \gls{bldc} com encoder permitem implementar malhas próprias de posição, velocidade e corrente, como em Zhou et al.\ \cite{zhou2016}. Os motores \gls{bldc} são os usados nos \textit{gimbals} comerciais e nos drones. Em contrapartida, exigem eletrónica de potência e uma integração mais complexa.
+
+\subsection{Motores de passo}
+Posicionam-se por passos sem necessidade de sensor, mas em malha aberta podem perder passos sem que isso seja detetado.
+
+\subsection{Comparação}
+\begin{table}[H]
+\centering\small
+\caption{Comparação das famílias de atuadores.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}YYY}
+\toprule
+Família & Vantagens & Limitações & Custo indicativo\\\midrule
+Servo de modelismo (MG996R) & Barato; comando simples; binário elevado & Sem realimentação de posição; folga nas engrenagens & Baixo\\
+Servo inteligente (XL430) & Telemetria; vários modos & Custo; barramento próprio & Elevado\\
+Motor \acrshort{dc}/\acrshort{bldc} & Controlo completo do motor & Eletrónica e integração complexas & Médio\\
+Motor de passo & Posicionamento sem sensor & Perda de passos não detetada; consumo em repouso & Médio\\
+\bottomrule
+\end{tabularx}
+\label{tab:atuadores}
+\end{table}
+
+Para uma plataforma pequena, com ângulos moderados e sem requisitos de precisão muito exigentes, os servos de modelismo oferecem a melhor relação entre binário, custo e simplicidade. O MG996R foi escolhido por ter binário suficiente para a carga prevista e engrenagens metálicas. As suas limitações, nomeadamente a folga e a ausência de realimentação de posição, ficam compensadas em parte por a \gls{imu} medir diretamente a inclinação da plataforma. O consumo em bloqueio (\SI{2.5}{\ampere} por servo) tem de ser tido em conta no dimensionamento da alimentação.
+
+\section{Métodos de controlo}
+
+\subsection{Controlador PID}
+O \gls{pid} (equação~\eqref{eq:pid}) continua a ser a solução mais usada em plataformas estabilizadas de baixo custo \cite{astrom2021}. A sua implementação exige cuidados com a saturação dos atuadores, com a acumulação do termo integral (\textit{windup}) e com o ruído no termo derivativo.
+
+\subsection{Controlo em cascata e antecipativo}
+No controlo em cascata, várias malhas encadeadas controlam posição, velocidade e corrente \cite{zhou2016}, como nos drones. Quando a perturbação pode ser medida, como a inclinação da base, pode acrescentar-se uma compensação antecipativa (\textit{feedforward}), que corrige o seu efeito antes de chegar à plataforma.
+
+\subsection{Métodos avançados}
+A tabela~\ref{tab:metodos} resume outros métodos usados neste tipo de sistema, como o \gls{lqr}, o \gls{lqg}, o \gls{mpc} e o \gls{adrc}.
+
+\begin{table}[H]
+\centering\small
+\caption{Métodos de controlo usados em plataformas estabilizadas.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}YYY}
+\toprule
+Método & Ideia principal & Exigência & Adequação ao projeto\\\midrule
+\acrshort{pid} & Correção proporcional, integral e derivativa & Afinação de 3 ganhos & Elevada\\
+\acrshort{pid} + \textit{feedforward} & Antecipa a perturbação medida & Segunda \acrshort{imu} na base & Elevada (nivelamento)\\
+\acrshort{lqr} / \acrshort{lqg} \cite{astrom2021} & Realimentação de estado ótima & Modelo em espaço de estados & Média\\
+\acrshort{mpc} \cite{rawlings2017} & Otimização num horizonte, respeitando limites & Modelo e capacidade de cálculo & Baixa\\
+\acrshort{adrc} \cite{han2009} & Estimação e compensação de uma perturbação total & Ajuste do observador & Média\\
+$H_\infty$ \cite{lee2020} & Limitação do pior caso face a incertezas & Modelo de incerteza & Baixa\\
+Modos deslizantes \cite{utkin1977} & Comutação robusta em torno de uma superfície & \textit{Chattering} & Baixa\\
+\acrshort{pid} difuso \cite{guo2025} & Ajuste dos ganhos por regras & Definição das regras & Média\\
+\bottomrule
+\end{tabularx}
+\label{tab:metodos}
+\end{table}
+
+A coluna da direita resulta de cruzar a exigência de cada método com as características do hardware escolhido. Como os servos não dão acesso à velocidade nem à corrente e o modelo do sistema ainda não é conhecido, os métodos baseados em modelo (\gls{mpc}, $H_\infty$) teriam pouco a ganhar. O \gls{pid}, com e sem compensação antecipativa, é a comparação mais útil para este trabalho. O \gls{lqr} ou o \gls{adrc} poderão ser estudados depois de identificada a dinâmica do conjunto servo--plataforma.
+
+\section{Comunicação com o telemóvel}
+
+\subsection{Bluetooth Classic}
+O perfil \gls{spp} emula uma porta série sem fios e é usado por módulos de baixo custo. É simples de integrar com um microcontrolador e é suportado pelos telemóveis Android.
+
+\subsection{Bluetooth Low Energy}
+O \gls{ble} é suportado pelos telemóveis atuais, incluindo os iPhone, e tem baixo consumo \cite{esp32}. É adequado ao envio periódico de pequenas quantidades de dados, como ângulos de referência.
+
+\subsection{Módulos de modo duplo}
+Existem módulos série que suportam os dois modos, Bluetooth clássico (\gls{edr}) e \gls{ble}, com endereços distintos para cada um. O módulo HM-12, por exemplo, comunica com o microcontrolador por \gls{uart} a 9600~bps por omissão, configurável por comandos AT, e pode ligar-se a telemóveis Android e iOS \cite{hm12}.
+
+\subsection{Wi-Fi}
+Oferece maior débito e alcance, mas com maior consumo e necessidade de uma rede ou de um ponto de acesso \cite{esp32s3ds}.
+
+\subsection{Comparação}
+\begin{table}[H]
+\centering\small
+\caption{Comparação das tecnologias de comunicação.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm}YYYY}
+\toprule
+ & Bluetooth Classic (\acrshort{spp}) & \acrshort{ble} & Modo duplo & Wi-Fi\\\midrule
+Consumo & Médio & Baixo & Baixo a médio & Elevado\\
+Débito & Médio & Baixo & Médio & Elevado\\
+Android & Sim & Sim & Sim & Sim\\
+iOS & Limitado & Sim & Sim (via \acrshort{ble}) & Sim\\
+Infraestrutura & Ligação direta & Ligação direta & Ligação direta & Rede ou ponto de acesso\\
+Integração com o STM32 & \acrshort{uart} & Módulo externo & \acrshort{uart} & Módulo externo\\
+\bottomrule
+\end{tabularx}
+\label{tab:comunicacao}
+\end{table}
+
+Para enviar dois ângulos a algumas dezenas de hertz, o débito necessário é muito baixo (menos de 2~kB/s) e qualquer das tecnologias serve. O fator decisivo é a compatibilidade com os telemóveis e a facilidade de integração. Um módulo de modo duplo ligado por \gls{uart} cobre Android e iOS e é transparente para o microcontrolador, que apenas lê bytes de uma porta série. Foi esta a solução escolhida.
+
+\section{Síntese}
+\begin{table}[H]
+\centering\small
+\caption{Síntese das opções tecnológicas escolhidas.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm}>{\raggedright\arraybackslash}p{3.6cm}Y}
+\toprule
+Componente & Opção escolhida & Justificação\\\midrule
+Mecânica & \textit{Gimbal} em série impresso em 3D & Eixos independentes; sem articulações esféricas\\
+Processamento & NUCLEO-F767ZI & Vírgula flutuante, margem de cálculo, depurador integrado\\
+Sensor & GY-85 (ADXL345, ITG-3205, HMC5883L) & Dados brutos de 9 eixos; muito documentado; magnetómetro disponível\\
+Fusão & Filtro complementar (1.ª fase) & Simples e suficiente para \textit{roll} e \textit{pitch}\\
+Atuadores & 2$\times$ servo MG996R & Binário elevado, engrenagens metálicas, baixo custo\\
+Controlo & \acrshort{pid} por eixo, com e sem \textit{feedforward} & Adequado a servos de posição; comparação útil\\
+Comunicação & Módulo Bluetooth de modo duplo (\acrshort{uart}) & Compatível com Android e iOS; integração simples\\
+\bottomrule
+\end{tabularx}
+\label{tab:sintese}
+\end{table}
+
+O estado da arte mostra que uma plataforma de dois eixos pode ser estabilizada com componentes de baixo custo, usando uma \gls{imu}, um filtro de fusão simples e controlo \gls{pid}. O paralelismo com os drones confirma a estrutura de estimação e controlo escolhida e acrescenta boas práticas de segurança, como o \textit{failsafe} e o passo de armar antes de mover os atuadores. A tabela~\ref{tab:sintese} resume as opções que servem de base à arquitetura apresentada no capítulo seguinte.

@@ -1,0 +1,26 @@
+\begin{abstract}
+Este estado da arte analisa uma plataforma com dois graus de liberdade, destinada a reproduzir a inclinação de um telemóvel e a manter-se horizontal quando a sua base é perturbada em \textit{pitch} e \textit{roll}. A revisão centra-se na relação entre o problema de controlo, as grandezas que podem ser medidas e a interface efetivamente disponibilizada pelos atuadores.
+
+São discutidos a fusão de sensores inerciais, a identificação dinâmica, o PID com mecanismos de saturação, o controlo em cascata, a compensação antecipativa, o controlo por realimentação de estado, o controlo preditivo, os observadores de perturbação e os métodos robustos, adaptativos e de lógica difusa. A comparação é apoiada por trabalhos científicos sobre plataformas estabilizadas e sistemas de nivelamento, distinguindo resultados experimentais de resultados de simulação.
+
+A análise de hardware abrange a NUCLEO-F767ZI prevista para o projeto, sensores inerciais, servos convencionais e inteligentes, motores com encoder, comunicação sem fios, alimentação e construção mecânica. Propõe-se uma arquitetura inicial com realimentação da atitude da plataforma, PI/PID externo e, quando exista uma segunda IMU, compensação do movimento da base. A evolução para métodos mais complexos fica dependente da identificação do sistema e de melhorias demonstradas por ensaios repetíveis.
+
+\vspace*{10mm}\noindent\textbf{\keywordslabel}: plataforma estabilizada; pitch e roll; PID; rejeição de perturbações; IMU; servomotor; controlo embarcado.
+
+\medskip
+\textbf{Âmbito documental.} Revisão narrativa orientada ao projeto, com pesquisa atualizada em 8 de outubro de 2026. As escolhas propostas e os exemplos de cálculo são análise de engenharia, não resultados experimentais do protótipo. O modelo exato da IMU, dos servos e a geometria final ainda carecem de confirmação.
+
+\end{abstract}
+\begin{secondlangabstract}
+This state-of-the-art review examines a two-degree-of-freedom platform intended to reproduce the inclination of a smartphone and remain horizontal when its base is disturbed in pitch and roll. The review focuses on the relationship between the control problem, the quantities that can be measured, and the interfaces actually provided by the actuators.
+
+The discussion covers inertial sensor fusion, dynamic identification, PID with saturation handling, cascade control, feedforward compensation, state feedback, predictive control, disturbance observers, and robust, adaptive and fuzzy methods. The comparison draws on scientific studies of stabilized platforms and leveling systems, distinguishing experimental evidence from simulation results.
+
+The hardware analysis addresses the planned NUCLEO-F767ZI board, inertial sensors, conventional and smart servos, motors with encoders, wireless communication, power supply and mechanical construction. An initial architecture is proposed using platform attitude feedback, external PI/PID control and, when a second IMU is available, base-motion compensation. Progression to more complex methods depends on system identification and improvements demonstrated through repeatable tests.
+
+\vspace*{10mm}
+\noindent\textbf{\keywordslabel}: stabilized platform; pitch and roll; PID; disturbance rejection; IMU; servomotor; embedded control.
+
+\medskip
+\textbf{Document scope.} Project-oriented narrative review, with research updated on 8 October 2026. Proposed choices and numerical examples are engineering analysis, not experimental results from the prototype. The exact IMU and servo models and the final geometry remain to be confirmed.
+\end{secondlangabstract}

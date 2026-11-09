@@ -1,0 +1,225 @@
+\begin{thebibliography}{10}
+
+\bibitem{hilkert2008}
+J.~M. Hilkert, ``{Inertially stabilized platform technology: Concepts and principles},'' {\em IEEE Control Systems Magazine}, vol.~28, no.~1, pp.~26--46, 2008.
+\newblock DOI: \href{https://doi.org/10.1109/MCS.2007.910256}{10.1109/MCS.2007.910256}.
+
+\bibitem{masten2008}
+M.~K. Masten, ``{Inertially stabilized platforms for optical imaging systems},'' {\em IEEE Control Systems Magazine}, vol.~28, no.~1, pp.~47--64, 2008.
+\newblock DOI: \href{https://doi.org/10.1109/MCS.2007.910201}{10.1109/MCS.2007.910201}.
+
+\bibitem{minorsky1922}
+N.~Minorsky, ``{Directional stability of automatically steered bodies},'' {\em Journal of the American Society for Naval Engineers}, vol.~34, no.~2, pp.~280--309, 1922.
+\newblock DOI: \href{https://doi.org/10.1111/j.1559-3584.1922.tb04958.x}{10.1111/j.1559-3584.1922.tb04958.x}.
+
+\bibitem{kalman1960}
+R.~E. Kalman, ``{A New Approach to Linear Filtering and Prediction Problems},'' {\em Journal of Basic Engineering}, vol.~82, no.~1, pp.~35--45, 1960.
+\newblock DOI: \href{https://doi.org/10.1115/1.3662552}{10.1115/1.3662552}.
+
+\bibitem{astrom2021}
+K.~J. Åström and R.~M. Murray, {\em {Feedback Systems: An Introduction for Scientists and Engineers}}.
+\newblock Princeton University Press, 2~ed., 2021.
+\newblock \href{https://fbswiki.org/wiki/index.php/FBS}{Página dos autores com texto integral e capítulos}.
+
+\bibitem{quanser2dof}
+{Quanser}, ``{2 DOF Ball Balancer}.''
+\newblock \href{https://www.quanser.com/products/2-dof-ball-balancer/}{Página do produto}. Consultado em 09-10-2026.
+
+\bibitem{simplebgc}
+{BaseCam Electronics}, ``{SimpleBGC 32-bit Extended}.''
+\newblock \href{https://basecamelectronics.com/simplebgc32ext/}{Página do produto}. Consultado em 09-10-2026.
+
+\bibitem{simplebgcman}
+{BaseCam Electronics}, ``{SimpleBGC 32-bit: Software User Manual}.''
+\newblock Firmware 2.5x. \href{https://basecamelectronics.com/files/v3/SimpleBGC_32bit_manual_2_5x_eng.pdf}{Manual do utilizador}. Consultado em 09-10-2026.
+
+\bibitem{px4ctrl}
+{PX4 Autopilot}, ``{Controller Diagrams}.''
+\newblock \href{https://docs.px4.io/main/en/flight_stack/controller_diagrams}{Documentação do PX4}. Consultado em 06-11-2026.
+
+\bibitem{ardupilotatt}
+{ArduPilot Dev Team}, ``{Copter Attitude Control}.''
+\newblock \href{https://ardupilot.org/dev/docs/apmcopter-programming-attitude-control-2.html}{Documentação do ArduPilot}. Consultado em 06-11-2026.
+
+\bibitem{tawfeeq2022}
+B.~A. Tawfeeq, M.~Y. Salloom, and A.~Alkamachi, ``{A self-balancing platform on a mobile car},'' {\em International Journal of Electrical and Computer Engineering (IJECE)}, vol.~12, no.~6, pp.~5911--5922, 2022.
+\newblock DOI: \href{https://doi.org/10.11591/ijece.v12i6.pp5911-5922}{10.11591/ijece.v12i6.pp5911-5922}. \href{https://ijece.iaescore.com/index.php/IJECE/article/download/28720/16035}{Texto integral / repositório}.
+
+\bibitem{zhou2016}
+X.~Zhou, Y.~Jia, Q.~Zhao, and R.~Yu, ``{Experimental Validation of a Compound Control Scheme for a Two-Axis Inertially Stabilized Platform with Multi-Sensors in an Unmanned Helicopter-Based Airborne Power Line Inspection System},'' {\em Sensors}, vol.~16, no.~3, p.~366, 2016.
+\newblock DOI: \href{https://doi.org/10.3390/s16030366}{10.3390/s16030366}. \href{https://www.mdpi.com/1424-8220/16/3/366}{Texto integral / repositório}.
+
+\bibitem{lee2020}
+D.-H. Lee, D.-Q. Tran, Y.-B. Kim, and S.~Chakir, ``{A Robust Double Active Control System Design for Disturbance Suppression of a Two-Axis Gimbal System},'' {\em Electronics}, vol.~9, no.~10, p.~1638, 2020.
+\newblock DOI: \href{https://doi.org/10.3390/electronics9101638}{10.3390/electronics9101638}. \href{https://mdpi-res.com/d_attachment/electronics/electronics-09-01638/article_deploy/electronics-09-01638.pdf}{Texto integral / repositório}.
+
+\bibitem{fu2022}
+F.~Fu, X.~Lei, and R.~Wang, ``{A Compound Control Method Based on the Adaptive Linear Extended State Observer and Global Fast Terminal Sliding Mode Control for Inertially Stabilized Platform},'' {\em Machines}, vol.~10, no.~6, p.~426, 2022.
+\newblock DOI: \href{https://doi.org/10.3390/machines10060426}{10.3390/machines10060426}. \href{https://www.mdpi.com/2075-1702/10/6/426}{Texto integral / repositório}.
+
+\bibitem{wang2024}
+L.~Wang, X.~Li, Z.~Zhou, Y.~Liu, Z.~Yang, S.~Zhang, and C.~Li, ``{Disturbance Observation and Suppression in an Airborne Electro-Optical Stabilized Platform Based on a Generalized High-Order Extended State Observer},'' {\em Sensors}, vol.~24, no.~11, p.~3629, 2024.
+\newblock DOI: \href{https://doi.org/10.3390/s24113629}{10.3390/s24113629}. \href{https://www.mdpi.com/1424-8220/24/11/3629}{Texto integral / repositório}.
+
+\bibitem{guo2025}
+J.~Guo, Z.~Lu, B.~Cui, and Y.~Xie, ``{Design and Test of Adaptive Leveling System for Orchard Operation Platform},'' {\em Sensors}, vol.~25, no.~5, p.~1319, 2025.
+\newblock DOI: \href{https://doi.org/10.3390/s25051319}{10.3390/s25051319}. \href{https://www.mdpi.com/1424-8220/25/5/1319}{Texto integral / repositório}.
+
+\bibitem{mahony2012}
+R.~Mahony, V.~Kumar, and P.~Corke, ``{Multirotor Aerial Vehicles: Modeling, Estimation, and Control of Quadrotor},'' {\em IEEE Robotics \& Automation Magazine}, vol.~19, no.~3, pp.~20--32, 2012.
+\newblock DOI: \href{https://doi.org/10.1109/MRA.2012.2206474}{10.1109/MRA.2012.2206474}.
+
+\bibitem{arduinomega}
+{Arduino}, ``{Arduino Mega 2560 Rev3}.''
+\newblock \href{https://docs.arduino.cc/hardware/mega-2560/}{Documentação oficial}. Consultado em 11-10-2026.
+
+\bibitem{stm32}
+{STMicroelectronics}, ``{STM32F767ZI: Product Overview and Datasheet}.''
+\newblock \href{https://www.st.com/en/microcontrollers-microprocessors/stm32f767zi.html}{Documentação oficial}. Consultado em 08-10-2026.
+
+\bibitem{nucleo}
+{STMicroelectronics}, ``{NUCLEO-F767ZI: STM32 Nucleo-144 Development Board}.''
+\newblock \href{https://www.st.com/en/evaluation-tools/nucleo-f767zi.html}{Documentação oficial}. Consultado em 08-10-2026.
+
+\bibitem{esp32s3ds}
+{Espressif Systems}, ``{ESP32-S3 Series Datasheet}.''
+\newblock \href{https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf}{Ficha técnica}. Consultado em 11-10-2026.
+
+\bibitem{esp32}
+{Espressif Systems}, ``{ESP32-S3: Bluetooth Low Energy Overview}.''
+\newblock \href{https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-guides/ble/overview.html}{Documentação oficial}. Consultado em 08-10-2026.
+
+\bibitem{mpu6050}
+{TDK InvenSense}, ``{MPU-6000 and MPU-6050 Product Specification}.''
+\newblock \href{https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/}{Página do produto}. Consultado em 11-10-2026.
+
+\bibitem{gy85}
+{Hobby Electronica}, ``{9DOF 9-axis ITG3205 ADXL345 HMC5883L GY-85}.''
+\newblock \href{https://www.hobbyelectronica.nl/en/product/9dof-9-assig-itg3205-adxl345-hmc5883l-gy-85/}{Página do produto}. Consultado em 08-11-2026.
+
+\bibitem{gy85datasheet}
+{Jungletronics}, ``{GY-85 -- A quick datasheet study}.''
+\newblock \href{https://medium.com/jungletronics/gy-85-a-quick-datasheet-study-79019bb36fbf}{Medium}. Consultado em 08-11-2026.
+
+\bibitem{bmi270}
+{Bosch Sensortec}, ``{BMI270 Datasheet}.''
+\newblock \href{https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi270-ds000.pdf}{Ficha técnica}. Consultado em 08-10-2026.
+
+\bibitem{bno055}
+{Bosch Sensortec}, ``{BNO055: Intelligent 9-Axis Absolute Orientation Sensor}.''
+\newblock \href{https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bno055-ds000.pdf}{Ficha técnica}. Consultado em 08-10-2026.
+
+\bibitem{android}
+{Google}, ``{Android Developers: Position Sensors}.''
+\newblock \href{https://developer.android.com/develop/sensors-and-location/sensors/sensors_position}{Documentação oficial}. Consultado em 08-10-2026.
+
+\bibitem{kuhlmann2021}
+T.~Kuhlmann, P.~Garaizar, and U.-D. Reips, ``{Smartphone sensor accuracy varies from device to device in mobile research: The case of spatial orientation},'' {\em Behavior Research Methods}, vol.~53, no.~1, pp.~22--33, 2021.
+\newblock DOI: \href{https://doi.org/10.3758/s13428-020-01404-5}{10.3758/s13428-020-01404-5}. \href{https://link.springer.com/content/pdf/10.3758/s13428-020-01404-5.pdf}{Texto integral / repositório}.
+
+\bibitem{mahony2008}
+R.~Mahony, T.~Hamel, and J.-M. Pflimlin, ``{Nonlinear Complementary Filters on the Special Orthogonal Group},'' {\em IEEE Transactions on Automatic Control}, vol.~53, no.~5, pp.~1203--1218, 2008.
+\newblock DOI: \href{https://doi.org/10.1109/tac.2008.923738}{10.1109/tac.2008.923738}. \href{https://hal.science/hal-00488376}{Texto integral / repositório}.
+
+\bibitem{madgwick2011}
+S.~O.~H. Madgwick, A.~J.~L. Harrison, and R.~Vaidyanathan, ``{Estimation of IMU and MARG orientation using a gradient descent algorithm},'' in {\em 2011 IEEE International Conference on Rehabilitation Robotics}, pp.~1--7, 2011.
+\newblock DOI: \href{https://doi.org/10.1109/icorr.2011.5975346}{10.1109/icorr.2011.5975346}. \href{https://pure.ul.ie/en/publications/estimation-of-imu-and-marg-orientation-using-a-gradient-descent-a/}{Registo institucional}.
+
+\bibitem{valenti2015}
+R.~Valenti, I.~Dryanovski, and J.~Xiao, ``{Keeping a Good Attitude: A Quaternion-Based Orientation Filter for IMUs and MARGs},'' {\em Sensors}, vol.~15, no.~8, pp.~19302--19330, 2015.
+\newblock DOI: \href{https://doi.org/10.3390/s150819302}{10.3390/s150819302}. \href{https://academicworks.cuny.edu/cc_pubs/245/}{Texto integral / repositório}.
+
+\bibitem{mg996r}
+{Tower Pro}, ``{MG996R High Torque Metal Gear Dual Ball Bearing Servo}.''
+\newblock Ficha técnica. \href{https://courses.ece.cornell.edu/ece5990/ECE5725_Spring2020_Projects/May_15_Demo/Smart\%20Lock/W_pp445_yl656/datasheet/MG996R_Tower-Pro.pdf}{Cópia disponível online}. Consultado em 06-11-2026.
+
+\bibitem{hitec}
+{Hitec RCD}, ``{HS-5645MG: Servo Specification Sheet}.''
+\newblock \href{https://hitecrcd.co.jp/material/spec_sheet/servo/35645.pdf}{Ficha técnica}. Valores a 6 V. Consultado em 08-10-2026.
+
+\bibitem{robotis}
+{ROBOTIS}, ``{DYNAMIXEL XL430-W250-T: e-Manual}.''
+\newblock \href{https://emanual.robotis.com/docs/en/dxl/x/xl430-w250/}{Manual e tabela de controlo}. Consultado em 08-10-2026.
+
+\bibitem{rawlings2017}
+J.~B. Rawlings, D.~Q. Mayne, and M.~M. Diehl, {\em {Model Predictive Control: Theory, Computation, and Design}}.
+\newblock Nob Hill Publishing, 2~ed., 2017.
+\newblock Consultada a 3.ª impressão, 2020. \href{https://sites.engineering.ucsb.edu/~jbraw/mpc/MPC-book-2nd-edition-3rd-printing.pdf}{Texto integral}.
+
+\bibitem{han2009}
+J.~Han, ``{From PID to Active Disturbance Rejection Control},'' {\em IEEE Transactions on Industrial Electronics}, vol.~56, no.~3, pp.~900--906, 2009.
+\newblock DOI: \href{https://doi.org/10.1109/tie.2008.2011621}{10.1109/tie.2008.2011621}. \href{https://mechatronics.ucmerced.edu/sites/g/files/ufvvjh1226/f/page/documents/04796887_0.pdf}{Texto integral / repositório}.
+
+\bibitem{utkin1977}
+V.~Utkin, ``{Variable structure systems with sliding modes},'' {\em IEEE Transactions on Automatic Control}, vol.~22, no.~2, pp.~212--222, 1977.
+\newblock DOI: \href{https://doi.org/10.1109/TAC.1977.1101446}{10.1109/TAC.1977.1101446}.
+
+\bibitem{hm12}
+{Bot'n Roll}, ``{Serial Bluetooth 4.0 BLE/EDR Dual Mode Module (HM-12)}.''
+\newblock \href{https://botnroll.com/pt/xbee-e-rf/996-serial-bluetooth-40-bleedr-dual-mode-module.html}{Página do produto}. Consultado em 06-11-2026.
+
+\bibitem{hobbywingubec}
+{Hobbywing}, ``{UBEC 3A (2--6S)}.''
+\newblock \href{https://www.hobbywing.com/en/products/ubec-3a-2-6s99.html}{Página do produto}. Consultado em 06-11-2026.
+
+\bibitem{tmenucleo}
+{TME}, ``{NUCLEO-F767ZI -- STMicroelectronics}.''
+\newblock \href{https://www.tme.eu/gb/details/nucleo-f767zi/stm-development-kits/stmicroelectronics/}{Página do produto}. Consultado em 06-11-2026.
+
+\bibitem{waveshareMG996R}
+{Waveshare}, ``{MG996R Servo, Metal Gear, High Torque}.''
+\newblock \href{https://www.waveshare.com/mg996r-servo.htm}{Página do produto}. Consultado em 06-11-2026.
+
+\bibitem{flyingtechubec}
+{FlyingTech}, ``{3A UBEC with Low Voltage Buzzer -- 5/6V Output}.''
+\newblock \href{https://www.flyingtech.co.uk/product/3a-ubec-with-low-voltage-buzzer-5-6v-output/}{Página do produto}. Consultado em 06-11-2026.
+
+\bibitem{blueguide2022}
+{Comissão Europeia}, ``{Guia Azul sobre a aplicação das regras da UE em matéria de produtos 2022}.''
+\newblock Jornal Oficial da União Europeia, C 247, 29-06-2022.
+
+\bibitem{toy2009}
+{Parlamento Europeu e Conselho}, ``{Diretiva 2009/48/CE relativa à segurança dos brinquedos}.''
+\newblock \href{https://eur-lex.europa.eu/eli/dir/2009/48/oj}{EUR-Lex}.
+
+\bibitem{toy2025}
+{Parlamento Europeu e Conselho}, ``{Regulamento (UE) 2025/2509 relativo à segurança dos brinquedos}.''
+\newblock \href{https://eur-lex.europa.eu/eli/reg/2025/2509/oj}{EUR-Lex}; aplicável a partir de 01-08-2030.
+
+\bibitem{eurofinstoy}
+{Eurofins}, ``{A quick overview of the new EU Toy Safety Regulation (EU) 2025/2509}.''
+\newblock \href{https://www.eurofins.com/en/consumer-product-testing/softlines-hardlines/news-articles/a-quick-overview-of-the-new-eu-toy-safety-regulation-eu-20252509/}{Eurofins}. Consultado em 08-11-2026.
+
+\bibitem{red2014}
+{Parlamento Europeu e Conselho}, ``{Diretiva 2014/53/UE relativa à disponibilização de equipamentos de rádio no mercado}.''
+\newblock \href{https://eur-lex.europa.eu/eli/dir/2014/53/oj}{EUR-Lex}.
+
+\bibitem{rohs2011}
+{Parlamento Europeu e Conselho}, ``{Diretiva 2011/65/UE relativa à restrição do uso de determinadas substâncias perigosas em equipamentos elétricos e eletrónicos}.''
+\newblock \href{https://eur-lex.europa.eu/eli/dir/2011/65/oj}{EUR-Lex}.
+
+\bibitem{weee2012}
+{Parlamento Europeu e Conselho}, ``{Diretiva 2012/19/UE relativa aos resíduos de equipamentos elétricos e eletrónicos}.''
+\newblock \href{https://eur-lex.europa.eu/eli/dir/2012/19/oj}{EUR-Lex}.
+
+\bibitem{battery2023}
+{Parlamento Europeu e Conselho}, ``{Regulamento (UE) 2023/1542 relativo às baterias e respetivos resíduos}.''
+\newblock \href{https://eur-lex.europa.eu/eli/reg/2023/1542/oj}{EUR-Lex}.
+
+\bibitem{en71}
+{CEN}, ``{EN 71 -- Segurança dos brinquedos (partes 1, 2 e 3)}.''
+\newblock Comité Europeu de Normalização.
+
+\bibitem{en62115}
+{CENELEC}, ``{EN IEC 62115 -- Brinquedos elétricos -- Segurança}.''
+\newblock Comité Europeu de Normalização Eletrotécnica.
+
+\bibitem{en300328}
+{ETSI}, ``{EN 300 328 -- Wideband transmission systems; Data transmission equipment operating in the 2,4 GHz band}.''
+\newblock European Telecommunications Standards Institute.
+
+\bibitem{en301489}
+{ETSI}, ``{EN 301 489-1 e EN 301 489-17 -- ElectroMagnetic Compatibility (EMC) standard for radio equipment and services}.''
+\newblock European Telecommunications Standards Institute.
+
+\end{thebibliography}

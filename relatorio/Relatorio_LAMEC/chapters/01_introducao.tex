@@ -1,0 +1,79 @@
+\chapter{Introdução}
+\label{ch:introducao}
+
+\section{Contextualização}
+A estabilização de plataformas é um problema clássico de controlo, presente em aplicações tão diferentes como câmaras de vídeo, antenas, sistemas de observação montados em veículos ou plataformas de trabalho que precisam de se manter niveladas em terreno irregular. Em todos estes casos pretende-se manter uma superfície numa orientação desejada, apesar dos movimentos da base onde está apoiada.
+
+A descida do custo dos sensores inerciais e dos microcontroladores tornou possível construir sistemas deste tipo com componentes acessíveis. Por isso, são um bom caso de estudo para aplicar, num mesmo projeto, conceitos de instrumentação, sistemas embebidos, comunicação sem fios e controlo automático.
+
+Neste trabalho desenvolve-se uma plataforma com dois graus de liberdade, que roda em \textit{roll} e \textit{pitch}. A plataforma deverá poder ser comandada a partir de um telemóvel, acompanhando a sua inclinação, e manter-se nivelada quando a base onde está apoiada é inclinada ou perturbada.
+
+\section{Problema a resolver}
+Do ponto de vista de engenharia, o problema consiste em controlar a orientação de uma superfície a partir de medidas inerciais com ruído e deriva, usando atuadores de baixo custo com dinâmica interna desconhecida e recebendo referências através de uma ligação sem fios que pode falhar ou atrasar-se. A solução tem de funcionar em tempo real num microcontrolador e ser segura para quem a utiliza.
+
+Este problema decompõe-se em quatro subproblemas: estimar a atitude da plataforma a partir de uma \gls{imu}; calcular os comandos a enviar aos servomotores; receber e validar as referências enviadas pelo telemóvel; e garantir um comportamento seguro em caso de falha.
+
+\section{Objetivos}
+O objetivo geral do trabalho é projetar, construir e avaliar experimentalmente uma plataforma estabilizada de dois eixos, comandada a partir de um telemóvel e capaz de compensar perturbações da base.
+
+Os objetivos específicos são os seguintes, podendo ser ajustados ao longo do projeto:
+\begin{enumerate}[label=OE\arabic*.]
+\item Estudar as soluções existentes e as tecnologias disponíveis, incluindo o paralelismo com o controlo de atitude de drones.
+\item Definir a arquitetura de hardware e de software do sistema e os respetivos módulos.
+\item Estimar a inclinação da plataforma com uma \gls{imu} e um algoritmo de fusão sensorial executado no microcontrolador.
+\item Implementar a comunicação sem fios com o telemóvel e o seguimento da sua inclinação.
+\item Implementar e afinar o controlo dos dois eixos, comparando pelo menos duas abordagens.
+\item Definir e executar procedimentos de teste para cada módulo e para o sistema completo.
+\item Estimar o custo do protótipo.
+\end{enumerate}
+
+\section{Requisitos}
+Os requisitos foram identificados a partir dos objetivos e do estudo do estado da arte. Cada requisito tem um identificador, uma prioridade (E~--~essencial; D~--~desejável) e o teste que o verifica, definido no capítulo~\ref{ch:testes}. Os valores numéricos são metas iniciais e serão revistos após a caracterização do protótipo.
+
+\subsection{Requisitos funcionais}
+\begin{table}[H]
+\centering\small
+\caption{Requisitos funcionais.}
+\begin{tabularx}{\textwidth}{p{1.1cm}Yp{1.2cm}p{2.2cm}}
+\toprule
+ID & Descrição & Prior. & Verificação\\\midrule
+RF1 & Medir a inclinação da plataforma em \textit{roll} e \textit{pitch} & E & T-IMU, T-FUS\\
+RF2 & Receber do telemóvel, sem fios, a inclinação pretendida & E & T-COM\\
+RF3 & Acompanhar a inclinação do telemóvel, dentro da gama de movimento da plataforma & E & T-CTL, T-INT\\
+RF4 & Manter a plataforma nivelada quando a base é inclinada & E & T-CTL, T-INT\\
+RF5 & Permitir escolher o modo de funcionamento e alternar entre modos sem saltos bruscos & E & T-INT\\
+RF6 & Calibrar a \gls{imu} e a posição neutra dos servos no arranque ou a pedido & E & T-IMU, T-SRV\\
+RF7 & Passar a um estado seguro se a comunicação falhar durante o seguimento do telemóvel & E & T-COM, T-SEG\\
+RF8 & Dispor de uma paragem de emergência que retire a alimentação aos servos & E & T-SEG\\
+RF9 & Indicar o estado do sistema através de \gls{led} & D & T-INT\\
+RF10 & Registar referências, ângulos e comandos para análise dos ensaios & D & T-CTL\\
+\bottomrule
+\end{tabularx}
+\label{tab:rf}
+\end{table}
+
+\subsection{Requisitos não funcionais}
+\begin{table}[H]
+\centering\small
+\caption{Requisitos não funcionais e tecnológicos.}
+\begin{tabularx}{\textwidth}{p{1.1cm}Yp{1.2cm}p{2.2cm}}
+\toprule
+ID & Descrição & Prior. & Verificação\\\midrule
+RNF1 & Gama de movimento de pelo menos $\pm\SI{20}{\degree}$ em cada eixo & E & T-SRV\\
+RNF2 & Erro em regime permanente inferior a \SI{2}{\degree} com a base parada & E & T-CTL\\
+RNF3 & Atualização da estimativa de atitude a pelo menos \SI{100}{\hertz} & E & T-FUS\\
+RNF4 & Receção de referências do telemóvel a pelo menos \SI{20}{\hertz} & E & T-COM\\
+RNF5 & Deteção de perda de comunicação em menos de \SI{0.5}{\second} & E & T-COM\\
+RNF6 & Controlo executado localmente no microcontrolador (NUCLEO-F767ZI) & E & Inspeção\\
+RNF7 & Alimentação por bateria, com autonomia mínima de \SI{30}{\minute} & D & T-ALIM\\
+RNF8 & Compatibilidade com telemóveis Android e, se possível, iOS & D & T-COM\\
+RNF9 & Estrutura mecânica produzida por impressão 3D & D & Inspeção\\
+RNF10 & Ausência de pontos de entalamento acessíveis com a plataforma em movimento normal & E & T-SEG\\
+RNF11 & Tensão de alimentação inferior a \SI{24}{\volt}, como exigido para brinquedos elétricos & E & Inspeção\\
+\bottomrule
+\end{tabularx}
+\label{tab:rnf}
+\end{table}
+
+\section{Estrutura do documento}
+Para além desta introdução, o documento está organizado em seis capítulos. No capítulo~\ref{ch:estado-arte} apresenta-se o estado da arte, incluindo soluções comerciais e académicas, as tecnologias disponíveis e o paralelismo com o controlo de drones. O capítulo~\ref{ch:arquitetura} descreve o projeto e a arquitetura de hardware e de software, incluindo a estrutura mecânica, o esquema elétrico e os módulos do sistema. No capítulo~\ref{ch:testes} definem-se os procedimentos e vetores de teste de cada módulo. O capítulo~\ref{ch:custos} contém a lista de componentes e a análise de custos e o capítulo~\ref{ch:seguranca} a análise de segurança, considerando o equipamento como um brinquedo. Por fim, o capítulo~\ref{ch:conclusao} apresenta as conclusões e o trabalho futuro.
