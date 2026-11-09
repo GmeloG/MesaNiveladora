@@ -16,7 +16,7 @@
 static constexpr uint32_t LOOP_US  = 5000;  // 200 Hz
 static constexpr uint8_t  PRINT_DIV = 4;    // 200/4 = 50 Hz de saída
 
-MPU6050 imu;
+ImuSensor imu;   // GY-85 (ver include/imu.h)
 ComplementaryFilter filt(0.98f);
 
 static void i2cScan() {
@@ -44,16 +44,16 @@ void setup() {
   Wire.setSDA(IMU_SDA_PIN);
   Wire.setSCL(IMU_SCL_PIN);
   Wire.begin();
-  Wire.setClock(400000);
+  Wire.setClock(100000);   // 100 kHz: mais tolerante a fios compridos
 
   i2cScan();
 
   if (!imu.begin()) {
-    Serial.println(F("ERRO: MPU6050 não responde em 0x68. Verificar ligações/AD0."));
+    Serial.println(F("ERRO: GY-85 não responde em 0x68. Verificar ligações/AD0."));
     while (true) {}
   }
   // 0x68 = original; clones podem devolver 0x70, 0x72 ou 0x98
-  Serial.printf("WHO_AM_I = 0x%02X\n", imu.whoAmI());
+  Serial.printf("ADXL345 id=0x%02X | ITG-3205 id=0x%02X\n", imu.accId(), imu.gyroId());
 
   calibrate();
   Serial.println(F("t_ms,roll_acc,pitch_acc,roll,pitch"));

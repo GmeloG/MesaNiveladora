@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include "pins.h"
 
-HardwareSerial BT(BT_RX_PIN, BT_TX_PIN);
+HardwareSerial BT(BT_RX_PIN, BT_TX_PIN);  // STM32duino 2.x
 
 void setup() {
   Serial.begin(115200);

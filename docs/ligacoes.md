@@ -21,3 +21,4 @@ O monitor série (`Serial`) sai pelo USB do ST-Link (USART3, virtual COM).
 1. `env:servo_test` — mexer servos, descobrir limites (comandos `R`/`P` em µs).
 2. `env:bt_echo` — ponte USB ↔ Bluetooth; testar com LightBlue no iPhone.
 3. `env:imu_test` — MPU6050, filtro complementar, CSV a 50 Hz.
+4. `env:sensors_bt_test` — IMU + Bluetooth sem servos; dados no PC e no iPhone, comandos dos dois lados.
