@@ -136,10 +136,19 @@
       alert('Este browser não suporta Bluetooth. Abre a página na app Bluefy.');
       return;
     }
+    $('bBle').textContent = 'A procurar…';
     try {
-      device = await navigator.bluetooth.requestDevice({
-        acceptAllDevices: true, optionalServices: [SVC]
-      });
+      try {
+        device = await navigator.bluetooth.requestDevice({
+          acceptAllDevices: true, optionalServices: [SVC]
+        });
+      } catch (e1) {
+        if (e1.name === 'NotFoundError' && /cancel/i.test(e1.message)) throw e1;  // utilizador cancelou
+        log('acceptAllDevices falhou (' + e1.message + '), a tentar filtro FFE0');
+        device = await navigator.bluetooth.requestDevice({
+          filters: [{ services: [SVC] }], optionalServices: [SVC]
+        });
+      }
       device.addEventListener('gattserverdisconnected', onDisconnect);
       const server = await device.gatt.connect();
       const svc = await server.getPrimaryService(SVC);
@@ -150,7 +159,8 @@
       log('Ligado a ' + (device.name || 'módulo'));
       send('?');
     } catch (e) {
-      log('Erro BLE: ' + e.message);
+      log('Erro BLE: ' + e.name + ' - ' + e.message);
+      alert('Bluetooth: ' + e.name + '\n' + e.message);
       setBle(false);
     }
   }
@@ -312,8 +322,10 @@
 
   // ---------------- botões ----------------
   $('bBle').onclick = () => {
+    log('Botão Bluetooth (API ' + (navigator.bluetooth ? 'disponível' : 'INDISPONÍVEL') + ')');
     if (chr && device) { device.gatt.disconnect(); } else connect();
   };
+  log('Página carregada v2 - Bluetooth ' + (navigator.bluetooth ? 'disponível' : 'INDISPONÍVEL (usar Bluefy)'));
   $('bSen').onclick = enableSensors;
   $('bFollow').onclick = () => {
     if (!sensorsOn) { alert('Ativa primeiro os sensores do telemóvel.'); return; }
