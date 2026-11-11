@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Mesa Niveladora</title>
+<style>
+  :root {
+    --bg: #0f1419; --card: #1a2129; --line: #2a333d;
+    --txt: #e6edf3; --muted: #8b98a5;
+    --accent: #f0a83c; --plat: #4fb3a9; --danger: #e5534b; --ok: #57ab5a;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0; background: var(--bg); color: var(--txt);
+    font: 15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding: max(12px, env(safe-area-inset-top)) 14px 24px;
+  }
+  h1 { font-size: 18px; font-weight: 600; margin: 0 0 10px; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin-bottom: 10px; }
+  .status { display: flex; gap: 14px; font-size: 13px; color: var(--muted); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--danger); margin-right: 5px; }
+  .dot.on { background: var(--ok); }
+  button {
+    flex: 1 1 0; min-width: 0; padding: 12px 6px; border-radius: 10px;
+    border: 1px solid var(--line); background: #222b35; color: var(--txt);
+    font: inherit; font-weight: 600;
+  }
+  button:active { transform: scale(.98); }
+  button.primary { background: var(--accent); color: #241703; border-color: var(--accent); }
+  button.sel { outline: 2px solid var(--accent); }
+  button.stop { background: #3a1d1d; border-color: #5a2a2a; color: #ffb3ae; }
+  button:disabled { opacity: .4; }
+  canvas { width: 100%; max-width: 320px; aspect-ratio: 1; display: block; margin: 0 auto; }
+  .nums { display: grid; grid-template-columns: auto 1fr 1fr; gap: 2px 12px; font-variant-numeric: tabular-nums; margin-top: 8px; }
+  .nums .h { color: var(--muted); font-size: 12px; }
+  .legend { display: flex; justify-content: center; gap: 16px; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+  label { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+  input[type=range] { width: 55%; }
+  input[type=text] { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--txt); font: inherit; }
+  #log { font: 12px/1.35 ui-monospace, Menlo, monospace; color: var(--muted); white-space: pre-wrap; max-height: 140px; overflow: auto; }
+  .hint { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
+</style>
+</head>
+<body>
+
+<h1>Mesa Niveladora</h1>
+
+<div class="card">
+  <div class="status">
+    <span><span id="dBle" class="dot"></span><span id="sBle">Bluetooth desligado</span></span>
+    <span><span id="dSen" class="dot"></span><span id="sSen">Sensores off</span></span>
+  </div>
+  <div class="row" style="margin-top:10px">
+    <button id="bBle" class="primary">Ligar Bluetooth</button>
+    <button id="bBle2">Procurar FFE0</button>
+    <button id="bSen">Ativar sensores</button>
+  </div>
+</div>
+
+<div class="card">
+  <canvas id="cv" width="640" height="640"></canvas>
+  <div class="legend">
+    <span><span class="sw" style="background:var(--accent)"></span>Telemóvel</span>
+    <span><span class="sw" style="border:2px solid var(--plat)"></span>Plataforma</span>
+  </div>
+  <div class="nums">
+    <span class="h"></span><span class="h">Roll</span><span class="h">Pitch</span>
+    <span>Telemóvel</span><span id="pr">–</span><span id="pp">–</span>
+    <span>Plataforma</span><span id="mr">–</span><span id="mp">–</span>
+    <span>Servos (u)</span><span id="ur">–</span><span id="up">–</span>
+  </div>
+  <p class="hint">Modo: <b id="mode">–</b></p>
+</div>
+
+<div class="card">
+  <div class="row">
+    <button id="bFollow" class="primary">Seguir</button>
+    <button id="bLevel">Nivelar</button>
+    <button id="bOff" class="stop">Parar</button>
+  </div>
+  <div class="row" style="margin-top:8px">
+    <button id="bZero">Zero telemóvel</button>
+    <button id="bCal">Calibrar placa</button>
+  </div>
+  <p class="hint">"Zero" define a posição atual do telemóvel como nível. "Calibrar" exige a placa parada.</p>
+</div>
+
+<div class="card">
+  <label>Inverter roll <input type="checkbox" id="oInvR"></label>
+  <label>Inverter pitch <input type="checkbox" id="oInvP"></label>
+  <label>Trocar eixos <input type="checkbox" id="oSwap"></label>
+  <label>Escala <span id="vScale">1.0×</span><input type="range" id="oScale" min="0.3" max="1.5" step="0.1" value="1"></label>
+  <label>Limite <span id="vLim">±15°</span><input type="range" id="oLim" min="5" max="20" step="1" value="15"></label>
+</div>
+
+<div class="card">
+  <div class="row" style="flex-wrap:nowrap">
+    <input type="text" id="cmd" style="min-width:0" placeholder="comando (ex: ?  ou  g b 1.2 0.2 0.05)" autocapitalize="off" autocorrect="off">
+    <button id="bSend" style="flex:0 0 80px">Enviar</button>
+  </div>
+  <div id="log" style="margin-top:8px"></div>
+</div>
+
+<script>
+(() => {
+  const SVC = '0000ffe0-0000-1000-8000-00805f9b34fb';   // UUID completo (Bluefy)
+  const CHR = '0000ffe1-0000-1000-8000-00805f9b34fb';
+  const SEND_MS = 66;                       // ~15 Hz
+  const $ = id => document.getElementById(id);
+
+  let chr = null, device = null;
+  let rxBuf = '';
+  let writing = false, pendingF = null;     // fila: comandos normais + último "f"
+  const queue = [];
+  let sensorsOn = false;
+  let raw = { r: 0, p: 0 }, zero = { r: 0, p: 0 };
+  let phone = { r: 0, p: 0 };
+  let plat = { r: null, p: null, ur: null, up: null, m: null };
+  let modeNow = null;
+
+  const MODE = ['OFF', 'MANUAL', 'AUTO', 'SEGUIR'];
+
+  // ---------------- log ----------------
+  const logLines = [];
+  function log(t) {
+    logLines.push(t);
+    while (logLines.length > 30) logLines.shift();
+    $('log').textContent = logLines.join('\n');
+    $('log').scrollTop = 1e9;
+  }
+
+  // ---------------- Bluetooth ----------------
+  const errTxt = e => (e && (e.name || e.message)) ? `${e.name || ''} ${e.message || ''}`.trim()
+                                                   : String(e);
+
+  async function connect(byService = false) {
+    if (!navigator.bluetooth) {
+      alert('Este browser não suporta Bluetooth. Abre a página na app Bluefy.');
+      return;
+    }
+    $('bBle').textContent = 'A procurar…';
+    try {
+      // tem de ser a 1.ª coisa após o toque (o iOS exige "gesto do utilizador")
+      device = await navigator.bluetooth.requestDevice(byService
+        ? { filters: [{ services: [SVC] }], optionalServices: [SVC] }
+        : { acceptAllDevices: true, optionalServices: [SVC] });
+      log('Escolhido: ' + (device.name || device.id));
+      device.addEventListener('gattserverdisconnected', onDisconnect);
+      const server = await device.gatt.connect();
+      const svc = await server.getPrimaryService(SVC);
+      chr = await svc.getCharacteristic(CHR);
+      await chr.startNotifications();
+      chr.addEventListener('characteristicvaluechanged', onRx);
+      setBle(true);
+      log('Ligado a ' + (device.name || 'módulo'));
+      send('?');
+    } catch (e) {
+      log('Erro BLE: ' + errTxt(e));
+      alert('Bluetooth: ' + errTxt(e));
+      setBle(false);
+    }
+  }
+
+  function onDisconnect() {
+    chr = null; setBle(false); log('Bluetooth desligado');
+  }
+
+  function setBle(on) {
+    $('dBle').classList.toggle('on', on);
+    $('sBle').textContent = on ? 'Bluetooth ligado' : 'Bluetooth desligado';
+    $('bBle').textContent = on ? 'Desligar' : 'Ligar Bluetooth';
+  }
+
+  const enc = new TextEncoder(), dec = new TextDecoder();
+
+  function send(text) {
+    if (!chr) return;
+    queue.push(text);
+    pump();
+  }
+  function sendFollow(text) {               // só interessa o mais recente
+    if (!chr) return;
+    pendingF = text;
+    pump();
+  }
+  async function pump() {
+    if (writing || !chr) return;
+    let next;
+    if (queue.length) next = queue.shift();
+    else if (pendingF) { next = pendingF; pendingF = null; }
+    else return;
+    writing = true;
+    try {
+      const data = enc.encode(next + '\n');
+      if (chr.properties && chr.properties.writeWithoutResponse && chr.writeValueWithoutResponse)
+        await chr.writeValueWithoutResponse(data);
+      else await chr.writeValue(data);
+    } catch (e) {
+      log('Erro a enviar: ' + e.message);
+    }
+    writing = false;
+    if (queue.length || pendingF) pump();
+  }
+
+  function onRx(ev) {
+    rxBuf += dec.decode(ev.target.value);
+    let i;
+    while ((i = rxBuf.indexOf('\n')) >= 0) {
+      const line = rxBuf.slice(0, i).replace('\r', '').trim();
+      rxBuf = rxBuf.slice(i + 1);
+      if (line) handleLine(line);
+    }
+    if (rxBuf.length > 300) rxBuf = '';
+  }
+
+  // Telemetria: "M3 R:1.2 P:-0.8 uR:0.0 uP:0.0"
+  const TEL = /^M(\d)\s+R:(-?[\d.]+)\s+P:(-?[\d.]+)\s+uR:(-?[\d.]+)\s+uP:(-?[\d.]+)/;
+  function handleLine(line) {
+    const m = TEL.exec(line);
+    if (m) {
+      plat = { m: +m[1], r: +m[2], p: +m[3], ur: +m[4], up: +m[5] };
+      setMode(plat.m);
+      return;
+    }
+    const mm = /modo (\w+)/.exec(line);
+    if (mm) { const k = MODE.indexOf(mm[1]); if (k >= 0) setMode(k); }
+    log(line);
+  }
+
+  function setMode(k) {
+    modeNow = k;
+    $('mode').textContent = MODE[k] ?? '–';
+    $('bFollow').classList.toggle('sel', k === 3);
+    $('bLevel').classList.toggle('sel', k === 2);
+  }
+
+  // ---------------- sensores do telemóvel ----------------
+  async function enableSensors() {
+    try {
+      if (typeof DeviceOrientationEvent !== 'undefined' &&
+          typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const res = await DeviceOrientationEvent.requestPermission();
+        if (res !== 'granted') { log('Permissão de sensores recusada'); return; }
+      }
+      window.addEventListener('deviceorientation', onOrient);
+      sensorsOn = true;
+      $('dSen').classList.add('on');
+      $('sSen').textContent = 'Sensores ativos';
+      $('bSen').disabled = true;
+    } catch (e) {
+      log('Erro sensores: ' + e.message);
+    }
+  }
+
+  // beta: frente/trás (-180..180), gamma: esquerda/direita (-90..90)
+  function onOrient(e) {
+    if (e.beta === null || e.gamma === null) return;
+    raw = { r: e.gamma, p: e.beta };
+  }
+
+  function computePhone() {
+    let r = raw.r - zero.r, p = raw.p - zero.p;
+    if ($('oSwap').checked) [r, p] = [p, r];
+    if ($('oInvR').checked) r = -r;
+    if ($('oInvP').checked) p = -p;
+    const k = +$('oScale').value, lim = +$('oLim').value;
+    r = Math.max(-lim, Math.min(lim, r * k));
+    p = Math.max(-lim, Math.min(lim, p * k));
+    phone = { r, p };
+  }
+
+  // ---------------- envio periódico ----------------
+  setInterval(() => {
+    computePhone();
+    if (chr && sensorsOn && modeNow === 3 && !document.hidden) {
+      sendFollow(`f ${phone.r.toFixed(1)} ${phone.p.toFixed(1)}`);
+    }
+  }, SEND_MS);
+
+  // ---------------- desenho ----------------
+  const cv = $('cv'), ctx = cv.getContext('2d');
+  function draw() {
+    const W = cv.width, c = W / 2, R = W * 0.44, lim = 20;
+    const css = getComputedStyle(document.documentElement);
+    const col = n => css.getPropertyValue(n).trim();
+    ctx.clearRect(0, 0, W, W);
+
+    ctx.strokeStyle = col('--line'); ctx.lineWidth = 2;
+    [1, 0.5].forEach(f => { ctx.beginPath(); ctx.arc(c, c, R * f, 0, Math.PI * 2); ctx.stroke(); });
+    ctx.beginPath(); ctx.moveTo(c - R, c); ctx.lineTo(c + R, c);
+    ctx.moveTo(c, c - R); ctx.lineTo(c, c + R); ctx.stroke();
+
+    ctx.fillStyle = col('--muted'); ctx.font = '22px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('±20°', c, c - R - 6 + 20);
+    ctx.fillText('±10°', c, c - R * 0.5 + 18);
+
+    const pos = (r, p) => [c + (r / lim) * R, c + (p / lim) * R];
+
+    if (plat.r !== null) {
+      const [x, y] = pos(Math.max(-lim, Math.min(lim, plat.r)), Math.max(-lim, Math.min(lim, plat.p)));
+      ctx.strokeStyle = col('--plat'); ctx.lineWidth = 6;
+      ctx.beginPath(); ctx.arc(x, y, 30, 0, Math.PI * 2); ctx.stroke();
+    }
+    if (sensorsOn) {
+      const [x, y] = pos(phone.r, phone.p);
+      ctx.fillStyle = col('--accent');
+      ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2); ctx.fill();
+    }
+
+    const f = v => (v === null || v === undefined) ? '–' : v.toFixed(1) + '°';
+    $('pr').textContent = sensorsOn ? f(phone.r) : '–';
+    $('pp').textContent = sensorsOn ? f(phone.p) : '–';
+    $('mr').textContent = f(plat.r); $('mp').textContent = f(plat.p);
+    $('ur').textContent = f(plat.ur); $('up').textContent = f(plat.up);
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  // ---------------- botões ----------------
+  $('bBle').onclick = () => {
+    log('Botão Bluetooth (API ' + (navigator.bluetooth ? 'disponível' : 'INDISPONÍVEL') + ')');
+    if (chr && device) { device.gatt.disconnect(); } else connect(false);
+  };
+  $('bBle2').onclick = () => connect(true);
+  log('Página carregada v3 - Bluetooth ' + (navigator.bluetooth ? 'disponível' : 'INDISPONÍVEL (usar Bluefy)'));
+  $('bSen').onclick = enableSensors;
+  $('bFollow').onclick = () => {
+    if (!sensorsOn) { alert('Ativa primeiro os sensores do telemóvel.'); return; }
+    send('m 3');
+  };
+  $('bLevel').onclick = () => { send('sp 0 0'); send('m 2'); };
+  $('bOff').onclick = () => send('m 0');
+  $('bZero').onclick = () => { zero = { ...raw }; log('Zero do telemóvel definido'); };
+  $('bCal').onclick = () => send('c');
+  $('bSend').onclick = () => {
+    const t = $('cmd').value.trim();
+    if (t) { send(t); log('> ' + t); $('cmd').value = ''; }
+  };
+  $('cmd').addEventListener('keydown', e => { if (e.key === 'Enter') $('bSend').click(); });
+  $('oScale').oninput = e => $('vScale').textContent = (+e.target.value).toFixed(1) + '×';
+  $('oLim').oninput = e => $('vLim').textContent = '±' + e.target.value + '°';
+
+  // ao sair da página, pára o envio -> a placa volta ao nível sozinha (timeout 1 s)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && chr && modeNow === 3) log('Página em segundo plano: envio parado');
+  });
+})();
+</script>
+</body>
+</html>
