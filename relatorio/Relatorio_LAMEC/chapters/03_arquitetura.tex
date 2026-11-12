@@ -47,7 +47,7 @@ A figura~\ref{fig:blocos} mostra o diagrama de blocos do sistema. O telemóvel e
 O sistema tem dois modos de funcionamento previstos. No modo de seguimento, a referência é a inclinação do telemóvel; no modo de nivelamento, a referência é a horizontal e o controlador compensa o movimento da base. Em ambos os casos o controlo é executado localmente, pelo que uma falha da ligação Bluetooth nunca deixa a plataforma sem controlo (RNF6).
 
 \section{Estrutura mecânica}
-A estrutura foi modelada em OpenSCAD, de forma paramétrica, e é composta por quatro peças impressas em 3D: a caixa, a tampa com as torres, o quadro do eixo de \textit{roll} e a plataforma do eixo de \textit{pitch} (figuras~\ref{fig:cad-montagem} e~\ref{fig:cad-explodida}). Segue a solução de \textit{gimbal} em série usada nos estabilizadores de câmara: o servo de \textit{roll} está fixo à tampa e roda o quadro, e o servo de \textit{pitch} está fixo ao quadro e roda a plataforma. Os dois eixos cruzam-se no mesmo ponto, \SI{70}{\milli\metre} acima da tampa, pelo que cada servo atua num só ângulo e não há acoplamento mecânico entre eixos.
+A estrutura foi modelada em OpenSCAD, de forma paramétrica, e é composta por cinco peças impressas em 3D: a caixa, a tampa com as torres, o quadro do eixo de \textit{roll}, a plataforma do eixo de \textit{pitch} e o tabuleiro onde rola a bola (figuras~\ref{fig:cad-montagem} e~\ref{fig:cad-explodida}). Segue a solução de \textit{gimbal} em série usada nos estabilizadores de câmara: o servo de \textit{roll} está fixo à tampa e roda o quadro, e o servo de \textit{pitch} está fixo ao quadro e roda a plataforma. Os dois eixos cruzam-se no mesmo ponto, \SI{70}{\milli\metre} acima da tampa, pelo que cada servo atua num só ângulo e não há acoplamento mecânico entre eixos.
 
 \begin{figure}[H]
 \centering
@@ -61,14 +61,14 @@ A estrutura foi modelada em OpenSCAD, de forma paramétrica, e é composta por q
 \includegraphics[width=\textwidth]{figuras/montagem_inclinada.png}
 \caption{\textit{Roll} de \SI{15}{\degree} e \textit{pitch} de \SI{-12}{\degree}}
 \end{subfigure}
-\caption{Modelo 3D da plataforma montada (OpenSCAD).}
+\caption{Modelo 3D da plataforma montada, com o tabuleiro e uma bola de \SI{40}{\milli\metre} (OpenSCAD).}
 \label{fig:cad-montagem}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.55\textwidth]{figuras/explodida.png}
-\caption{Vista explodida: caixa (azul), tampa com torres (cinzento), quadro de \textit{roll} (laranja), plataforma de \textit{pitch} (verde) e servos (preto).}
+\caption{Vista explodida: caixa (azul), tampa com torres (cinzento), quadro de \textit{roll} (laranja), plataforma de \textit{pitch} (verde), tabuleiro (vermelho), bola (branco) e servos (preto).}
 \label{fig:cad-explodida}
 \end{figure}
 
@@ -97,6 +97,12 @@ Cada eixo é suportado nos dois lados. Num lado, a peça móvel é aparafusada a
 \includegraphics[width=\textwidth]{figuras/peca_plataforma.png}
 \caption{Plataforma do eixo de \textit{pitch}}
 \end{subfigure}
+\\[2mm]
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figuras/peca_tabuleiro.png}
+\caption{Tabuleiro}
+\end{subfigure}
 \caption{Peças impressas em 3D, na orientação de impressão.}
 \label{fig:cad-pecas}
 \end{figure}
@@ -113,10 +119,13 @@ Caixa & $190\times130\times\SI{60}{\milli\metre}$; parede de \SI{2.5}{\milli\met
 Tampa e torres & Tampa de \SI{4}{\milli\metre}; eixos a \SI{70}{\milli\metre} & Torre do servo de \textit{roll} e torre do pivô, com nervuras de reforço; furos de passagem dos cabos; fixação à caixa por quatro parafusos M3\\
 Quadro (\textit{roll}) & Moldura de $120\times\SI{115}{\milli\metre}$, paredes de 5 a \SI{7}{\milli\metre} & Ligado ao \textit{horn} do servo de \textit{roll} e ao pivô; transporta o servo de \textit{pitch}; passagem para braçadeira do cabo\\
 Plataforma (\textit{pitch}) & $90\times90\times\SI{4}{\milli\metre}$ & Ligada ao \textit{horn} do servo de \textit{pitch} e ao pivô; rebaixo central para a \acrshort{imu}; furos M3 nos cantos para fixar carga; marcação do eixo $x$\\
+Tabuleiro & $88\times\SI{88}{\milli\metre}$; base de \SI{4}{\milli\metre}; rebordo de \SI{6}{\milli\metre} & Superfície onde rola a bola; aparafusado à plataforma por quatro parafusos M3 de cabeça de embeber, com acesso às cabeças através do rebordo; cantos chanfrados para não tocar nos reforços do quadro; marcação do centro e do eixo $x$\\
 \bottomrule
 \end{tabularx}
 \label{tab:pecas}
 \end{table}
+
+O tabuleiro foi acrescentado para os ensaios com bola. Fica assente diretamente sobre a plataforma, por isso roda com ela nos dois eixos, e o rebordo impede que a bola caia nos movimentos normais. As suas dimensões permitem que rode livremente até $\pm\SI{20}{\degree}$ em \textit{roll} e \textit{pitch} sem tocar no quadro; para lá deste valor, o movimento tem de ser limitado em software, o que é coerente com o requisito RNF1 e com os limites definidos no controlo.
 
 O modelo usa uma folga de impressão de \SI{0.3}{\milli\metre} e as cotas do MG996R estão parametrizadas, devendo ser confirmadas com paquímetro antes da impressão. O rebaixo da \gls{imu} na plataforma foi desenhado para o módulo GY-521 ($21{,}5\times\SI{16.5}{\milli\metre}$). O GY-85 tem dimensões muito próximas (cerca de $22\times\SI{17}{\milli\metre}$) \cite{gy85}, mas a posição dos furos de fixação tem de ser verificada e ajustada no modelo.
 

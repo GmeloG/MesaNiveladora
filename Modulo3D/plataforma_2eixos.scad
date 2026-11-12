@@ -4,13 +4,14 @@
 //  Modelo paramétrico OpenSCAD - unidades em mm
 //
 //  Para exportar uma peça: mudar `part` (ou usar -D part="\"caixa\"")
-//    "assembly" | "caixa" | "tampa" | "quadro" | "plataforma"
+//    "assembly" | "caixa" | "tampa" | "quadro" | "plataforma" | "tabuleiro"
 // =====================================================================
 
 part     = "assembly";
 roll_a   = 0;     // só para visualização da montagem (graus)
 pitch_a  = 0;
 explode  = 0;     // vista explodida (mm)
+show_ball = true; // mostrar tabuleiro + bola na montagem
 
 $fn = 64;
 tol = 0.3;        // folga geral de impressão
@@ -231,6 +232,36 @@ module plataforma() {
     }
 }
 
+// ======================= TABULEIRO (bola) ============================
+// 88x88 mm, assente na plataforma, 4x M3x12 cabeça de embeber + porca.
+// Livre até ±20° em roll/pitch (limitar no software).
+tb_w    = 88;   // lado do tabuleiro (cabe dentro do quadro)
+tb_ch   = 5;    // chanfro dos cantos (folga para os reforços do quadro)
+tb_t    = 4;    // espessura da base
+rim_h   = 6;    // altura do rebordo
+rim_t   = 2;
+tb_z    = H + P_z + P_t;             // assente direto na plataforma
+hole_xy = P_w/2 - 6;                 // furos M3 da plataforma (±39)
+
+module tb_outline(d = 0) offset(delta = -d) offset(delta = tb_ch, chamfer = true) square(tb_w - 2*tb_ch, center = true);
+module tabuleiro() {
+    difference() {
+        translate([0, 0, tb_z]) union() {
+            linear_extrude(tb_t) tb_outline();
+            linear_extrude(tb_t + rim_h) difference() { tb_outline(); tb_outline(rim_t); }   // rebordo
+        }
+        // furos escareados M3 (parafuso de cabeça de embeber, de cima) + acesso à cabeça através do rebordo
+        for (sx = [-1, 1], sy = [-1, 1]) translate([sx*hole_xy, sy*hole_xy, tb_z - 1]) {
+            cylinder(d = 3.4, h = tb_t + 2, $fn = 24);
+            translate([0, 0, 1 + tb_t - 1.8]) cylinder(d1 = 3.4, d2 = 6.6, h = 1.81, $fn = 24);
+            translate([0, 0, 1 + tb_t]) cylinder(d = 6.6, h = rim_h + 1, $fn = 24);
+        }
+        // marca do centro e do eixo X (0.4 mm)
+        translate([0, 0, tb_z + tb_t - 0.4]) difference() { cylinder(d = 12, h = 1); cylinder(d = 10, h = 1); }
+        translate([tb_w/2 - rim_t - 20, -0.5, tb_z + tb_t - 0.4]) cube([12, 1, 1]);
+    }
+}
+
 // ============================ MONTAGEM ===============================
 module rot_roll() translate([0, 0, H]) rotate([roll_a, 0, 0]) translate([0, 0, -H]) children();
 module rot_pitch() translate([0, 0, H]) rotate([0, pitch_a, 0]) translate([0, 0, -H]) children();
@@ -242,7 +273,13 @@ module assembly() {
     rot_roll() {
         color("#f28c28") translate([0, 0, explode]) quadro();
         at_pitch_servo() servo_dummy();
-        rot_pitch() color("#3fae5a") translate([0, 0, 2*explode]) plataforma();
+        rot_pitch() {
+            color("#3fae5a") translate([0, 0, 2*explode]) plataforma();
+            if (show_ball) {
+                color("#d94a4a") translate([0, 0, 3*explode]) tabuleiro();
+                color("white") translate([10, -15, tb_z + tb_t + 20 + 3*explode]) sphere(d = 40);
+            }
+        }
     }
 }
 
@@ -252,3 +289,4 @@ else if (part == "caixa")      translate([0, 0, ld_t + bx_hz]) caixa();
 else if (part == "tampa")      translate([0, 0, ld_t]) tampa();          // imprimir com torres para cima
 else if (part == "quadro")     translate([0, 0, fr_h - H]) quadro();     // paredes na vertical
 else if (part == "plataforma") rotate([180, 0, 0]) translate([0, 0, -(H + P_z + P_t)]) plataforma(); // placa na mesa
+else if (part == "tabuleiro")  translate([0, 0, -tb_z]) tabuleiro();               // base na mesa
