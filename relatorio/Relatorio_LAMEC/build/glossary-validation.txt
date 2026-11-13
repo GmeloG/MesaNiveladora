@@ -1,0 +1,18 @@
+Warning: File 'main.glo' is empty.
+Have you used any entries defined in glossary 'main'?
+Remember to use package option 'nomain' if you
+don't want to use the main glossary.
+makeglossaries version 5.1 (2026-04-21)
+added glossary type 'main' (glg,gls,glo)
+added glossary type 'acronym' (alg,acr,acn)
+added glossary type 'symbolslist' (slg,syi,syg)
+makeindex  -s "main.ist" -t "main.alg" -o "main.acr" "main.acn"
+Warning: File 'main.syg' is empty.
+Have you used any entries defined in glossary 'symbolslist'?
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.acn....done (172 entries accepted, 0 rejected).
+Sorting entries....done (1339 comparisons).
+Generating output file main.acr....done (113 lines written, 0 warnings).
+Output written in main.acr.
+Transcript written in main.alg.
