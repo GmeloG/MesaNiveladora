@@ -65,6 +65,10 @@ public:
   // acelerómetro, trocar o sinal do eixo correspondente.
   float gyroSignX = 1.0f, gyroSignY = 1.0f, gyroSignZ = 1.0f;
 
+  // Sensor montado ao contrário (chips virados para baixo):
+  // equivale a rodar 180 graus em torno do eixo X -> Y e Z trocam de sinal.
+  bool upsideDown = true;   // GY-85 montado com os chips virados para baixo
+
   bool begin() {
     if (!imu_i2c::present(ACC_ADDR) || !imu_i2c::present(GYRO_ADDR)) return false;
 
@@ -101,10 +105,17 @@ public:
     gx = gyroSignX * (int16_t)(g[0] << 8 | g[1]) / GYRO_LSB - _gox;
     gy = gyroSignY * (int16_t)(g[2] << 8 | g[3]) / GYRO_LSB - _goy;
     gz = gyroSignZ * (int16_t)(g[4] << 8 | g[5]) / GYRO_LSB - _goz;
+
+    if (upsideDown) {
+      ay = -ay; az = -az;
+      gy = -gy; gz = -gz;   // offsets já foram retirados antes da inversão
+    }
     return true;
   }
 
   void calibrateGyro(uint16_t samples = 1000) {
+    bool flip = upsideDown;
+    upsideDown = false;          // offsets medidos nos eixos do próprio chip
     float sx = 0, sy = 0, sz = 0;
     _gox = _goy = _goz = 0;
     for (uint16_t i = 0; i < samples; i++) {
@@ -113,6 +124,7 @@ public:
       delay(2);
     }
     _gox = sx / samples; _goy = sy / samples; _goz = sz / samples;
+    upsideDown = flip;
   }
 
   float gyroOffsetX() const { return _gox; }

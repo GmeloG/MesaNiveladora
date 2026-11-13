@@ -4,3 +4,27 @@
 .vscode/launch.json
 .vscode/ipch
 .DS_Store
+
+# LaTeX - ficheiros temporários de compilação
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.brf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.slg
+*.syg
+*.syi

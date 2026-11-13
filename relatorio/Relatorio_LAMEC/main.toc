@@ -66,21 +66,21 @@
 \contentsline {chapter}{\numberline {3}Projeto e Arquitetura do Sistema}{21}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Arquitetura geral}{21}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Estrutura mecânica}{22}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Arquitetura de hardware}{25}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Unidade de processamento}{25}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Sensor inercial}{25}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Atuadores}{26}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Comunicação}{26}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Alimentação}{26}{subsection.3.3.5}%
-\contentsline {section}{\numberline {3.4}Esquema elétrico}{27}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Arquitetura de software}{29}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Organização em camadas}{29}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Execução e temporização}{29}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Malha de controlo}{30}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Máquina de estados}{31}{subsection.3.5.4}%
-\contentsline {subsection}{\numberline {3.5.5}Protocolo de comunicação}{31}{subsection.3.5.5}%
-\contentsline {subsection}{\numberline {3.5.6}Aplicação do telemóvel}{32}{subsection.3.5.6}%
-\contentsline {section}{\numberline {3.6}Módulos do sistema}{32}{section.3.6}%
+\contentsline {section}{\numberline {3.3}Arquitetura de hardware}{26}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Unidade de processamento}{26}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Sensor inercial}{27}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Atuadores}{27}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Comunicação}{27}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Alimentação}{27}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Esquema elétrico}{28}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Arquitetura de software}{30}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Organização em camadas}{30}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Execução e temporização}{30}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Malha de controlo}{31}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Máquina de estados}{32}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}Protocolo de comunicação}{32}{subsection.3.5.5}%
+\contentsline {subsection}{\numberline {3.5.6}Aplicação do telemóvel}{33}{subsection.3.5.6}%
+\contentsline {section}{\numberline {3.6}Módulos do sistema}{33}{section.3.6}%
 \contentsline {chapter}{\numberline {4}Procedimentos e Vetores de Teste}{35}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Metodologia e equipamento}{35}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Sensor inercial (T-IMU)}{36}{section.4.2}%
@@ -99,7 +99,4 @@
 \contentsline {section}{\numberline {6.2}Requisitos para brinquedos e resposta do projeto}{48}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Análise de riscos}{49}{section.6.3}%
 \contentsline {section}{\numberline {6.4}Funções de segurança implementadas}{50}{section.6.4}%
-\contentsline {chapter}{\numberline {7}Conclusões e Trabalho Futuro}{51}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Conclusões}{51}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Trabalho futuro}{52}{section.7.2}%
-\contentsline {chapter}{Refer\^{e}ncias}{53}{section*.48}%
+\contentsline {chapter}{Refer\^{e}ncias}{51}{section*.48}%

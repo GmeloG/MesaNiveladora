@@ -31,6 +31,8 @@
 //    c                 recalibrar giroscópio (passa a OFF)
 //    s                 ligar/desligar telemetria
 //    r                 valores em bruto do IMU
+//    flip              sensor montado ao contrário (liga/desliga)
+//    gs <x|y>          inverte o sinal do giroscópio nesse eixo (diagnóstico)
 //    l                 alternar LED verde
 //
 //  Telemetria BT (10 Hz):  M<modo> R:<roll> P:<pitch> uR:<cmd> uP:<cmd>
@@ -47,7 +49,9 @@
 // ---------------- parâmetros ----------------
 static constexpr uint32_t LOOP_US        = 5000;   // 200 Hz
 static constexpr uint8_t  TELEM_DIV      = 20;     // 10 Hz
-static constexpr float    SERVO_LIMIT    = 45.0f;  // desvio máx. do centro [graus]
+// Desvio máximo de cada servo em relação ao centro [graus], por eixo,
+// para proteger a mecânica: roll ±50, pitch ±40
+static constexpr float    SERVO_LIMIT[2] = {50.0f, 40.0f};   // {roll, pitch}
 static constexpr float    ANG_LIMIT      = 40.0f;  // corte de segurança em AUTO
 static constexpr float    SP_LIMIT       = 20.0f;  // setpoint máximo
 static constexpr uint32_t FOLLOW_TIMEOUT = 1000;   // ms sem "f" -> nível
@@ -125,7 +129,9 @@ static void status() {
   both("modo %s | IMU %s | servos %s\r\n", MODE_NAME[mode],
        imuOk ? "OK" : "FALHA", servoOk ? "OK" : "FALHA");
   both("ciclo %.1f Hz | overruns %lu | alpha %.3f\r\n", hz, overruns, filt.alpha);
-  both("roll %.2f  pitch %.2f\r\n", filt.roll, filt.pitch);
+  both("roll %.2f  pitch %.2f | sensor %s | gyro x%+.0f y%+.0f\r\n", filt.roll, filt.pitch,
+       imu.upsideDown ? "ao contrario" : "normal", imu.gyroSignX, imu.gyroSignY);
+  both("acel: roll %.2f  pitch %.2f\r\n", filt.rollAcc, filt.pitchAcc);
   both("sp   %.1f  %.1f\r\n", sp[0], sp[1]);
   both("PID r: %.3f %.3f %.3f\r\n", pid[0].kp, pid[0].ki, pid[0].kd);
   both("PID p: %.3f %.3f %.3f\r\n", pid[1].kp, pid[1].ki, pid[1].kd);
@@ -135,7 +141,7 @@ static void status() {
 
 static void help() {
   both("? h | m 0/1/2/3 | sp r p | f r p | g r/p/b kp ki kd | u r/p deg\r\n");
-  both("t r/p deg | inv r/p | a x | c | s | r | l\r\n");
+  both("t r/p deg | inv r/p | a x | c | s | r | l | flip | gs x/y\r\n");
 }
 
 // ---------------- parser de comandos ----------------
@@ -229,7 +235,7 @@ static void handleCommand(String line) {
   else if (t[0] == "u" && n == 3 && axisOf(t[1]) >= 0 && axisOf(t[1]) < 2 && num(t[2], v1)) {
     if (mode != MANUAL) { both("usar primeiro: m 1\r\n"); return; }
     int a = axisOf(t[1]);
-    manual[a] = constrain(v1, -SERVO_LIMIT, SERVO_LIMIT);
+    manual[a] = constrain(v1, -SERVO_LIMIT[a], SERVO_LIMIT[a]);
     both("manual %s = %.1f\r\n", t[1].c_str(), manual[a]);
   }
   else if (t[0] == "t" && n == 3 && axisOf(t[1]) >= 0 && axisOf(t[1]) < 2 && num(t[2], v1)) {
@@ -242,6 +248,19 @@ static void handleCommand(String line) {
     dir[a] = -dir[a];
     pid[a].reset();
     both("dir %s = %+.0f\r\n", t[1].c_str(), dir[a]);
+  }
+  else if (t[0] == "flip" && n == 1) {
+    imu.upsideDown = !imu.upsideDown;
+    if (mode != OFF) setMode(OFF, "orientacao do sensor mudou");
+    calibrate();   // recalibra o giroscópio e reinicia o filtro
+    both("sensor %s\r\n", imu.upsideDown ? "AO CONTRARIO" : "normal");
+  }
+  else if (t[0] == "gs" && n == 2 && (t[1] == "x" || t[1] == "y")) {
+    float &sg = (t[1] == "x") ? imu.gyroSignX : imu.gyroSignY;
+    sg = -sg;
+    if (mode != OFF) setMode(OFF, "sinal do giroscopio mudou");
+    calibrate();
+    both("sinal gyro %s = %+.0f\r\n", t[1].c_str(), sg);
   }
   else if (t[0] == "a" && n == 2 && num(t[1], v1) && v1 >= 0.5f && v1 < 1.0f) {
     filt.alpha = v1;
@@ -272,7 +291,7 @@ void setup() {
 
   // Servos primeiro, para ficarem logo ao centro
   servoOk = servos.begin();
-  for (int i = 0; i < 2; i++) pid[i].outMin = -SERVO_LIMIT, pid[i].outMax = SERVO_LIMIT;
+  for (int i = 0; i < 2; i++) { pid[i].outMin = -SERVO_LIMIT[i]; pid[i].outMax = SERVO_LIMIT[i]; }
 
   delay(300);
   both("\r\n=== Mesa Niveladora ===\r\n");
@@ -350,7 +369,7 @@ void loop() {
       }
     }
     float cmd = 90.0f + trim[i] + dir[i] * u[i];
-    cmd = constrain(cmd, 90.0f - SERVO_LIMIT, 90.0f + SERVO_LIMIT);
+    cmd = constrain(cmd, 90.0f - SERVO_LIMIT[i], 90.0f + SERVO_LIMIT[i]);   // limite final, inclui o trim
     servos.writeDeg(i, cmd);
   }
 

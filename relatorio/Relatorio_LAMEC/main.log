@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.11.8)  8 NOV 2026 22:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.11.8)  13 NOV 2026 18:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"d:/Escola/OneDrive - Instituto Superior de Engenharia do Porto/ISEP/MEEC/2_Ano/1_Semetre/LAMEC/relatorio/Relatorio_LAMEC/main.tex"
-(d:/Escola/OneDrive - Instituto Superior de Engenharia do Porto/ISEP/MEEC/2_Ano/1_Semetre/LAMEC/relatorio/Relatorio_LAMEC/main.tex
+**"d:/Escola/OneDrive - Instituto Superior de Engenharia do Porto/ISEP/MEEC/2_Ano/1_Semetre/LAMEC/MesaNiveladora/relatorio/Relatorio_LAMEC/main.tex"
+(d:/Escola/OneDrive - Instituto Superior de Engenharia do Porto/ISEP/MEEC/2_Ano/1_Semetre/LAMEC/MesaNiveladora/relatorio/Relatorio_LAMEC/main.tex
 LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
 (./DEEclass.cls
@@ -1038,7 +1038,7 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (./main.aux (./front/title.aux)
 Package babel Info: 'portuguese' activates 'portuges' shorthands.
 (babel)             Reported on input line 19.
- (./front/4_frontmatterlists.aux) (./chapters/01_introducao.aux) (./chapters/02_estado_arte.aux) (./chapters/03_arquitetura.aux) (./chapters/04_testes.aux) (./chapters/05_componentes_custos.aux) (./chapters/06_seguranca.aux) (./chapters/07_conclusao.aux))
+ (./front/4_frontmatterlists.aux) (./chapters/01_introducao.aux) (./chapters/02_estado_arte.aux) (./chapters/03_arquitetura.aux) (./chapters/04_testes.aux) (./chapters/05_componentes_custos.aux) (./chapters/06_seguranca.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
@@ -1158,7 +1158,7 @@ Package babel Info: Main language set to 'portuguese'.
 \openout2 = `front/title.aux'.
 
 (./front/title.tex
-<front/isep_wordmark_expanded_vintage.pdf, id=433, 6097.78125pt x 745.35966pt>
+<front/isep_wordmark_expanded_vintage.pdf, id=421, 6097.78125pt x 745.35966pt>
 File: front/isep_wordmark_expanded_vintage.pdf Graphic file (type pdf)
 <use front/isep_wordmark_expanded_vintage.pdf>
 Package pdftex.def Info: front/isep_wordmark_expanded_vintage.pdf  used on input line 6.
@@ -1247,7 +1247,7 @@ Overfull \hbox (3.39438pt too wide) in paragraph at lines 13--13
 \tf@lof=\write10
 \openout10 = `main.lof'.
 
- [9] [10
+ [9{c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] [10
 
 ] (./main.lot [11])
 \tf@lot=\write11
@@ -1294,7 +1294,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--51
 
 Package babel Info: 'portuguese' activates 'portuges' shorthands.
 (babel)             Reported on input line 54.
-[2]) [3{c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}] [4]
+[2]
+
+LaTeX Warning: Reference `ch:conclusao' on page 3 undefined on input line 79.
+
+) [3{c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}] [4]
 \openout2 = `chapters/02_estado_arte.aux'.
 
  (./chapters/02_estado_arte.tex
@@ -1315,66 +1319,71 @@ Cap\'{\i }tulo 2.
 ]
 Cap\'{\i }tulo 3.
 [21]
-<figuras/montagem.png, id=1199, 848.16875pt x 841.1425pt>
+<figuras/montagem.png, id=1185, 788.9475pt x 784.9325pt>
 File: figuras/montagem.png Graphic file (type png)
 <use figuras/montagem.png>
 Package pdftex.def Info: figuras/montagem.png  used on input line 56.
-(pdftex.def)             Requested size: 191.20082pt x 189.60826pt.
-<figuras/montagem_inclinada.png, id=1200, 829.0975pt x 850.17625pt>
+(pdftex.def)             Requested size: 191.20082pt x 190.22014pt.
+<figuras/montagem_inclinada.png, id=1186, 782.925pt x 803.0pt>
 File: figuras/montagem_inclinada.png Graphic file (type png)
 <use figuras/montagem_inclinada.png>
 Package pdftex.def Info: figuras/montagem_inclinada.png  used on input line 61.
-(pdftex.def)             Requested size: 191.20082pt x 196.05533pt.
+(pdftex.def)             Requested size: 191.20082pt x 196.09344pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 62.
  [22]
-<figuras/explodida.png, id=1206, 663.47874pt x 955.57pt>
+<figuras/explodida.png, id=1192, 558.085pt x 947.54pt>
 File: figuras/explodida.png Graphic file (type png)
 <use figuras/explodida.png>
 Package pdftex.def Info: figuras/explodida.png  used on input line 70.
-(pdftex.def)             Requested size: 219.08745pt x 315.52863pt.
- [23 <./figuras/montagem.png> <./figuras/montagem_inclinada.png> <./figuras/explodida.png>]
-<figuras/peca_caixa.png, id=1220, 1068.99374pt x 800.9925pt>
+(pdftex.def)             Requested size: 219.08745pt x 371.9681pt.
+ [23 <./figuras/montagem.png> <./figuras/montagem_inclinada.png>]
+<figuras/peca_caixa.png, id=1203, 1068.99374pt x 800.9925pt>
 File: figuras/peca_caixa.png Graphic file (type png)
 <use figuras/peca_caixa.png>
 Package pdftex.def Info: figuras/peca_caixa.png  used on input line 81.
 (pdftex.def)             Requested size: 191.20082pt x 143.25577pt.
-<figuras/peca_tampa.png, id=1221, 954.56625pt x 791.95876pt>
+<figuras/peca_tampa.png, id=1204, 954.56625pt x 791.95876pt>
 File: figuras/peca_tampa.png Graphic file (type png)
 <use figuras/peca_tampa.png>
 Package pdftex.def Info: figuras/peca_tampa.png  used on input line 86.
 (pdftex.def)             Requested size: 191.20082pt x 158.61855pt.
-<figuras/peca_quadro.png, id=1222, 1066.98625pt x 775.89874pt>
+<figuras/peca_quadro.png, id=1205, 1066.98625pt x 775.89874pt>
 File: figuras/peca_quadro.png Graphic file (type png)
 <use figuras/peca_quadro.png>
 Package pdftex.def Info: figuras/peca_quadro.png  used on input line 92.
 (pdftex.def)             Requested size: 191.20082pt x 139.0401pt.
-<figuras/peca_plataforma.png, id=1223, 807.015pt x 596.2275pt>
+<figuras/peca_plataforma.png, id=1206, 807.015pt x 596.2275pt>
 File: figuras/peca_plataforma.png Graphic file (type png)
 <use figuras/peca_plataforma.png>
 Package pdftex.def Info: figuras/peca_plataforma.png  used on input line 97.
 (pdftex.def)             Requested size: 191.20082pt x 141.25978pt.
- [24 <./figuras/peca_caixa.png> <./figuras/peca_tampa.png> <./figuras/peca_quadro.png> <./figuras/peca_plataforma.png>] [25] [26]
-Overfull \hbox (33.90326pt too wide) in paragraph at lines 250--251
+<figuras/peca_tabuleiro.png, id=1207, 1035.87pt x 687.56876pt>
+File: figuras/peca_tabuleiro.png Graphic file (type png)
+<use figuras/peca_tabuleiro.png>
+Package pdftex.def Info: figuras/peca_tabuleiro.png  used on input line 103.
+(pdftex.def)             Requested size: 191.20082pt x 126.90446pt.
+ [24 <./figuras/explodida.png>] [25 <./figuras/peca_caixa.png> <./figuras/peca_tampa.png> <./figuras/peca_quadro.png> <./figuras/peca_plataforma.png> <./figuras/peca_tabuleiro.png>] [26] [27]
+Overfull \hbox (33.90326pt too wide) in paragraph at lines 259--260
  [][] 
  []
 
-[27] [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 421--421
+[28] [29] [30] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 430--430
 []|\T1/lmr/m/n/10 Vermelho in-ter-mi-
  []
 
-[31]) [32] [33]
+[32]) [33] [34]
 \openout2 = `chapters/04_testes.aux'.
 
- (./chapters/04_testes.tex [34
-
-
-
-
-]
+ (./chapters/04_testes.tex
 Cap\'{\i }tulo 4.
-[35] [36] [37]
+[35
+
+
+
+
+] [36] [37]
 Overfull \hbox (3.39502pt too wide) in paragraph at lines 103--103
 []|\T1/lmtt/m/n/10 $REF,-12.5,4.3,57*63|  
  []
@@ -1409,48 +1418,42 @@ Cap\'{\i }tulo 5.
 
 ]
 Cap\'{\i }tulo 6.
-[47] [48] [49]) [50]
-\openout2 = `chapters/07_conclusao.aux'.
-
- (./chapters/07_conclusao.tex
-Cap\'{\i }tulo 7.
-[51
-
-
-
-
-]) [52] (./main.bbl (./main.brf)
+[47] [48] [49]) [50] (./main.bbl (./main.brf)
 \tf@brf=\write12
 \openout12 = `main.brf'.
 
- [53
+ [51
 
 
 
 
-] [54] [55] [56]) [57] (./main.aux (./front/title.aux) (./front/4_frontmatterlists.aux) (./chapters/01_introducao.aux) (./chapters/02_estado_arte.aux) (./chapters/03_arquitetura.aux) (./chapters/04_testes.aux) (./chapters/05_componentes_custos.aux) (./chapters/06_seguranca.aux) (./chapters/07_conclusao.aux))
+] [52] [53] [54]) [55] (./main.aux (./front/title.aux) (./front/4_frontmatterlists.aux) (./chapters/01_introducao.aux) (./chapters/02_estado_arte.aux) (./chapters/03_arquitetura.aux) (./chapters/04_testes.aux) (./chapters/05_componentes_custos.aux) (./chapters/06_seguranca.aux))
  ***********
 LaTeX2e <2026-11-01>
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 19587C48DF0732DEF0E9BA94EC0E750E;17023.
+(rerunfilecheck)             Checksum: E26FA238FAA762BE194CE23813D23D33;16583.
 Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: E398F7023872A85C7DFA45AF51C34409;3818.
+(rerunfilecheck)             Checksum: 40EB4558FC67BE927122FC657CD083A3;3818.
  ) 
 Here is how much of TeX's memory you used:
- 67398 strings out of 466968
- 1625608 string characters out of 5407725
- 2442235 words of memory out of 5000000
- 95686 multiletter control sequences out of 15000+600000
+ 67372 strings out of 466968
+ 1624913 string characters out of 5407725
+ 2444235 words of memory out of 5000000
+ 95672 multiletter control sequences out of 15000+600000
  772955 words of font info for 135 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 105i,20n,132p,2651b,1474s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 105i,20n,132p,2666b,1474s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbx8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmri8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmri9.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy6.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy9.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmtt12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/lm/lmtt8.pfb>
-Output written on main.pdf (71 pages, 757853 bytes).
+Output written on main.pdf (69 pages, 784806 bytes).
 PDF statistics:
- 1953 PDF objects out of 2073 (max. 8388607)
- 1576 compressed objects within 16 object streams
- 315 named destinations out of 1000 (max. 500000)
- 901 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1923 PDF objects out of 2073 (max. 8388607)
+ 1549 compressed objects within 16 object streams
+ 310 named destinations out of 1000 (max. 500000)
+ 882 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,8 +1,8 @@
-PWD d:/Escola/OneDrive - Instituto Superior de Engenharia do Porto/ISEP/MEEC/2_Ano/1_Semetre/LAMEC/relatorio/Relatorio_LAMEC
+PWD d:/Escola/OneDrive - Instituto Superior de Engenharia do Porto/ISEP/MEEC/2_Ano/1_Semetre/LAMEC/MesaNiveladora/relatorio/Relatorio_LAMEC
 INPUT c:/texlive/2026/texmf.cnf
 INPUT c:/texlive/2026/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT d:/Escola/OneDrive - Instituto Superior de Engenharia do Porto/ISEP/MEEC/2_Ano/1_Semetre/LAMEC/relatorio/Relatorio_LAMEC/main.tex
+INPUT d:/Escola/OneDrive - Instituto Superior de Engenharia do Porto/ISEP/MEEC/2_Ano/1_Semetre/LAMEC/MesaNiveladora/relatorio/Relatorio_LAMEC/main.tex
 OUTPUT main.log
 INPUT ./DEEclass.cls
 INPUT DEEclass.cls
@@ -579,9 +579,6 @@ INPUT chapters/05_componentes_custos.aux
 INPUT ./chapters/06_seguranca.aux
 INPUT ./chapters/06_seguranca.aux
 INPUT chapters/06_seguranca.aux
-INPUT ./chapters/07_conclusao.aux
-INPUT ./chapters/07_conclusao.aux
-INPUT chapters/07_conclusao.aux
 OUTPUT main.aux
 INPUT c:/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT c:/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -706,6 +703,7 @@ INPUT ./main.lof
 INPUT main.lof
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
 OUTPUT main.lof
+INPUT c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT ./main.lot
 INPUT ./main.lot
 INPUT main.lot
@@ -743,7 +741,6 @@ INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
-INPUT c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT c:/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT ./chapters/02_estado_arte.tex
 INPUT ./chapters/02_estado_arte.tex
@@ -806,6 +803,11 @@ INPUT ./figuras/peca_plataforma.png
 INPUT ./figuras/peca_plataforma.png
 INPUT ./figuras/peca_plataforma.png
 INPUT ./figuras/peca_plataforma.png
+INPUT ./figuras/peca_tabuleiro.png
+INPUT ./figuras/peca_tabuleiro.png
+INPUT ./figuras/peca_tabuleiro.png
+INPUT ./figuras/peca_tabuleiro.png
+INPUT ./figuras/peca_tabuleiro.png
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/lm/ts1-lmr10.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/lm/ts1-lmr8.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/lm/ts1-lmr6.tfm
@@ -835,12 +837,6 @@ INPUT ./chapters/06_seguranca.tex
 INPUT ./chapters/06_seguranca.tex
 INPUT chapters/06_seguranca.tex
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/lm/ec-lmbxi10.tfm
-INPUT ./chapters/07_conclusao.tex
-INPUT ./chapters/07_conclusao.tex
-OUTPUT chapters/07_conclusao.aux
-INPUT ./chapters/07_conclusao.tex
-INPUT ./chapters/07_conclusao.tex
-INPUT chapters/07_conclusao.tex
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
@@ -875,9 +871,6 @@ INPUT chapters/05_componentes_custos.aux
 INPUT ./chapters/06_seguranca.aux
 INPUT ./chapters/06_seguranca.aux
 INPUT chapters/06_seguranca.aux
-INPUT ./chapters/07_conclusao.aux
-INPUT ./chapters/07_conclusao.aux
-INPUT chapters/07_conclusao.aux
 INPUT ./main.out
 INPUT ./main.out
 INPUT ./main.brf

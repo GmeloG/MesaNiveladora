@@ -9,12 +9,11 @@ A level-1 auxiliary file: chapters/03_arquitetura.aux
 A level-1 auxiliary file: chapters/04_testes.aux
 A level-1 auxiliary file: chapters/05_componentes_custos.aux
 A level-1 auxiliary file: chapters/06_seguranca.aux
-A level-1 auxiliary file: chapters/07_conclusao.aux
 The style file: ieeetr.bst
 Database file #1: referencias.bib
 You've used 55 entries,
             1876 wiz_defined-function locations,
-            759 strings with 16020 characters,
+            758 strings with 15995 characters,
 and the built_in function-call counts, 10429 in all, are:
 = -- 1119
 > -- 329

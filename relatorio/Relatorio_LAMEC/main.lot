@@ -14,13 +14,13 @@
 \contentsline {table}{\numberline {2.9}{\ignorespaces Comparação das tecnologias de comunicação.}}{18}{table.caption.17}%
 \contentsline {table}{\numberline {2.10}{\ignorespaces Síntese das opções tecnológicas escolhidas.}}{19}{table.caption.18}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Peças da estrutura mecânica.}}{25}{table.caption.23}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Balanço energético estimado.}}{27}{table.caption.24}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Atribuição de pinos (NUCLEO-F767ZI).}}{28}{table.caption.27}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Tarefas e frequências de execução.}}{30}{table.caption.29}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Estados da aplicação.}}{31}{table.caption.32}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Mensagens do protocolo.}}{32}{table.caption.33}%
-\contentsline {table}{\numberline {3.7}{\ignorespaces Módulos do sistema e respetivas interfaces.}}{33}{table.caption.34}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Peças da estrutura mecânica.}}{26}{table.caption.23}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Balanço energético estimado.}}{28}{table.caption.24}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Atribuição de pinos (NUCLEO-F767ZI).}}{29}{table.caption.27}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Tarefas e frequências de execução.}}{31}{table.caption.29}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Estados da aplicação.}}{32}{table.caption.32}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Mensagens do protocolo.}}{33}{table.caption.33}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Módulos do sistema e respetivas interfaces.}}{34}{table.caption.34}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {4.1}{\ignorespaces Vetores de teste do sensor inercial.}}{36}{table.caption.35}%
 \contentsline {table}{\numberline {4.2}{\ignorespaces Vetores de teste da fusão sensorial.}}{37}{table.caption.36}%
@@ -36,4 +36,3 @@
 \contentsline {table}{\numberline {6.1}{\ignorespaces Legislação e normas aplicáveis a um brinquedo com estas características.}}{48}{table.caption.45}%
 \contentsline {table}{\numberline {6.2}{\ignorespaces Requisitos de segurança para brinquedos e situação do protótipo.}}{49}{table.caption.46}%
 \contentsline {table}{\numberline {6.3}{\ignorespaces Análise de riscos.}}{50}{table.caption.47}%
-\addvspace {10\p@ }
