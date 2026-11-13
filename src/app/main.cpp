@@ -45,6 +45,7 @@
 #include "imu.h"
 #include "pid.h"
 #include "servos.h"
+#include "status_led.h"
 
 // ---------------- parâmetros ----------------
 static constexpr uint32_t LOOP_US        = 5000;   // 200 Hz
@@ -81,6 +82,8 @@ static float    follow[2] = {0, 0};     // referência pedida pelo telemóvel
 static float    followF[2]= {0, 0};     // referência suavizada
 static uint32_t lastFollowMs = 0;
 static uint32_t overruns  = 0, loopCount = 0;
+static uint32_t faultUntil = 0;           // LED vermelho a piscar até este instante
+StatusLed sled;
 
 // ---------------- saída para os dois lados ----------------
 static void both(const char *fmt, ...) {
@@ -106,6 +109,8 @@ static void setMode(Mode m, const char *why = nullptr) {
     followF[0] = filt.roll; followF[1] = filt.pitch;   // parte de onde está
     lastFollowMs = millis();
   }
+  if (m == OFF && why && (strstr(why, "angulo") || strstr(why, "IMU")))
+    faultUntil = millis() + 5000;          // sinaliza o erro durante 5 s
   both("modo %s%s%s\r\n", MODE_NAME[m], why ? " - " : "", why ? why : "");
 }
 
@@ -113,6 +118,7 @@ static void calibrate() {
   if (!imuOk) { both("IMU indisponivel\r\n"); return; }
   if (mode != OFF) setMode(OFF, "calibracao");
   both("A calibrar giroscopio - NAO mexer...\r\n");
+  sled.update(LedState::CALIB);
   imu.calibrateGyro(1000);
   imu.update();
   filt.init(imu);
@@ -286,6 +292,7 @@ static void pollPort(Stream &port, String &buf, uint32_t &lastRx) {
 // ---------------- setup ----------------
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
+  sled.begin();
   Serial.begin(115200);
   BT.begin(BT_BAUD);
 
@@ -318,6 +325,18 @@ void loop() {
   static uint32_t usbRx = 0, btRx = 0, tBeat = 0;
   static uint32_t next = micros(), last = micros();
   static uint8_t telDiv = 0;
+
+  // ---- LEDs de estado ----
+  {
+    LedState ls;
+    if (!imuOk || millis() < faultUntil)  ls = LedState::ERROR;
+    else if (mode == MANUAL)               ls = LedState::MANUAL;
+    else if (mode == AUTO)                 ls = LedState::ACTIVE;
+    else if (mode == FOLLOW)
+      ls = (millis() - lastFollowMs > FOLLOW_TIMEOUT) ? LedState::WAITING : LedState::ACTIVE;
+    else                                   ls = LedState::IDLE;
+    sled.update(ls);
+  }
 
   pollPort(Serial, usbBuf, usbRx);
   pollPort(BT, btBuf, btRx);

@@ -20,7 +20,7 @@ Servo TowerPro MG996R & 2 & Waveshare \cite{waveshareMG996R} & 4,60 & 9,20\\
 Bateria LiPo 2S \SI{2200}{\milli\ampere\hour} & 1 & (E) & 20,00 & 20,00\\
 \acrshort{ubec} \SI{6}{\volt} & 1 & FlyingTech \cite{flyingtechubec} & 10,00 & 10,00\\
 Regulador \textit{buck} \SI{5}{\volt} & 1 & (E) & 4,00 & 4,00\\
-Botão de paragem de emergência (2 NF) & 1 & (E) & 5,00 & 5,00\\
+Interruptor basculante DPST (corte dos servos) & 1 & (E) & 5,00 & 5,00\\
 Fusível e porta-fusível & 1 & (E) & 2,00 & 2,00\\
 Interruptor geral & 1 & (E) & 1,00 & 1,00\\
 Condensador, resistências, \acrshort{led} & -- & (E) & 2,00 & 2,00\\
@@ -55,7 +55,7 @@ O custo total estimado do protótipo é de cerca de 143~€, abaixo do limite de
 \label{fig:custos}
 \end{figure}
 
-A alimentação e a segurança representam o maior grupo (cerca de 31\,\% do total), mais do que o processamento. Isto resulta de a bateria e os reguladores terem de ser dimensionados para os picos de corrente dos servos e de se ter incluído desde o início uma paragem de emergência e proteção por fusível. A placa de desenvolvimento é o componente individual mais caro (25\,\%), seguida do GY-85 (15\,\%). Os sensores e os atuadores, que são o núcleo funcional do sistema, custam em conjunto cerca de 21\,\%.
+A alimentação e a segurança representam o maior grupo (cerca de 31\,\% do total), mais do que o processamento. Isto resulta de a bateria e os reguladores terem de ser dimensionados para os picos de corrente dos servos e de se ter incluído desde o início um interruptor de corte dos servos e proteção por fusível. A placa de desenvolvimento é o componente individual mais caro (25\,\%), seguida do GY-85 (15\,\%). Os sensores e os atuadores, que são o núcleo funcional do sistema, custam em conjunto cerca de 21\,\%.
 
 A troca da MPU6050 pelo GY-85 aumentou o custo em cerca de 15~€. Uma segunda \gls{imu} na base, para a compensação antecipativa, acrescentaria outro tanto se fosse também um GY-85 e levaria o total acima dos 150~€; para essa função bastaria um sensor de seis eixos mais barato, já que o magnetómetro não é necessário.
 

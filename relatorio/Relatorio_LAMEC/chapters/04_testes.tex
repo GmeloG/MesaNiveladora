@@ -82,7 +82,7 @@ SRV-07 & Aproximar a \SI{+10}{\degree} vindo de cima e de baixo & Mesmo ângulo 
 \section{Comunicação (T-COM)}
 \textbf{Objetivo:} verificar a receção e validação das mensagens, a frequência de receção e a deteção de perda de ligação (RF2, RF7, RNF4, RNF5, RNF8).
 
-\textbf{Procedimento:} com uma aplicação de terminal Bluetooth, enviar mensagens escritas à mão e verificar a resposta no registo. Depois, com a aplicação final, enviar referências continuamente e medir no registo o intervalo entre mensagens válidas. Para a perda de ligação, desligar o Bluetooth do telemóvel ou afastá-lo até perder o sinal e medir o tempo até ao modo seguro.
+\textbf{Procedimento:} com o campo de comandos da página, enviar mensagens escritas à mão e verificar a resposta no registo. Depois, com o modo de seguimento ativo, enviar referências continuamente e medir no registo o intervalo entre mensagens válidas. Para a perda de ligação, desligar o Bluetooth do telemóvel ou afastá-lo até perder o sinal e medir o tempo até a plataforma voltar à horizontal.
 
 \begin{table}[H]
 \centering\small
@@ -90,15 +90,15 @@ SRV-07 & Aproximar a \SI{+10}{\degree} vindo de cima e de baixo & Mesmo ângulo 
 \begin{tabularx}{\textwidth}{p{1.6cm}YYY}
 \toprule
 ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
-COM-01 & \texttt{\$REF,-12.5,4.3,57*63} & Referência aceite: $-12{,}5$ e $4{,}3$ & Valores corretos no registo\\
-COM-02 & \texttt{\$REF,-12.5,4.3,57*00} (\textit{checksum} errado) & Mensagem rejeitada & Referência anterior mantida\\
-COM-03 & \texttt{\$REF,-80.0,0.0,58*65} (fora de gama) & Mensagem rejeitada ou saturada & Plataforma não ultrapassa o limite\\
-COM-04 & Mensagem com número de sequência antigo & Mensagem ignorada & Referência anterior mantida\\
-COM-05 & Mensagem incompleta, sem fim de linha & Ignorada sem bloquear & Mensagem seguinte é aceite\\
-COM-06 & \texttt{\$MODE,2*1D}, \texttt{\$ARM*5E} & Mudança de modo e de estado & Estado correto na telemetria\\
-COM-07 & Envio contínuo a \SI{20}{\hertz} durante 5~min & Mensagens recebidas & Frequência $\geq \SI{20}{\hertz}$; perdas $< 1\,\%$\\
-COM-08 & Corte da ligação em modo de seguimento & Modo seguro & Transição em menos de \SI{0.5}{\second}\\
-COM-09 & Ligação a partir de Android e de iOS & Ligação estabelecida & Referências recebidas nos dois sistemas\\
+COM-01 & \texttt{f -12.5 4.3} em modo de seguimento & Referência aceite: $-12{,}5$ e $4{,}3$ & Plataforma segue os valores (telemetria)\\
+COM-02 & \texttt{f -12.5 4.3} noutro modo & Mensagem ignorada & Plataforma não se move\\
+COM-03 & \texttt{f -80 0} (fora de gama) & Referência saturada a $\pm\SI{20}{\degree}$ & Plataforma não ultrapassa o limite\\
+COM-04 & \texttt{f -12.5} ou \texttt{f a b} (campos errados) & Mensagem ignorada & Referência anterior mantida\\
+COM-05 & Mensagem sem fim de linha & Aceite ao fim de \SI{50}{\milli\second} & Mensagem seguinte é aceite\\
+COM-06 & \texttt{m 2}, \texttt{m 3}, \texttt{m 0} & Mudança de modo & Modo correto na telemetria\\
+COM-07 & Envio contínuo a partir da página durante 5~min & Mensagens recebidas & Frequência $\geq \SI{15}{\hertz}$; perdas $< 1\,\%$\\
+COM-08 & Corte da ligação em modo de seguimento & Plataforma volta à horizontal & Transição em menos de \SI{1.5}{\second}\\
+COM-09 & Ligação a partir de Android (Chrome) e de iOS (Bluefy) & Ligação estabelecida & Referências recebidas nos dois sistemas\\
 \bottomrule
 \end{tabularx}
 \label{tab:t-com}
@@ -138,8 +138,8 @@ CTL-08 & Carga adicional (telemóvel) sobre a plataforma & Comportamento estáve
 \toprule
 ID & Entrada & Resultado esperado & Critério de aceitação\\\midrule
 SEG-01 & Ligar o sistema & Arranca desarmado, servos na posição neutra & Nenhum movimento antes de armar\\
-SEG-02 & Premir a paragem de emergência em movimento & Servos sem alimentação; estado de falha & Corte imediato, verificado com multímetro\\
-SEG-03 & Rearmar a emergência & Sistema mantém-se em falha & Só volta a funcionar após reinício\\
+SEG-02 & Desligar o interruptor de corte com a plataforma em movimento & Servos sem alimentação; estado de falha & Corte imediato, verificado com multímetro\\
+SEG-03 & Voltar a ligar o interruptor de corte & Sistema mantém-se em falha & Só volta a funcionar após reinício\\
 SEG-04 & Bloquear o programa (ciclo infinito de teste) & \textit{Watchdog} reinicia o sistema & Reinício em menos de \SI{100}{\milli\second} e arranque desarmado\\
 SEG-05 & Tensão da bateria abaixo do limiar (fonte regulável) & Aviso e passagem ao modo seguro & Limiar detetado com erro $< \SI{0.1}{\volt}$\\
 SEG-06 & Inspeção da gama de movimento completa & Sem pontos de entalamento acessíveis & Afastamentos mínimos cumpridos\\

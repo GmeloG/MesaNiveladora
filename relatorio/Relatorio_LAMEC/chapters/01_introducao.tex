@@ -18,23 +18,30 @@ O objetivo geral do trabalho é projetar, construir e avaliar experimentalmente 
 
 Os objetivos específicos são os seguintes, podendo ser ajustados ao longo do projeto:
 \begin{enumerate}[label=OE\arabic*.]
-\item Estudar as soluções existentes e as tecnologias disponíveis, incluindo o paralelismo com o controlo de atitude de drones.
+\item Estudar as soluções existentes e as tecnologias disponíveis.
 \item Definir a arquitetura de hardware e de software do sistema e os respetivos módulos.
 \item Estimar a inclinação da plataforma com uma \gls{imu} e um algoritmo de fusão sensorial executado no microcontrolador.
 \item Implementar a comunicação sem fios com o telemóvel e o seguimento da sua inclinação.
-\item Implementar e afinar o controlo dos dois eixos, comparando pelo menos duas abordagens.
-\item Definir e executar procedimentos de teste para cada módulo e para o sistema completo.
+\item Implementar e afinar o controlo dos dois eixos.
 \item Estimar o custo do protótipo.
 \end{enumerate}
 
 \section{Requisitos}
-Os requisitos foram identificados a partir dos objetivos e do estudo do estado da arte. Cada requisito tem um identificador, uma prioridade (E~--~essencial; D~--~desejável) e o teste que o verifica, definido no capítulo~\ref{ch:testes}. Os valores numéricos são metas iniciais e serão revistos após a caracterização do protótipo.
+
+Os requisitos foram identificados a partir dos objetivos e do estudo do estado da arte e estão divididos em funcionais, que descrevem o que o sistema tem de fazer, e não funcionais, que fixam limites de desempenho, tecnologias e restrições. As tabelas~\ref{tab:rf} e~\ref{tab:rnf} têm quatro colunas:
+\begin{itemize}
+\item \textbf{ID:} identificador do requisito (RF para funcionais, RNF para não funcionais), usado para o referir no resto do documento;
+\item \textbf{Descrição:} o que se exige ao sistema;
+\item \textbf{Prior.:} prioridade do requisito, E (essencial) se o sistema não cumpre o seu objetivo sem ele, ou D (desejável) se melhora o sistema mas pode ficar para uma fase posterior;
+\item \textbf{Verificação:} forma de confirmar que o requisito é cumprido. Pode ser um grupo de testes do capítulo~\ref{ch:testes} (por exemplo, T-IMU são os testes do sensor inercial e T-COM os testes da comunicação), uma inspeção, isto é, a confirmação direta no protótipo ou no projeto sem ser preciso fazer medições, ou a análise de outro capítulo.
+\end{itemize}
+Os valores numéricos são metas iniciais e serão revistos após a caracterização do protótipo.
 
 \subsection{Requisitos funcionais}
 \begin{table}[H]
 \centering\small
 \caption{Requisitos funcionais.}
-\begin{tabularx}{\textwidth}{p{1.1cm}Yp{1.2cm}p{2.2cm}}
+\begin{tabularx}{\textwidth}{p{1.1cm}Yp{1.0cm}p{2.6cm}}
 \toprule
 ID & Descrição & Prior. & Verificação\\\midrule
 RF1 & Medir a inclinação da plataforma em \textit{roll} e \textit{pitch} & E & T-IMU, T-FUS\\
@@ -44,7 +51,7 @@ RF4 & Manter a plataforma nivelada quando a base é inclinada & E & T-CTL, T-INT
 RF5 & Permitir escolher o modo de funcionamento e alternar entre modos sem saltos bruscos & E & T-INT\\
 RF6 & Calibrar a \gls{imu} e a posição neutra dos servos no arranque ou a pedido & E & T-IMU, T-SRV\\
 RF7 & Passar a um estado seguro se a comunicação falhar durante o seguimento do telemóvel & E & T-COM, T-SEG\\
-RF8 & Dispor de uma paragem de emergência que retire a alimentação aos servos & E & T-SEG\\
+RF8 & Dispor de um interruptor de corte que retire a alimentação aos servos & D & T-SEG\\
 RF9 & Indicar o estado do sistema através de \gls{led} & D & T-INT\\
 RF10 & Registar referências, ângulos e comandos para análise dos ensaios & D & T-CTL\\
 \bottomrule
@@ -62,12 +69,12 @@ ID & Descrição & Prior. & Verificação\\\midrule
 RNF1 & Gama de movimento de pelo menos $\pm\SI{20}{\degree}$ em cada eixo & E & T-SRV\\
 RNF2 & Erro em regime permanente inferior a \SI{2}{\degree} com a base parada & E & T-CTL\\
 RNF3 & Atualização da estimativa de atitude a pelo menos \SI{100}{\hertz} & E & T-FUS\\
-RNF4 & Receção de referências do telemóvel a pelo menos \SI{20}{\hertz} & E & T-COM\\
-RNF5 & Deteção de perda de comunicação em menos de \SI{0.5}{\second} & E & T-COM\\
+RNF4 & Receção de referências do telemóvel a pelo menos \SI{15}{\hertz} & E & T-COM\\
+RNF5 & Deteção de perda de comunicação em menos de \SI{1.5}{\second} & E & T-COM\\
 RNF6 & Controlo executado localmente no microcontrolador (NUCLEO-F767ZI) & E & Inspeção\\
 RNF7 & Alimentação por bateria, com autonomia mínima de \SI{30}{\minute} & D & T-ALIM\\
-RNF8 & Compatibilidade com telemóveis Android e, se possível, iOS & D & T-COM\\
-RNF9 & Estrutura mecânica produzida por impressão 3D & D & Inspeção\\
+RNF8 & Compatibilidade com telemóveis Android e, se possível, iOS & E & T-COM\\
+RNF9 & Estrutura mecânica produzida por impressão 3D & E & Inspeção\\
 RNF10 & Ausência de pontos de entalamento acessíveis com a plataforma em movimento normal & E & T-SEG\\
 RNF11 & Tensão de alimentação inferior a \SI{24}{\volt}, como exigido para brinquedos elétricos & E & Inspeção\\
 \bottomrule

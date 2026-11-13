@@ -18,6 +18,12 @@
 #define IMU_SDA_PIN       PB9    // D14
 #define IMU_SCL_PIN       PB8    // D15
 
+// --- LEDs de estado externos (conector CN10) ---
+// Cada LED: pino -> resistência 220-330 ohm -> LED -> GND
+#define LED_GREEN_PIN     PE9    // D6
+#define LED_RED_PIN       PE11   // D5
+#define STATUS_LED_ACTIVE_LOW 0  // 1 se for LED bicolor de ânodo comum (comum ao 3V3)
+
 // --- Parâmetros dos servos ---
 #define SERVO_PERIOD_US     20000  // 50 Hz
 // Gama conservadora para começar; alargar depois de medir (até ~500-2500 us)
