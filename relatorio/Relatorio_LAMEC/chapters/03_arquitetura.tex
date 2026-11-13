@@ -24,7 +24,8 @@ A figura~\ref{fig:blocos} mostra o diagrama de blocos do sistema. O telemóvel e
 \node[pot] (reg5) at (6.2,-3.0) {Regulador \SI{5}{\volt}};
 \node[pot] (ubec) at (10.8,-3.0) {\acrshort{ubec} \SI{6}{\volt}\\$\geq$\SI{5}{\ampere}};
 \node[pot] (bat) at (6.2,-5.0) {Bateria LiPo 2S\\+ fusível};
-\node[bloco, fill=red!10] (es) at (10.8,-5.0) {Paragem de\\emergência};
+\node[bloco, fill=red!10] (es) at (10.8,-5.0) {Interruptor de\\corte dos servos};
+\node[bloco] (leds) at (1.9,-2.3) {\acrshort{led} de estado\\(verde, vermelho)};
 
 \draw[sinal, <->] (tel) -- node[above, lab]{Bluetooth} (bt);
 \draw[sinal, <->] ($(bt.east)+(0,-0.2)$) -- node[below, lab]{\acrshort{uart}} ($(mcu.west)+(0,-0.2)$);
@@ -33,6 +34,7 @@ A figura~\ref{fig:blocos} mostra o diagrama de blocos do sistema. O telemóvel e
 \draw[sinal] (mcu.east |- s1) -- node[above, lab]{\acrshort{pwm}} (s1);
 \draw[sinal] (mcu.east |- s2) -- node[below, lab]{\acrshort{pwm}} (s2);
 \draw[sinal] ($(es.west)+(0,0.25)$) -- ++(-0.6,0) |- node[pos=0.75, above, lab]{contacto auxiliar} (8.3,-1.8) -| ($(mcu.south east)+(-0.4,0)$);
+\draw[sinal] ($(mcu.south west)+(0.4,0)$) |- node[pos=0.75, above, lab]{GPIO} (leds.east);
 \draw[energia] (bat) -- (reg5);
 \draw[energia] (reg5) -- (mcu);
 \draw[energia] (bat.east) -- ++(0.9,0) |- ($(es.west)+(0,-0.3)$);
@@ -127,7 +129,7 @@ Tabuleiro & $88\times\SI{88}{\milli\metre}$; base de \SI{4}{\milli\metre}; rebor
 
 O tabuleiro foi acrescentado para os ensaios com bola. Fica assente diretamente sobre a plataforma, por isso roda com ela nos dois eixos, e o rebordo impede que a bola caia nos movimentos normais. As suas dimensões permitem que rode livremente até $\pm\SI{20}{\degree}$ em \textit{roll} e \textit{pitch} sem tocar no quadro; para lá deste valor, o movimento tem de ser limitado em software, o que é coerente com o requisito RNF1 e com os limites definidos no controlo.
 
-O modelo usa uma folga de impressão de \SI{0.3}{\milli\metre} e as cotas do MG996R estão parametrizadas, devendo ser confirmadas com paquímetro antes da impressão. O rebaixo da \gls{imu} na plataforma foi desenhado para o módulo GY-521 ($21{,}5\times\SI{16.5}{\milli\metre}$). O GY-85 tem dimensões muito próximas (cerca de $22\times\SI{17}{\milli\metre}$) \cite{gy85}, mas a posição dos furos de fixação tem de ser verificada e ajustada no modelo.
+O modelo usa uma folga de impressão de \SI{0.3}{\milli\metre} e as cotas do MG996R estão parametrizadas, o que permitiu ajustar as peças às medidas reais dos componentes. A plataforma tem ao centro um rebaixo de $21{,}5\times\SI{16.5}{\milli\metre}$ onde fica alojada a \gls{imu}, com furos para a sua fixação. As peças foram impressas e montadas sem necessidade de alterações ao modelo.
 
 \section{Arquitetura de hardware}
 
@@ -140,17 +142,36 @@ O módulo GY-85 é ligado ao barramento \gls{i2c}1 a \SI{400}{\kilo\hertz}. Os t
 Propõe-se configurar o acelerómetro em modo de resolução total, na gama de $\pm\SI{2}{g}$, que chega para medir a inclinação, e o giroscópio na gama de $\pm\SI{2000}{\degree\per\second}$, com o filtro passa-baixo digital interno ativo para reduzir o ruído das vibrações dos servos. O magnetómetro não é usado no controlo, mas é configurado para ficar disponível. A leitura é feita por \textit{polling}, sincronizada com o ciclo de \SI{200}{\hertz}.
 
 \subsection{Atuadores}
-Os dois servos MG996R são comandados por dois canais do mesmo temporizador, a \SI{50}{\hertz}. Com o relógio do temporizador dividido para \SI{1}{\mega\hertz}, cada unidade corresponde a \SI{1}{\micro\second}, o que dá uma resolução muito superior à banda morta do servo (\SI{5}{\micro\second}) \cite{mg996r}. A largura de impulso é limitada em software a uma janela calibrada, de modo a nunca forçar os batentes mecânicos.
+Os dois servos MG996R são comandados por dois canais do mesmo temporizador (TIM4), nos pinos PD15 e PD14, a \SI{50}{\hertz}. Com o relógio do temporizador dividido para \SI{1}{\mega\hertz}, cada unidade corresponde a \SI{1}{\micro\second}, o que dá uma resolução muito superior à banda morta do servo (\SI{5}{\micro\second}) \cite{mg996r}. A largura de impulso é limitada em software a uma janela calibrada, de modo a nunca forçar os batentes mecânicos.
+
+\subsection{Sinalização}
+O estado do sistema é indicado por dois \gls{led} externos, um verde e um vermelho, montados na caixa de forma a serem visíveis pelo utilizador. Cada \gls{led} é ligado a uma saída digital da NUCLEO (PE9 para o verde e PE11 para o vermelho) através de uma resistência de 220 a \SI{330}{\ohm} em série, com o cátodo à massa. Com \SI{330}{\ohm} e uma tensão direta de cerca de \SI{2}{\volt}, a corrente em cada \gls{led} é de aproximadamente $(3{,}3-2)/330 \approx \SI{4}{\milli\ampere}$, bem dentro do que um pino do microcontrolador pode fornecer. A combinação dos dois \gls{led} permite distinguir os estados da tabela~\ref{tab:leds}.
+
+\begin{table}[H]
+\centering\small
+\caption{Sinalização do estado através dos \acrshort{led} externos.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm}Y}
+\toprule
+\acrshort{led} & Significado\\\midrule
+Verde fixo & Controlo ativo: plataforma a nivelar ou a seguir o telemóvel\\
+Verde a piscar (\SI{1}{\hertz}) & Seguimento ativo, mas à espera de dados do telemóvel\\
+Verde e vermelho acesos & Calibração do giroscópio ou comando manual dos servos\\
+Vermelho fixo & Controlo desligado (servos na posição neutra)\\
+Vermelho a piscar (\SI{4}{\hertz}) & Erro: falha da \acrshort{imu} ou corte de segurança\\
+\bottomrule
+\end{tabularx}
+\label{tab:leds}
+\end{table}
 
 \subsection{Comunicação}
-O módulo Bluetooth de modo duplo (HM-12) liga-se à USART6 do microcontrolador \cite{hm12}. Funciona a 9600~bps por omissão. Uma mensagem de referência tem cerca de 25 bytes, o que a esta velocidade ocupa cerca de \SI{26}{\milli\second}; a \SI{20}{\hertz} o canal fica ocupado a cerca de metade. Se o módulo o permitir, a velocidade será aumentada por comando AT para dar margem.
+O módulo Bluetooth de modo duplo (HM-12) liga-se à USART6 do microcontrolador \cite{hm12}. Funciona a 9600~bps por omissão. Uma mensagem de referência tem cerca de 12 bytes, o que a esta velocidade ocupa cerca de \SI{13}{\milli\second}; a \SI{15}{\hertz} o canal fica ocupado a cerca de \SI{20}{\percent}, o que deixa margem suficiente.
 
 \subsection{Alimentação}
 A alimentação é feita por uma bateria LiPo 2S (\SI{7.4}{\volt} nominais, \SI{8.4}{\volt} carregada), protegida por um fusível logo à saída e com um interruptor geral. Os servos são alimentados por um \gls{ubec} de \SI{6}{\volt}, separado da eletrónica para que os picos de corrente não perturbem o microcontrolador nem a \gls{imu}. Como cada MG996R pode consumir \SI{2.5}{\ampere} em bloqueio, o regulador deve fornecer pelo menos \SI{5}{\ampere}; um \gls{ubec} de \SI{3}{\ampere} \cite{hobbywingubec} só serve se o software impedir que os dois servos fiquem bloqueados em simultâneo. Junto aos servos coloca-se um condensador eletrolítico de \SI{1000}{\micro\farad} para absorver os picos. Todas as massas são ligadas num ponto comum.
 
 A tensão da bateria é medida por um divisor resistivo ligado a uma entrada analógica. Com $R_1 = \SI{10}{\kilo\ohm}$ e $R_2 = \SI{4.7}{\kilo\ohm}$, os \SI{8.4}{\volt} da bateria carregada correspondem a \SI{2.69}{\volt} no \gls{adc}, abaixo do limite de \SI{3.3}{\volt}.
 
-A paragem de emergência é um botão com dois contactos normalmente fechados. O primeiro está em série com a alimentação dos servos e corta-a fisicamente quando o botão é atuado. O segundo liga uma entrada digital à massa: em funcionamento normal a entrada lê 0; com o botão atuado o contacto abre, a resistência interna de \textit{pull-up} leva a entrada a 1 e o microcontrolador passa ao estado de falha.
+O corte dos servos é feito por um interruptor basculante comum de dois polos (DPST), como o RS PRO 793-2575, montado na caixa. O primeiro polo está em série com a alimentação dos servos e corta-a fisicamente quando o interruptor é desligado. O segundo liga uma entrada digital à massa: com o interruptor ligado a entrada lê 0; quando é desligado o contacto abre, a resistência interna de \textit{pull-up} leva a entrada a 1 e o microcontrolador passa ao estado de falha. Como o equipamento é tratado como um brinquedo (capítulo~\ref{ch:seguranca}), não é exigido um botão de paragem de emergência segundo a EN ISO 13850; um interruptor comum é suficiente para parar o movimento de forma independente do software.
 
 \begin{table}[H]
 \centering\small
@@ -174,17 +195,17 @@ O esquema elétrico está dividido em duas partes: as ligações de sinal entre 
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[scale=0.70, transform shape,
+\begin{tikzpicture}[scale=0.64, transform shape,
   pin/.style={font=\scriptsize},
   tit/.style={font=\small\bfseries, align=center},
   net/.style={font=\scriptsize\ttfamily, text=blue!60!black},
   fio/.style={thick}]
 % ---------------- NUCLEO ----------------
 \draw[thick, fill=blue!6] (6,-4.6) rectangle (12.5,4.6);
-\node[tit] at (9.25,0) {NUCLEO-\\F767ZI};
+\node[tit] at (9.25,-0.75) {NUCLEO-\\F767ZI};
 \foreach \y/\t in {4.0/{PB8 (D15) I2C1\_SCL}, 3.4/{PB9 (D14) I2C1\_SDA}, 1.4/{PG14 (D1) USART6\_TX}, 0.8/{PG9 (D0) USART6\_RX}, -1.6/{PA3 (A0) ADC}, -2.6/{PF13 (D7) GPIO}}
   {\node[pin, anchor=west] at (6.05,\y) {\t};}
-\foreach \y/\t in {4.0/{5V}, 3.4/{GND}, 2.3/{PE9 (D6) TIM1\_CH1}, -1.4/{PE11 (D5) TIM1\_CH2}, -3.6/{E5V}, -4.2/{GND}}
+\foreach \y/\t in {4.0/{5V}, 3.4/{GND}, 2.3/{PD15 (D9) TIM4\_CH4}, 0.9/{PE9 (D6) GPIO}, -0.1/{PE11 (D5) GPIO}, -1.4/{PD14 (D10) TIM4\_CH3}, -3.6/{E5V}, -4.2/{GND}}
   {\node[pin, anchor=east] at (12.45,\y) {\t};}
 % ---------------- GY-85 ----------------
 \draw[thick, fill=green!10] (0.4,2.1) rectangle (3.0,4.9);
@@ -204,25 +225,28 @@ O esquema elétrico está dividido em duas partes: as ligações de sinal entre 
 \draw[fio] (3,-0.55) -- (3.5,-0.55) node[net, right]{GND};
 % ---------------- ADC e emergência ----------------
 \draw[fio] (6,-1.6) -- (5.2,-1.6) node[net, left]{VBAT\_ADC};
-\draw[fio] (6,-2.6) -- (4.6,-2.6) to[ncs, l_={\scriptsize S2b (emergência, NF)}] (4.6,-4.2) node[ground]{};
+\draw[fio] (6,-2.6) -- (4.6,-2.6) to[ncs, l_={\scriptsize S2b (interruptor, 2.\textordmasculine{} polo)}] (4.6,-4.2) node[ground]{};
 % ---------------- alimentação da NUCLEO ----------------
 \draw[fio] (12.5,4.0) -- (13.1,4.0) node[net, right]{+5V};
 \draw[fio] (12.5,3.4) -- (13.1,3.4) node[net, right]{GND};
 \draw[fio] (12.5,-3.6) -- (13.1,-3.6) node[net, right]{+5V};
 \draw[fio] (12.5,-4.2) -- (13.1,-4.2) node[net, right]{GND};
+% ---------------- LEDs de estado ----------------
+\draw[fio] (12.5,0.9) to[R, l={\scriptsize $R_3$ \SI{330}{\ohm}}] (14.4,0.9) to[led, l={\scriptsize LED verde}] (16.2,0.9) -- (16.5,0.9) node[net, right]{GND};
+\draw[fio] (12.5,-0.1) to[R, l_={\scriptsize $R_4$ \SI{330}{\ohm}}] (14.4,-0.1) to[led, l_={\scriptsize LED vermelho}] (16.2,-0.1) -- (16.5,-0.1) node[net, right]{GND};
 % ---------------- Servos ----------------
 \foreach \ys/\nome in {2.3/{Servo \textit{roll}}, -1.4/{Servo \textit{pitch}}}{
-  \draw[thick, fill=gray!15] (14.7,\ys-1.1) rectangle (16.9,\ys+0.9);
-  \node[tit] at (15.8,\ys+0.55) {\nome};
-  \node[pin, anchor=west] at (14.75,\ys) {Sinal};
-  \node[pin, anchor=east] at (16.85,\ys-0.3) {V+};
-  \node[pin, anchor=east] at (16.85,\ys-0.8) {GND};
-  \draw[fio] (16.9,\ys-0.3) -- (17.4,\ys-0.3) node[net, right]{+6V\_SERVO};
-  \draw[fio] (16.9,\ys-0.8) -- (17.4,\ys-0.8) node[net, right]{GND};
-  \draw[fio] (12.5,\ys) -- (14.7,\ys);
+  \draw[thick, fill=gray!15] (17.6,\ys-1.1) rectangle (19.8,\ys+0.9);
+  \node[tit] at (18.7,\ys+0.55) {\nome};
+  \node[pin, anchor=west] at (17.65,\ys) {Sinal};
+  \node[pin, anchor=east] at (19.75,\ys-0.3) {V+};
+  \node[pin, anchor=east] at (19.75,\ys-0.8) {GND};
+  \draw[fio] (19.8,\ys-0.3) -- (20.3,\ys-0.3) node[net, right]{+6V\_SERVO};
+  \draw[fio] (19.8,\ys-0.8) -- (20.3,\ys-0.8) node[net, right]{GND};
+  \draw[fio] (12.5,\ys) -- (17.6,\ys);
 }
 \end{tikzpicture}
-\caption{Esquema elétrico: ligações de sinal entre a NUCLEO-F767ZI e os módulos.}
+\caption{Esquema elétrico: ligações de sinal entre a NUCLEO-F767ZI, os módulos e os \acrshort{led} de estado.}
 \label{fig:esq-sinal}
 \end{figure}
 
@@ -246,7 +270,7 @@ O esquema elétrico está dividido em duas partes: as ligações de sinal entre 
 \draw (9.4,3) -- (10.2,3) node[right, font=\scriptsize\ttfamily, text=blue!60!black]{+5V};
 % ramo dos servos com emergência
 \draw (5,3) -- (5,5) to[ncs] (7.2,5);
-\node[font=\scriptsize, align=center] at (6.1,5.75) {S2a: emergência (NF)};
+\node[font=\scriptsize, align=center] at (5.6,5.75) {S2a: interruptor de corte\\(1.\textordmasculine{} polo)};
 \draw (7.2,5) -- (8.4,5);
 \draw[thick, fill=orange!15] (8.4,4.4) rectangle (10.6,5.6);
 \node[align=center, font=\scriptsize] at (9.5,5) {\acrshort{ubec}\\\SI{6}{\volt}, $\geq$\SI{5}{\ampere}};
@@ -257,7 +281,7 @@ O esquema elétrico está dividido em duas partes: as ligações de sinal entre 
 \draw (0,0) -- (12.4,0);
 \draw (6.2,0) node[ground]{};
 \end{circuitikz}
-\caption{Esquema elétrico: circuito de alimentação. S2a e S2b são os dois contactos normalmente fechados do mesmo botão de emergência.}
+\caption{Esquema elétrico: circuito de alimentação. S2a e S2b são os dois polos do mesmo interruptor de corte dos servos.}
 \label{fig:esq-alim}
 \end{figure}
 
@@ -269,14 +293,15 @@ O esquema elétrico está dividido em duas partes: as ligações de sinal entre 
 Sinal & Pino & Periférico & Ligação\\\midrule
 \acrshort{i2c} SCL & PB8 (D15) & I2C1 & GY-85 SCL\\
 \acrshort{i2c} SDA & PB9 (D14) & I2C1 & GY-85 SDA\\
-\acrshort{pwm} servo \textit{roll} & PE9 (D6) & TIM1\_CH1 & Sinal do servo 1\\
-\acrshort{pwm} servo \textit{pitch} & PE11 (D5) & TIM1\_CH2 & Sinal do servo 2\\
+\acrshort{pwm} servo \textit{roll} & PD15 (D9) & TIM4\_CH4 & Sinal do servo 1\\
+\acrshort{pwm} servo \textit{pitch} & PD14 (D10) & TIM4\_CH3 & Sinal do servo 2\\
 \acrshort{uart} TX & PG14 (D1) & USART6 & RXD do módulo Bluetooth\\
 \acrshort{uart} RX & PG9 (D0) & USART6 & TXD do módulo Bluetooth\\
 Tensão da bateria & PA3 (A0) & \acrshort{adc} & Divisor resistivo ($R_1$, $R_2$)\\
-Paragem de emergência & PF13 (D7) & GPIO com \textit{pull-up} & Contacto auxiliar S2b\\
+Interruptor de corte & PF13 (D7) & GPIO com \textit{pull-up} & 2.\textordmasculine{} polo do interruptor S2b\\
 Alimentação & E5V & -- & Saída do regulador de \SI{5}{\volt}\\
-\acrshort{led} de estado & PB0, PB7, PB14 & GPIO & \acrshort{led} da placa (LD1--LD3)\\
+\acrshort{led} verde & PE9 (D6) & GPIO & $R_3$ e \acrshort{led} verde externo\\
+\acrshort{led} vermelho & PE11 (D5) & GPIO & $R_4$ e \acrshort{led} vermelho externo\\
 \bottomrule
 \end{tabularx}
 \label{tab:pinos}
@@ -329,7 +354,7 @@ Supervisor (limites, \textit{timeouts}) & \SI{200}{\hertz} & Interrupção do te
 Controlo e atualização dos servos & \SI{50}{\hertz} & Interrupção do temporizador (1 em cada 4)\\
 Receção Bluetooth & Por byte & Interrupção da USART\\
 Interpretação de mensagens & Contínua & Ciclo principal\\
-Telemetria para o telemóvel & \SI{5}{\hertz} & Ciclo principal\\
+Telemetria para o telemóvel & \SI{10}{\hertz} & Ciclo principal\\
 Registo para o PC & \SI{50}{\hertz} & Ciclo principal\\
 Leitura da bateria & \SI{1}{\hertz} & Ciclo principal\\
 \bottomrule
@@ -396,20 +421,20 @@ A figura~\ref{fig:estados} mostra a máquina de estados da aplicação. O sistem
 \node[est, fill=green!10] (niv) at (10.0,-2.8) {Nivelamento};
 \node[est, fill=yellow!20] (seguro) at (4.8,-5.6) {Modo seguro};
 \node[est, fill=red!15] (falha) at (0,-5.6) {Falha};
-\node[lab, text width=2.6cm] (qq) at (0,-3.0) {qualquer estado:\\emergência ou\\erro da \acrshort{imu}};
+\node[lab, text width=2.6cm] (qq) at (0,-3.0) {qualquer estado:\\corte dos servos\\ou erro da \acrshort{imu}};
 
 \draw[tr] (arr) -- node[above, lab]{init OK} (cal);
 \draw[tr] (cal) -- node[above, lab]{calibrado} (des);
-\draw[tr] (des.south west) ++(0.3,0) -- node[left, lab, pos=0.45]{\texttt{ARM}\\modo 1} (seg.north);
-\draw[tr] (des.south east) ++(-0.3,0) -- node[right, lab, pos=0.45]{\texttt{ARM}\\modo 2} (niv.north);
-\draw[tr] ([yshift=2mm]seg.east) -- node[above, lab]{\texttt{MODE}} ([yshift=2mm]niv.west);
+\draw[tr] (des.south west) ++(0.3,0) -- node[left, lab, pos=0.45]{\texttt{m 3}} (seg.north);
+\draw[tr] (des.south east) ++(-0.3,0) -- node[right, lab, pos=0.45]{\texttt{m 2}} (niv.north);
+\draw[tr] ([yshift=2mm]seg.east) -- node[above, lab]{\texttt{m 2} / \texttt{m 3}} ([yshift=2mm]niv.west);
 \draw[tr] ([yshift=-2mm]niv.west) -- ([yshift=-2mm]seg.east);
 \draw[tr] ([xshift=-5mm]seg.south) -- node[left, lab]{perda de ligação\\ou bateria baixa} ([xshift=-5mm]seguro.north);
 \draw[tr] ([xshift=5mm]seguro.north) -- node[right, lab]{ligação\\reposta} ([xshift=5mm]seg.south);
 \draw[tr] (niv.south) |- node[pos=0.75, below, lab]{bateria baixa} (seguro.east);
 \draw[tr, dashed] (qq) -- (falha);
 \end{tikzpicture}
-\caption{Máquina de estados da aplicação. Em qualquer estado armado, \texttt{DISARM} leva ao estado Desarmado.}
+\caption{Máquina de estados da aplicação. Em qualquer estado armado, o comando \texttt{m 0} leva ao estado Desarmado.}
 \label{fig:estados}
 \end{figure}
 
@@ -419,43 +444,49 @@ A figura~\ref{fig:estados} mostra a máquina de estados da aplicação. O sistem
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}Yp{3.2cm}}
 \toprule
 Estado & Comportamento & \acrshort{led}\\\midrule
-Arranque & Inicializa periféricos e verifica a comunicação com os três sensores do GY-85 & Todos acesos\\
-Calibração & Com a plataforma parada, mede o desvio do giroscópio durante alguns segundos & Azul intermitente\\
-Desarmado & Servos na posição neutra; aguarda ordem para armar & Azul fixo\\
-Seguimento & Segue a inclinação do telemóvel, com limites de amplitude e velocidade & Verde fixo\\
-Nivelamento & Mantém a plataforma horizontal & Verde intermitente\\
-Modo seguro & Entra por perda de ligação ou bateria baixa; leva a referência a zero com rampa suave e aguarda nova ligação ou ordem para desarmar & Vermelho intermitente\\
-Falha & Entra por emergência ou erro da \acrshort{imu}; servos sem comando (ou sem alimentação, se for emergência); exige reinício & Vermelho fixo\\
+Arranque & Inicializa periféricos e verifica a comunicação com os três sensores do GY-85 & Verde e vermelho\\
+Calibração & Com a plataforma parada, mede o desvio do giroscópio durante alguns segundos & Verde e vermelho\\
+Desarmado & Servos na posição neutra; aguarda ordem para armar & Vermelho fixo\\
+Seguimento & Segue a inclinação do telemóvel, com limites de amplitude e velocidade & Verde fixo (a piscar sem dados)\\
+Nivelamento & Mantém a plataforma horizontal & Verde fixo\\
+Modo seguro & Entra por perda de ligação ou bateria baixa; leva a referência a zero com rampa suave e aguarda nova ligação ou ordem para desarmar & Verde a piscar\\
+Falha & Entra por corte dos servos ou erro da \acrshort{imu}; servos sem comando (ou sem alimentação, se o interruptor estiver desligado); exige reinício & Vermelho a piscar\\
 \bottomrule
 \end{tabularx}
 \label{tab:estados}
 \end{table}
 
 \subsection{Protocolo de comunicação}
-As mensagens são linhas de texto ASCII, com um formato inspirado no NMEA: começam por \texttt{\$}, têm campos separados por vírgulas e terminam com \texttt{*}, um \textit{checksum} de dois dígitos hexadecimais (XOR dos caracteres entre \texttt{\$} e \texttt{*}) e fim de linha. O texto facilita a depuração com uma aplicação genérica de terminal Bluetooth e o \textit{checksum} permite rejeitar mensagens corrompidas.
+As mensagens são linhas de texto ASCII curtas, com os campos separados por espaços. Cada comando termina com fim de linha ou, quando a aplicação não o envia, ao fim de \SI{50}{\milli\second} sem receber caracteres. O texto facilita a depuração, porque os mesmos comandos podem ser escritos à mão no campo de comandos da página ou num terminal série pelo USB. Não se usa \textit{checksum}: a ligação \gls{ble} já tem verificação de erros própria e, na porta série, cada mensagem é validada pelo número de campos e pelo formato numérico. Uma mensagem que não corresponda a nenhum comando é ignorada.
 
 \begin{table}[H]
 \centering\small
 \caption{Mensagens do protocolo.}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{1.7cm}p{1.4cm}>{\raggedright\arraybackslash}p{5.2cm}Y}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.3cm}p{1.2cm}>{\raggedright\arraybackslash}p{3.3cm}Y}
 \toprule
-Mensagem & Sentido & Exemplo & Significado\\\midrule
-REF & T $\rightarrow$ P & \texttt{\$REF,-12.5,4.3,57*63} & Referência de \textit{roll} e \textit{pitch} em graus e número de sequência\\
-MODE & T $\rightarrow$ P & \texttt{\$MODE,1*1E} & Seleção de modo (1 seguimento, 2 nivelamento)\\
-ARM & T $\rightarrow$ P & \texttt{\$ARM*5E} / \texttt{\$DISARM*00} & Armar ou desarmar\\
-CAL & T $\rightarrow$ P & \texttt{\$CAL*4E} & Pedir nova calibração (só desarmado)\\
-TEL & P $\rightarrow$ T & \texttt{\$TEL,1.2,-0.4,1,3*75} & Atitude medida, modo e estado\\
+Comando & Sentido & Exemplo & Significado\\\midrule
+\texttt{f} \textit{roll pitch} & T $\rightarrow$ P & \texttt{f -12.5 4.3} & Referência do telemóvel em graus (só aceite no modo de seguimento)\\
+\texttt{m} \textit{n} & T $\rightarrow$ P & \texttt{m 3} & Seleção de modo: 0 desligado, 1 manual, 2 nivelamento, 3 seguimento\\
+\texttt{c} & T $\rightarrow$ P & \texttt{c} & Calibrar o giroscópio (placa parada)\\
+\texttt{sp} \textit{roll pitch} & T $\rightarrow$ P & \texttt{sp 5 0} & Ângulo pretendido no modo de nivelamento\\
+\texttt{g} \textit{eixo kp ki kd} & T $\rightarrow$ P & \texttt{g b 1.2 0.2 0.05} & Ganhos do \gls{pid} (eixo \texttt{r}, \texttt{p} ou \texttt{b} para ambos)\\
+\texttt{?}, \texttt{s} & T $\rightarrow$ P & \texttt{?} & Pedir o estado; ligar ou desligar a telemetria\\
+Telemetria & P $\rightarrow$ T & \texttt{M3 R:1.2 P:-0.4 uR:0.8 uP:-0.3} & Modo, atitude medida e comando dos servos, a \SI{10}{\hertz}\\
 \bottomrule
 \end{tabularx}
 \label{tab:protocolo}
 \end{table}
 
-Uma referência é aceite apenas se o \textit{checksum} estiver correto, se os ângulos estiverem dentro da gama de movimento e se o número de sequência for mais recente do que o anterior. Se não chegar nenhuma referência válida durante \SI{300}{\milli\second}, o supervisor passa ao modo seguro, o que cumpre o requisito RNF5 com margem.
+Existem ainda comandos usados apenas na afinação e nos ensaios (movimento manual dos servos, \textit{trim}, inversão de eixos e coeficiente do filtro), que não são usados pela página. Os ângulos de referência são saturados a $\pm\SI{20}{\degree}$ antes de chegarem ao controlador. Se, no modo de seguimento, não chegar nenhuma referência durante \SI{1}{\second}, a referência passa a zero e a plataforma volta suavemente à horizontal, o que cumpre o requisito RNF5.
 
 \subsection{Aplicação do telemóvel}
-Numa primeira fase, os ensaios de comunicação são feitos com uma aplicação genérica de terminal Bluetooth, enviando mensagens escritas à mão. A aplicação final lê a orientação do telemóvel através dos sensores do sistema operativo \cite{android}, calcula \textit{roll} e \textit{pitch} em relação a uma posição neutra definida pelo utilizador e envia as mensagens \texttt{REF} a \SI{20}{\hertz}.
+Em vez de uma aplicação nativa, a interface do telemóvel é uma página web escrita em HTML e JavaScript, guardada no repositório do projeto (\texttt{docs/index.html}). A página usa a interface Web Bluetooth para se ligar ao módulo HM-12 em \gls{ble}, através do serviço \texttt{FFE0} e da característica \texttt{FFE1}, e o evento \texttt{deviceorientation} do navegador para ler a inclinação do telemóvel.
 
-\acompletar{ferramenta usada para a aplicação (por exemplo, Android Studio ou MIT App Inventor) e capturas de ecrã}
+O Safari do iPhone não suporta Web Bluetooth, por isso a página é aberta na Bluefy, um navegador gratuito para iOS e iPadOS que implementa esta interface e permite a uma página web comunicar diretamente com dispositivos \gls{ble} \cite{bluefy}. A Bluefy só permite o acesso ao Bluetooth a páginas servidas por HTTPS. Assim, evita-se desenvolver e instalar uma aplicação própria, e qualquer alteração à interface fica disponível apenas recarregando a página.
+
+A página permite ligar e desligar o Bluetooth, ativar os sensores, escolher o modo (seguir, nivelar ou parar), definir a posição atual do telemóvel como zero e pedir a calibração da \gls{imu}. Tem ainda opções para inverter ou trocar os eixos, ajustar a escala e limitar o ângulo enviado (entre \ang{5} e \ang{20}). Um gráfico mostra a inclinação do telemóvel e a da plataforma, recebida por telemetria, e um campo de texto permite enviar comandos manualmente nos ensaios. No modo de seguimento, a página envia a referência de \textit{roll} e \textit{pitch} a cada \SI{66}{\milli\second}, cerca de \SI{15}{\hertz}, e deixa de enviar quando fica em segundo plano.
+
+\acompletar{capturas de ecrã da página aberta na Bluefy}
 
 \section{Módulos do sistema}
 A tabela~\ref{tab:modulos} resume os módulos de software, as respetivas responsabilidades e interfaces.
@@ -472,7 +503,7 @@ Controlo & Calcular o comando de cada eixo & Referência, atitude, ganhos & Âng
 Driver servos & Converter ângulo em largura de impulso e gerar o \acrshort{pwm} & Ângulo de comando, calibração & Sinais \acrshort{pwm}\\
 Driver Bluetooth & Receber e enviar bytes pela \acrshort{uart} & \acrshort{uart} & \textit{Buffer} de receção\\
 Protocolo & Interpretar e validar mensagens; gerar telemetria & \textit{Buffer} de receção & Referências e comandos validados\\
-Supervisor & Verificar \textit{timeouts}, limites, bateria e emergência & Estado de todos os módulos & Eventos para a máquina de estados\\
+Supervisor & Verificar \textit{timeouts}, limites, bateria e interruptor de corte & Estado de todos os módulos & Eventos para a máquina de estados\\
 Aplicação & Gerir estados e modos & Eventos, comandos & Modo ativo, \acrshort{led}\\
 Registo & Enviar dados para o PC durante os ensaios & Variáveis internas & Linhas CSV pela porta série do ST-LINK\\
 \bottomrule

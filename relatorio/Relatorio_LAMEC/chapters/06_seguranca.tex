@@ -37,7 +37,7 @@ Requisito & Situação no protótipo & Alteração para um produto\\\midrule
 Tensão nominal não superior a \SI{24}{\volt} \cite{toy2009} & Cumpre: máximo de \SI{8.4}{\volt} (RNF12) & --\\
 Bateria e eletrónica inacessíveis sem ferramenta & Cumpre: caixa fechada com parafusos (SEG-08) & --\\
 Sem arestas vivas nem pontas (EN 71-1) & Peças impressas com arestas por acabar & Arredondar arestas e rever o acabamento\\
-Sem pontos de entalamento de dedos (EN 71-1) & Folgas entre quadro, plataforma e torres; servos com binário elevado & Proteger as zonas de rotação, limitar velocidade e binário, manter a paragem de emergência\\
+Sem pontos de entalamento de dedos (EN 71-1) & Folgas entre quadro, plataforma e torres; servos com binário elevado & Proteger as zonas de rotação, limitar velocidade e binário, manter o interruptor de corte dos servos\\
 Temperatura das partes acessíveis (EN IEC 62115) & Servos e reguladores podem aquecer em bloqueio & Medir temperaturas; deteção de bloqueio em software\\
 Bateria segura & LiPo sem proteção própria & Usar bateria com circuito de proteção e carregamento integrado, sem intervenção da criança\\
 Materiais (EN 71-2, EN 71-3) & PLA sem tintas & Confirmar inflamabilidade e migração de elementos com o fornecedor do material\\
@@ -58,7 +58,7 @@ A análise seguiu o método da EN ISO 12100: identificar os perigos, estimar o r
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.4cm}ccc>{\raggedright\arraybackslash}Yc}
 \toprule
 Perigo & G & P & R & Medidas de redução & R res.\\\midrule
-Entalamento de dedos & 2 & 2 & 4 & Limites de amplitude e velocidade; proteção das zonas de rotação; paragem de emergência & 2\\
+Entalamento de dedos & 2 & 2 & 4 & Limites de amplitude e velocidade; proteção das zonas de rotação; interruptor de corte dos servos & 2\\
 Movimento inesperado & 2 & 2 & 4 & Arranque desarmado; armar explícito; \textit{watchdog}; modo seguro & 2\\
 Incêndio da bateria & 3 & 1 & 3 & Fusível; bateria com proteção; monitorização da tensão & 2\\
 Sobreaquecimento dos servos & 1 & 2 & 2 & Limites de comando; deteção de bloqueio & 1\\
@@ -72,9 +72,9 @@ Choque elétrico & 1 & 1 & 1 & Muito baixa tensão & 1\\
 \section{Funções de segurança implementadas}
 As medidas anteriores traduzem-se nas seguintes funções, verificadas pelos testes T-SEG (capítulo~\ref{ch:testes}):
 \begin{itemize}
-\item \textbf{Paragem de emergência por hardware:} corta a alimentação dos servos sem depender do microcontrolador.
+\item \textbf{Corte dos servos por hardware:} um interruptor de dois polos corta a alimentação dos servos sem depender do microcontrolador.
 \item \textbf{Arranque seguro:} o sistema arranca desarmado e só se move depois de calibrado e armado.
-\item \textbf{Modo seguro:} sem referências válidas durante \SI{300}{\milli\second}, ou com bateria baixa, a plataforma volta suavemente à horizontal.
+\item \textbf{Modo seguro:} sem referências válidas durante \SI{1}{\second}, ou com bateria baixa, a plataforma volta suavemente à horizontal.
 \item \textbf{Limites em software:} amplitude, velocidade e largura de impulso dos servos limitadas.
 \item \textbf{\textit{Watchdog}:} reinício automático em caso de bloqueio do programa.
 \item \textbf{Proteção elétrica:} fusível, interruptor geral e eletrónica fechada numa caixa aparafusada.

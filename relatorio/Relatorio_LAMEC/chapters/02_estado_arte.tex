@@ -4,7 +4,7 @@
 \section{Panorama atual}
 As plataformas estabilizadas são usadas há várias décadas para manter câmaras, sensores óticos e antenas apontados de forma estável sobre veículos em movimento. Surgiram sobretudo em aplicações militares e aeroespaciais, onde a estabilização da linha de visão era feita com giroscópios e motores dedicados \cite{hilkert2008,masten2008}.
 
-Os métodos de controlo e de estimação usados nestes sistemas têm origens mais antigas. A análise de Minorsky sobre o governo automático de navios é apontada como uma das primeiras formulações do controlador de três termos, que deu origem ao \gls{pid} \cite{minorsky1922}, e o filtro de Kalman, publicado em 1960, está na base da estimação recursiva usada na fusão de sensores inerciais \cite{kalman1960}.
+Os métodos de controlo e de estimação usados nestes sistemas têm origens mais antigas. O trabalho \textit{Directional stability of automatically steered bodies} \cite{minorsky1922}, sobre o governo automático de navios, é apontado como uma das primeiras formulações do controlador de três termos, que deu origem ao \gls{pid}, e o filtro de Kalman, apresentado em 1960 no trabalho \textit{A New Approach to Linear Filtering and Prediction Problems} \cite{kalman1960}, está na base da estimação recursiva usada na fusão de sensores inerciais.
 
 Atualmente, a disponibilidade de sensores inerciais \gls{mems} de baixo custo e de microcontroladores com capacidade de cálculo em vírgula flutuante levou estas técnicas para produtos de consumo, como os estabilizadores de câmaras e de telemóveis, os drones e os protótipos académicos. Uma plataforma deste tipo é composta, em geral, por uma unidade de processamento, um ou mais sensores inerciais, dois ou mais atuadores, um algoritmo de estimação da atitude, um algoritmo de controlo e, quando é comandada à distância, uma ligação de comunicação. As secções seguintes seguem esta decomposição.
 
@@ -78,21 +78,21 @@ A tabela~\ref{tab:academicas} resume os trabalhos académicos mais próximos. To
 \begin{table}[H]
 \centering\small
 \caption{Trabalhos académicos sobre plataformas estabilizadas e de nivelamento.}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.3cm}YYY}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.8cm}YYY}
 \toprule
 Trabalho & Plataforma e hardware & Controlo & Relevância para o projeto\\\midrule
-Tawfeeq et al.\ \cite{tawfeeq2022} & Plataforma sobre veículo móvel; Arduino Mega, MPU6050, servos MG995 & Filtro complementar e \acrshort{pid} com ganhos otimizados por algoritmo genético & Alta: hardware muito semelhante\\
-Zhou et al.\ \cite{zhou2016} & Plataforma eletro-ótica de dois eixos; motores de binário, encoders, giroscópios & Cascata de posição, velocidade e corrente & Média: estrutura em cascata\\
-Lee et al.\ \cite{lee2020} & \textit{Gimbal} de dois eixos; servomotores, \acrshort{imu} Xsens, encoders & Compensação do acoplamento entre eixos e controlo $H_\infty$ & Média: acoplamento entre eixos\\
-Fu et al.\ \cite{fu2022} & Plataforma inercialmente estabilizada & Observador de estado estendido adaptativo e modos deslizantes & Baixa: exige modelo e atuador direto\\
-Wang et al.\ \cite{wang2024} & Plataforma eletro-ótica aerotransportada & Observador de ordem elevada para perturbações periódicas & Baixa: perturbações de alta frequência\\
-Guo et al.\ \cite{guo2025} & Plataforma agrícola com \acrshort{imu} e quatro atuadores elétricos & \acrshort{pid} e \acrshort{pid} difuso para nivelamento & Alta: problema de nivelamento\\
+\textit{A self-balancing platform on a mobile car} \cite{tawfeeq2022} & Plataforma sobre veículo móvel; Arduino Mega, MPU6050, servos MG995 & Filtro complementar e \acrshort{pid} com ganhos otimizados por algoritmo genético & Alta: hardware muito semelhante\\\addlinespace[0.7em]
+\textit{Experimental validation of a compound control scheme for a two-axis inertially stabilized platform} \cite{zhou2016} & Plataforma eletro-ótica de dois eixos; motores de binário, encoders, giroscópios & Cascata de posição, velocidade e corrente & Média: estrutura em cascata\\\addlinespace[0.7em]
+\textit{A robust double active control system design for disturbance suppression of a two-axis gimbal system} \cite{lee2020} & \textit{Gimbal} de dois eixos; servomotores, \acrshort{imu} Xsens, encoders & Compensação do acoplamento entre eixos e controlo $H_\infty$ & Média: acoplamento entre eixos\\\addlinespace[0.7em]
+\textit{A compound control method based on the adaptive linear extended state observer and global fast terminal sliding mode control for inertially stabilized platform} \cite{fu2022} & Plataforma inercialmente estabilizada & Observador de estado estendido adaptativo e modos deslizantes & Baixa: exige modelo e atuador direto\\\addlinespace[0.7em]
+\textit{Disturbance observation and suppression in an airborne electro-optical stabilized platform} \cite{wang2024} & Plataforma eletro-ótica aerotransportada & Observador de ordem elevada para perturbações periódicas & Baixa: perturbações de alta frequência\\\addlinespace[0.7em]
+\textit{Design and test of adaptive leveling system for orchard operation platform} \cite{guo2025} & Plataforma agrícola com \acrshort{imu} e quatro atuadores elétricos & \acrshort{pid} e \acrshort{pid} difuso para nivelamento & Alta: problema de nivelamento\\
 \bottomrule
 \end{tabularx}
 \label{tab:academicas}
 \end{table}
 
-Os trabalhos de Tawfeeq et al.\ e de Guo et al.\ são os mais próximos deste projeto. O primeiro usa hardware do mesmo tipo (uma \gls{imu} \gls{mems} económica e servos da família MG99x) e mostra que um filtro complementar e um \gls{pid} bem afinado bastam para estabilizar uma plataforma pequena. O segundo trata explicitamente o nivelamento e compara um \gls{pid} fixo com um \gls{pid} de ganhos ajustados por lógica difusa.
+Os trabalhos \textit{A self-balancing platform on a mobile car} \cite{tawfeeq2022} e \textit{Design and test of adaptive leveling system for orchard operation platform} \cite{guo2025} são os mais próximos deste projeto. O primeiro usa hardware do mesmo tipo (uma \gls{imu} \gls{mems} económica e servos da família MG99x) e mostra que um filtro complementar e um \gls{pid} bem afinado bastam para estabilizar uma plataforma pequena. O segundo trata explicitamente o nivelamento e compara um \gls{pid} fixo com um \gls{pid} de ganhos ajustados por lógica difusa.
 
 Os restantes trabalhos usam motores de acionamento direto e sensores de gama mais alta. A sua principal lição é que as estratégias avançadas (cascata com malha de corrente, observadores de perturbação, controlo robusto) dependem de ter acesso à corrente ou à velocidade do motor. Com servos de modelismo, que só aceitam uma referência de posição, essas malhas internas não estão disponíveis, o que reforça a escolha de um \gls{pid} por eixo, eventualmente com compensação antecipativa, como ponto de partida.
 
@@ -101,7 +101,7 @@ Os restantes trabalhos usam motores de acionamento direto e sensores de gama mai
 O controlo de atitude de um multirrotor e o de uma plataforma auto-niveladora têm muito em comum. Em ambos os casos é preciso estimar \textit{roll} e \textit{pitch} a partir de uma \gls{imu} de baixo custo e corrigir continuamente a atitude através de atuadores, com uma frequência de atualização elevada.
 
 \subsection{Estimação de atitude}
-Mahony et al.\ \cite{mahony2012} descrevem a modelação, estimação e controlo de quadrirrotores e mostram que filtros complementares não lineares, semelhantes aos usados em plataformas, são adequados à estimação de atitude com sensores \gls{mems}. Os controladores de voo atuais usam soluções mais completas: o PX4 obtém as estimativas a partir de um \gls{ekf} (EKF2), que funde a \gls{imu} com outros sensores \cite{px4ctrl}. Numa plataforma fixa ao solo, sem GPS nem barómetro, um filtro complementar ou de Madgwick é suficiente, porque só é necessário estimar a inclinação.
+O trabalho \textit{Multirotor Aerial Vehicles: Modeling, Estimation, and Control of Quadrotor} \cite{mahony2012} descreve a modelação, estimação e controlo de quadrirrotores e mostra que filtros complementares não lineares, semelhantes aos usados em plataformas, são adequados à estimação de atitude com sensores \gls{mems}. Os controladores de voo atuais usam soluções mais completas: o PX4 obtém as estimativas a partir de um \gls{ekf} (EKF2), que funde a \gls{imu} com outros sensores \cite{px4ctrl}. Numa plataforma fixa ao solo, sem GPS nem barómetro, um filtro complementar ou de Madgwick é suficiente, porque só é necessário estimar a inclinação.
 
 \subsection{Estrutura de controlo}
 Tanto o PX4 como o ArduPilot usam uma arquitetura em cascata. No PX4, o controlador de atitude usa uma lei proporcional para gerar uma referência de velocidade angular, que é seguida por um controlador \gls{pid} de velocidade com limitação do termo integral \cite{px4ctrl}. No ArduPilot, o erro de ângulo passa por um controlador proporcional com uma curva de raiz quadrada e depois por um \gls{pid} de velocidade, com o ciclo de controlo a correr a \SI{400}{\hertz} na Pixhawk \cite{ardupilotatt}.
@@ -177,7 +177,7 @@ A BMI270, da Bosch Sensortec, é uma \gls{imu} de seis eixos de baixo consumo qu
 A BNO055, também da Bosch Sensortec, junta acelerómetro, giroscópio e magnetómetro a um microcontrolador interno que executa a fusão sensorial e entrega diretamente a orientação, por \gls{i2c} ou \gls{uart} \cite{bno055}. Reduz o trabalho de software, mas dá menos controlo sobre o algoritmo e a latência.
 
 \subsection{Sensores do telemóvel}
-Os telemóveis incluem sensores de orientação acessíveis através do sistema operativo \cite{android}. Kuhlmann et al.\ \cite{kuhlmann2021} mostram, no entanto, que a precisão da orientação varia bastante entre modelos, o que aconselha uma calibração inicial da posição neutra.
+Os telemóveis incluem sensores de orientação acessíveis através do sistema operativo \cite{android}. O estudo \textit{Smartphone sensor accuracy varies from device to device in mobile research: The case of spatial orientation} \cite{kuhlmann2021} mostra, no entanto, que a precisão da orientação varia bastante entre modelos, o que aconselha uma calibração inicial da posição neutra.
 
 \subsection{Comparação}
 \begin{table}[H]
@@ -205,10 +205,10 @@ Para nivelar a plataforma bastam o acelerómetro e o giroscópio, porque o \text
 É a solução mais simples (equação~\eqref{eq:compl}). Tem custo computacional muito baixo, um único parâmetro de afinação e é usado em vários protótipos \cite{tawfeeq2022}.
 
 \subsection{Filtro de Mahony}
-Mahony et al.\ \cite{mahony2008} generalizaram o filtro complementar para rotações tridimensionais, com uma correção proporcional-integral que estima também o desvio do giroscópio.
+O trabalho \textit{Nonlinear Complementary Filters on the Special Orthogonal Group} \cite{mahony2008} generalizou o filtro complementar para rotações tridimensionais, com uma correção proporcional-integral que estima também o desvio do giroscópio.
 
 \subsection{Filtro de Madgwick}
-Madgwick et al.\ \cite{madgwick2011} propuseram um filtro em quaterniões baseado em descida do gradiente, com custo computacional baixo e muito usado em microcontroladores. Valenti et al.\ \cite{valenti2015} apresentam uma variante que separa a correção da inclinação da correção de rumo.
+O trabalho \textit{Estimation of IMU and MARG orientation using a gradient descent algorithm} \cite{madgwick2011} propôs um filtro em quaterniões baseado em descida do gradiente, com custo computacional baixo e muito usado em microcontroladores. O trabalho \textit{Keeping a Good Attitude: A Quaternion-Based Orientation Filter for IMUs and MARGs} \cite{valenti2015} apresenta uma variante que separa a correção da inclinação da correção de rumo.
 
 \subsection{Filtro de Kalman}
 O filtro de Kalman \cite{kalman1960} e a sua versão estendida, o \gls{ekf}, ponderam a confiança no modelo e nas medidas através das covariâncias dos ruídos. São usados nos controladores de voo \cite{px4ctrl}, mas são mais exigentes de ajustar e implementar.
@@ -241,7 +241,7 @@ São comandados por um impulso, repetido normalmente a \SI{50}{\hertz}, cuja lar
 Comunicam por barramento série e devolvem posição, velocidade e outros dados. O DYNAMIXEL XL430-W250 tem encoder de 4096 contagens por volta e modos de controlo de posição, velocidade e \gls{pwm} \cite{robotis}.
 
 \subsection{Motores DC e BLDC com encoder}
-Os motores \gls{dc} e \gls{bldc} com encoder permitem implementar malhas próprias de posição, velocidade e corrente, como em Zhou et al.\ \cite{zhou2016}. Os motores \gls{bldc} são os usados nos \textit{gimbals} comerciais e nos drones. Em contrapartida, exigem eletrónica de potência e uma integração mais complexa.
+Os motores \gls{dc} e \gls{bldc} com encoder permitem implementar malhas próprias de posição, velocidade e corrente, como no trabalho \textit{Experimental validation of a compound control scheme for a two-axis inertially stabilized platform} \cite{zhou2016}. Os motores \gls{bldc} são os usados nos \textit{gimbals} comerciais e nos drones. Em contrapartida, exigem eletrónica de potência e uma integração mais complexa.
 
 \subsection{Motores de passo}
 Posicionam-se por passos sem necessidade de sensor, mas em malha aberta podem perder passos sem que isso seja detetado.
