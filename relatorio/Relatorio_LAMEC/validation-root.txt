@@ -1,0 +1,1758 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx-v2.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3k
+eys2e.sty))) (DEEclass.cls
+Document Class: DEEclass DEEclass v1.0 DEE@ISEP
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\bk11.clo))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/babel-portuges\portugue
+se.ldf))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pt\babel
+-portuguese.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-ho
+ok.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
+))) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+)) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/scrhack\scrhack.sty)
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty))
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg))
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+))) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty)
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg))
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datetime2\datetime2.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tracklang\tracklang.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/tracklang\tracklang.t
+ex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex)
+))
+
+Package datetime2 Warning: Date-Time Language Module `portuguese' not installed
+ on input line 1913.
+
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datetime2\datetime2-cal
+c.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+libraryfiltered.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfcalend
+ar.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfcale
+ndar.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)))))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/base\glossar
+ies.sty (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xfor\xfor.sty) ()
+
+Package glossaries Warning: No language module detected for `portuguese'.
+(glossaries)                Language modules need to be installed separately.
+(glossaries)                Please check on CTAN for a bundle called
+(glossaries)                `glossaries-portuges' or similar.
+
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-base.
+sty (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-l3fp.
+def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-utf8.
+ldf)
+
+Package tracklang Warning: No `datatool' support for dialect `portuguese'  on i
+nput line 9924.
+
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-hypernav.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-list.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-long.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-tree.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/notoccite\notoccite.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/appendix\appendix.sty
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudoc
+ode.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algorithmi
+cx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/floatbytocbasic\floatby
+tocbasic.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\tocbasic.st
+y) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\backref.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/setspaceenhanced\setspa
+ceenhanced.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlayer-sc
+rpage.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlayer.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrkbase.st
+y))))
+
+LaTeX Warning: \include should only be used after \begin{document} on input lin
+e 28.
+
+(preamble.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty)
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lscapeenhanced\lscapeen
+hanced.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+shapes.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+plot.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-0-65.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-1-18.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.st
+y (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
+code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z\tikz.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplothandlers.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+matrix.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarytopaths.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryarrows.meta.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarypositioning.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarycalc.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.geometric.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.geometric.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfit.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarybackgrounds.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/circuitikz\circuitikz.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarybending.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+bending.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+nonlineartransformations.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+arycurvilinear.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfpu.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryfpu.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirc.de
+fines.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircuti
+ls.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircpat
+h.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircsha
+pes.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircmon
+opoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircbip
+oles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirctri
+poles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircqua
+dpoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircmul
+tipoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirclab
+el.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircvol
+tage.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirccur
+rent.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircflo
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.glo...done (0 entries accepted, 0 rejected).
+Nothing written in main.gls.
+Transcript written in main.glg.
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.acn....done (172 entries accepted, 0 rejected).
+Sorting entries....done (1339 comparisons).
+Generating output file main.acr....done (113 lines written, 0 warnings).
+Output written in main.acr.
+Transcript written in main.alg.
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.syg...done (0 entries accepted, 0 rejected).
+Nothing written in main.syi.
+Transcript written in main.slg.
+w.tex)) (front/0_acronyms.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd) (main.aux
+(front/title.aux) (front/4_frontmatterlists.aux) (chapters/01_introducao.aux)
+(chapters/02_estado_arte.aux) (chapters/03_arquitetura.aux)
+(chapters/04_testes.aux) (chapters/05_componentes_custos.aux)
+(chapters/06_seguranca.aux))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx-abbrevi
+ations.cfg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg)) (main.out) (main.out)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd)
+(front/title.tex [1{C:/Users/tomas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex
+.map}{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc
+} <./front/isep_wordmark_expanded_vintage.pdf>] [2]
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd) [3{C:/Use
+rs/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [4])
+(front/4_frontmatterlists.tex (main.toc [5] [6]) [7] [8] (main.lof
+Overfull \hbox (3.39438pt too wide) in paragraph at lines 13--13
+ [][] [][]\T1/lmr/m/n/10.95 M�quina de es-ta-dos da apli-ca-��o. Em qual-quer e
+s-tado ar-mado, \T1/lmtt/m/n/10.95 DISARM 
+) [9{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}
+] [10] (main.lot [11]) (main.acr [12] [13])) [14] (chapters/01_introducao.tex
+Cap\'{\i }tulo 1.
+[1]
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-IMU, T-
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-CTL, T-
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-CTL, T-
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-IMU, T-
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-COM, T-
+[2]
+
+LaTeX Warning: Reference `ch:conclusao' on page 3 undefined on input line 79.
+
+) [3{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.
+enc}{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.
+enc}] [4] (chapters/02_estado_arte.tex
+Cap\'{\i }tulo 2.
+
+LaTeX Warning: Citation `hilkert2008' on page 5 undefined on input line 5.
+
+
+LaTeX Warning: Citation `masten2008' on page 5 undefined on input line 5.
+
+
+LaTeX Warning: Citation `minorsky1922' on page 5 undefined on input line 7.
+
+
+LaTeX Warning: Citation `kalman1960' on page 5 undefined on input line 7.
+
+[5]
+
+LaTeX Warning: Citation `astrom2021' on page 6 undefined on input line 42.
+
+[6{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
+c}]
+
+LaTeX Warning: Citation `quanser2dof' on page 7 undefined on input line 47.
+
+
+LaTeX Warning: Citation `simplebgc' on page 7 undefined on input line 50.
+
+
+LaTeX Warning: Citation `simplebgcman' on page 7 undefined on input line 50.
+
+
+LaTeX Warning: Citation `px4ctrl' on page 7 undefined on input line 53.
+
+
+LaTeX Warning: Citation `ardupilotatt' on page 7 undefined on input line 53.
+
+[7]
+
+LaTeX Warning: Citation `tawfeeq2022' on page 8 undefined on input line 91.
+
+
+LaTeX Warning: Citation `zhou2016' on page 8 undefined on input line 91.
+
+
+LaTeX Warning: Citation `lee2020' on page 8 undefined on input line 91.
+
+
+LaTeX Warning: Citation `fu2022' on page 8 undefined on input line 91.
+
+
+LaTeX Warning: Citation `wang2024' on page 8 undefined on input line 91.
+
+
+LaTeX Warning: Citation `guo2025' on page 8 undefined on input line 91.
+
+[8] [9]
+
+LaTeX Warning: Citation `mahony2012' on page 10 undefined on input line 104.
+
+
+LaTeX Warning: Citation `px4ctrl' on page 10 undefined on input line 104.
+
+
+LaTeX Warning: Citation `px4ctrl' on page 10 undefined on input line 107.
+
+
+LaTeX Warning: Citation `ardupilotatt' on page 10 undefined on input line 107.
+
+[10]
+
+LaTeX Warning: Citation `arduinomega' on page 11 undefined on input line 137.
+
+
+LaTeX Warning: Citation `tawfeeq2022' on page 11 undefined on input line 137.
+
+
+LaTeX Warning: Citation `stm32' on page 11 undefined on input line 140.
+
+
+LaTeX Warning: Citation `nucleo' on page 11 undefined on input line 140.
+
+
+LaTeX Warning: Citation `esp32s3ds' on page 11 undefined on input line 143.
+
+
+LaTeX Warning: Citation `esp32' on page 11 undefined on input line 143.
+
+[11]
+
+LaTeX Warning: Citation `mpu6050' on page 12 undefined on input line 168.
+
+
+LaTeX Warning: Citation `tawfeeq2022' on page 12 undefined on input line 168.
+
+
+LaTeX Warning: Citation `gy85' on page 12 undefined on input line 171.
+
+
+LaTeX Warning: Citation `gy85datasheet' on page 12 undefined on input line 171.
+
+
+[12]
+
+LaTeX Warning: Citation `bmi270' on page 13 undefined on input line 174.
+
+
+LaTeX Warning: Citation `bno055' on page 13 undefined on input line 177.
+
+
+LaTeX Warning: Citation `android' on page 13 undefined on input line 180.
+
+
+LaTeX Warning: Citation `kuhlmann2021' on page 13 undefined on input line 180.
+
+[13]
+
+LaTeX Warning: Citation `tawfeeq2022' on page 14 undefined on input line 205.
+
+
+LaTeX Warning: Citation `mahony2008' on page 14 undefined on input line 208.
+
+
+LaTeX Warning: Citation `madgwick2011' on page 14 undefined on input line 211.
+
+
+LaTeX Warning: Citation `valenti2015' on page 14 undefined on input line 211.
+
+
+LaTeX Warning: Citation `kalman1960' on page 14 undefined on input line 214.
+
+
+LaTeX Warning: Citation `px4ctrl' on page 14 undefined on input line 214.
+
+[14]
+
+LaTeX Warning: Citation `mg996r' on page 15 undefined on input line 238.
+
+
+LaTeX Warning: Citation `hitec' on page 15 undefined on input line 238.
+
+
+LaTeX Warning: Citation `robotis' on page 15 undefined on input line 241.
+
+
+LaTeX Warning: Citation `zhou2016' on page 15 undefined on input line 244.
+
+[15]
+
+LaTeX Warning: Citation `astrom2021' on page 16 undefined on input line 270.
+
+
+LaTeX Warning: Citation `zhou2016' on page 16 undefined on input line 273.
+
+[16]
+
+LaTeX Warning: Citation `astrom2021' on page 17 undefined on input line 293.
+
+
+LaTeX Warning: Citation `rawlings2017' on page 17 undefined on input line 293.
+
+
+LaTeX Warning: Citation `han2009' on page 17 undefined on input line 293.
+
+
+LaTeX Warning: Citation `lee2020' on page 17 undefined on input line 293.
+
+
+LaTeX Warning: Citation `utkin1977' on page 17 undefined on input line 293.
+
+
+LaTeX Warning: Citation `guo2025' on page 17 undefined on input line 293.
+
+[17]
+
+LaTeX Warning: Citation `esp32' on page 18 undefined on input line 305.
+
+
+LaTeX Warning: Citation `hm12' on page 18 undefined on input line 308.
+
+
+LaTeX Warning: Citation `esp32s3ds' on page 18 undefined on input line 311.
+
+[18]) [19] (chapters/03_arquitetura.tex [20]
+Cap\'{\i }tulo 3.
+[21] [22] [23 <./figuras/montagem.png> <./figuras/montagem_inclinada.png>]
+[24 <./figuras/explodida.png>] [25 <./figuras/peca_caixa.png> <./figuras/peca_t
+ampa.png> <./figuras/peca_quadro.png> <./figuras/peca_plataforma.png> <./figura
+s/peca_tabuleiro.png>]
+
+LaTeX Warning: Citation `gy85' on page 26 undefined on input line 130.
+
+
+LaTeX Warning: Citation `gy85datasheet' on page 26 undefined on input line 138.
+
+
+[26]
+
+LaTeX Warning: Citation `mg996r' on page 27 undefined on input line 143.
+
+
+LaTeX Warning: Citation `hm12' on page 27 undefined on input line 146.
+
+
+LaTeX Warning: Citation `hobbywingubec' on page 27 undefined on input line 149.
+
+
+[27]
+Overfull \hbox (33.90326pt too wide) in paragraph at lines 259--260
+ [][] 
+[28] [29]
+
+LaTeX Warning: Citation `px4ctrl' on page 30 undefined on input line 317.
+
+
+LaTeX Warning: Citation `ardupilotatt' on page 30 undefined on input line 317.
+
+[30] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 430--430
+[]|\T1/lmr/m/n/10 Vermelho in-ter-mi-
+[32]
+
+LaTeX Warning: Citation `android' on page 33 undefined on input line 456.
+
+) [33] [34] (chapters/04_testes.tex
+Cap\'{\i }tulo 4.
+[35] [36]
+Overfull \hbox (3.7348pt too wide) in paragraph at lines 62--63
+[]\T1/lmr/bx/n/10.95 Procedimento: \T1/lmr/m/n/10.95 pri-meiro, sem ser-vos li-
+ga-dos, me-dir com o os-ci-los-c�-pio a frequ�n-
+[37]
+Overfull \hbox (3.39502pt too wide) in paragraph at lines 103--103
+[]|\T1/lmtt/m/n/10 $REF,-12.5,4.3,57*63|  
+
+Overfull \hbox (3.39502pt too wide) in paragraph at lines 103--103
+[]|\T1/lmtt/m/n/10 $REF,-12.5,4.3,57*00 
+
+Overfull \hbox (3.39502pt too wide) in paragraph at lines 103--103
+[]|\T1/lmtt/m/n/10 $REF,-80.0,0.0,58*65 
+[38] [39] [40]) [41] (chapters/05_componentes_custos.tex [42]
+Cap\'{\i }tulo 5.
+
+LaTeX Warning: Citation `tmenucleo' on page 43 undefined on input line 34.
+
+
+LaTeX Warning: Citation `gy85' on page 43 undefined on input line 34.
+
+
+LaTeX Warning: Citation `hm12' on page 43 undefined on input line 34.
+
+
+LaTeX Warning: Citation `waveshareMG996R' on page 43 undefined on input line 34
+.
+
+
+LaTeX Warning: Citation `flyingtechubec' on page 43 undefined on input line 34.
+
+
+[43] [44]) [45] (chapters/06_seguranca.tex [46]
+Cap\'{\i }tulo 6.
+
+LaTeX Warning: Citation `blueguide2022' on page 47 undefined on input line 4.
+
+
+LaTeX Warning: Citation `toy2009' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `toy2025' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `eurofinstoy' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `red2014' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `rohs2011' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `weee2012' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `battery2023' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `en71' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `en62115' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `en300328' on page 47 undefined on input line 24.
+
+
+LaTeX Warning: Citation `en301489' on page 47 undefined on input line 24.
+
+[47]
+
+LaTeX Warning: Citation `toy2009' on page 48 undefined on input line 46.
+
+[48] [49]) [50] (main.bbl) (main.aux (front/title.aux)
+(front/4_frontmatterlists.aux) (chapters/01_introducao.aux)
+(chapters/02_estado_arte.aux) (chapters/03_arquitetura.aux)
+(chapters/04_testes.aux) (chapters/05_componentes_custos.aux)
+(chapters/06_seguranca.aux))
+
+LaTeX Warning: There were undefined references.
+
+ )
+(see the transcript file for additional information)<C:/Users/tomas/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/tomas/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/tomas/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/tomas/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/tomas/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/tomas/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/tomas/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/tomas/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/tomas/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/tomas/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/tomas/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/tomas/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/tomas/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/tomas/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/tomas/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/tomas/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/tomas/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/tomas/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Users/tomas/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Users/tomas/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmro10.pfb><C:/Users/tomas/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/tomas/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/tomas/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/tomas/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/tomas/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/tomas/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/lm/lmtt12.pfb><C:/Users/tomas/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/lm/lmtt8.pfb>
+Output written on main.pdf (64 pages, 919070 bytes).
+Transcript written on main.log.
+This is BibTeX, Version 0.99d (MiKTeX 24.1)
+The top-level auxiliary file: main.aux
+The style file: ieeetr.bst
+Database file #1: referencias.bib
+Warning: File 'main.glo' is empty.
+Have you used any entries defined in glossary 'main'?
+Remember to use package option 'nomain' if you
+don't want to use the main glossary.
+makeglossaries version 5.1 (2026-04-21)
+added glossary type 'main' (glg,gls,glo)
+added glossary type 'acronym' (alg,acr,acn)
+added glossary type 'symbolslist' (slg,syi,syg)
+makeindex  -s "main.ist" -t "main.alg" -o "main.acr" "main.acn"
+Warning: File 'main.syg' is empty.
+Have you used any entries defined in glossary 'symbolslist'?
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.acn....done (172 entries accepted, 0 rejected).
+Sorting entries....done (1339 comparisons).
+Generating output file main.acr....done (113 lines written, 0 warnings).
+Output written in main.acr.
+Transcript written in main.alg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx-v2.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3k
+eys2e.sty))) (DEEclass.cls
+Document Class: DEEclass DEEclass v1.0 DEE@ISEP
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\bk11.clo))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/babel-portuges\portugue
+se.ldf))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pt\babel
+-portuguese.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-ho
+ok.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
+))) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+)) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/scrhack\scrhack.sty)
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty))
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg))
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+))) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty)
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg))
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datetime2\datetime2.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tracklang\tracklang.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/tracklang\tracklang.t
+ex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex)
+))
+
+Package datetime2 Warning: Date-Time Language Module `portuguese' not installed
+ on input line 1913.
+
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datetime2\datetime2-cal
+c.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+libraryfiltered.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfcalend
+ar.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfcale
+ndar.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)))))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/base\glossar
+ies.sty (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xfor\xfor.sty) ()
+
+Package glossaries Warning: No language module detected for `portuguese'.
+(glossaries)                Language modules need to be installed separately.
+(glossaries)                Please check on CTAN for a bundle called
+(glossaries)                `glossaries-portuges' or similar.
+
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-base.
+sty (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-l3fp.
+def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-utf8.
+ldf)
+
+Package tracklang Warning: No `datatool' support for dialect `portuguese'  on i
+nput line 9924.
+
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-hypernav.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-list.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-long.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-tree.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/notoccite\notoccite.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/appendix\appendix.sty
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudoc
+ode.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algorithmi
+cx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/floatbytocbasic\floatby
+tocbasic.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\tocbasic.st
+y) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\backref.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/setspaceenhanced\setspa
+ceenhanced.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlayer-sc
+rpage.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlayer.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrkbase.st
+y))))
+
+LaTeX Warning: \include should only be used after \begin{document} on input lin
+e 28.
+
+(preamble.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty)
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lscapeenhanced\lscapeen
+hanced.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+shapes.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+plot.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-0-65.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-1-18.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.st
+y (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
+code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z\tikz.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplothandlers.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+matrix.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarytopaths.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryarrows.meta.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarypositioning.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarycalc.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.geometric.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.geometric.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfit.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarybackgrounds.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/circuitikz\circuitikz.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarybending.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+bending.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+nonlineartransformations.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+arycurvilinear.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfpu.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryfpu.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirc.de
+fines.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircuti
+ls.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircpat
+h.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircsha
+pes.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircmon
+opoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircbip
+oles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirctri
+poles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircqua
+dpoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircmul
+tipoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirclab
+el.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircvol
+tage.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirccur
+rent.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircflo
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.glo...done (0 entries accepted, 0 rejected).
+Nothing written in main.gls.
+Transcript written in main.glg.
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.acn....done (97 entries accepted, 1 rejected).
+Sorting entries....done (717 comparisons).
+Generating output file main.acr....done (64 lines written, 0 warnings).
+Output written in main.acr.
+Transcript written in main.alg.
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.syg...done (0 entries accepted, 0 rejected).
+Nothing written in main.syi.
+Transcript written in main.slg.
+w.tex)) (front/0_acronyms.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd) (main.aux)
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx-abbrevi
+ations.cfg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg)) (main.out)
+Runaway argument?
+{\376\377\000M\000a\000l\000 
+! File ended while scanning use of \@@BOOKMARK.
+<inserted text> 
+                \par 
+l.52 \begin{document}
+                     
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on main.log.
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx-v2.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3k
+eys2e.sty))) (DEEclass.cls
+Document Class: DEEclass DEEclass v1.0 DEE@ISEP
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\bk11.clo))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/babel-portuges\portugue
+se.ldf))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/pt\babel
+-portuguese.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrbase.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-ho
+ok.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.sty
+))) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+)) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/scrhack\scrhack.sty)
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty))
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg))
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+))) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty)
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg))
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datetime2\datetime2.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tracklang\tracklang.sty
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/tracklang\tracklang.t
+ex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex)
+))
+
+Package datetime2 Warning: Date-Time Language Module `portuguese' not installed
+ on input line 1913.
+
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datetime2\datetime2-cal
+c.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+libraryfiltered.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfcalend
+ar.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfcale
+ndar.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)))))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/base\glossar
+ies.sty (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xfor\xfor.sty) ()
+
+Package glossaries Warning: No language module detected for `portuguese'.
+(glossaries)                Language modules need to be installed separately.
+(glossaries)                Please check on CTAN for a bundle called
+(glossaries)                `glossaries-portuges' or similar.
+
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-base.
+sty (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-l3fp.
+def)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-utf8.
+ldf)
+
+Package tracklang Warning: No `datatool' support for dialect `portuguese'  on i
+nput line 9924.
+
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-hypernav.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-list.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-long.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/styles\gloss
+ary-tree.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/notoccite\notoccite.sty
+) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/appendix\appendix.sty
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudoc
+ode.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algorithmi
+cx.sty
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/floatbytocbasic\floatby
+tocbasic.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\tocbasic.st
+y) (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\backref.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/setspaceenhanced\setspa
+ceenhanced.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlayer-sc
+rpage.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlayer.st
+y
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrkbase.st
+y))))
+
+LaTeX Warning: \include should only be used after \begin{document} on input lin
+e 28.
+
+(preamble.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty)
+ (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lscapeenhanced\lscapeen
+hanced.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+shapes.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+plot.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-0-65.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-1-18.sty))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.st
+y (C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
+code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z\tikz.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplothandlers.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+matrix.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarytopaths.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryarrows.meta.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarypositioning.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarycalc.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.geometric.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.geometric.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfit.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarybackgrounds.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/circuitikz\circuitikz.s
+ty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarybending.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+bending.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+nonlineartransformations.code.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+arycurvilinear.code.tex)))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfpu.code.tex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryfpu.code.tex))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirc.de
+fines.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircuti
+ls.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircpat
+h.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircsha
+pes.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircmon
+opoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircbip
+oles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirctri
+poles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircqua
+dpoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircmul
+tipoles.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirclab
+el.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircvol
+tage.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcirccur
+rent.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/generic/circuitikz\pgfcircflo
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.glo...done (0 entries accepted, 0 rejected).
+Nothing written in main.gls.
+Transcript written in main.glg.
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.acn....done (74 entries accepted, 1 rejected).
+Sorting entries....done (485 comparisons).
+Generating output file main.acr....done (69 lines written, 0 warnings).
+Output written in main.acr.
+Transcript written in main.alg.
+This is makeindex, version 2.16 [MiKTeX 24.1].
+Scanning style file ./main.ist...........................done (27 attributes redefined, 0 ignored).
+Scanning input file main.syg...done (0 entries accepted, 0 rejected).
+Nothing written in main.syi.
+Transcript written in main.slg.
+w.tex)) (front/0_acronyms.tex)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd) (main.aux
+(front/title.aux) (front/4_frontmatterlists.aux) (chapters/01_introducao.aux)
+(chapters/02_estado_arte.aux) (chapters/03_arquitetura.aux)
+(chapters/04_testes.aux) (chapters/05_componentes_custos.aux)
+(chapters/06_seguranca.aux))
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx-abbrevi
+ations.cfg)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg)) (main.out) (main.out)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmtt.fd)
+(front/title.tex [1{C:/Users/tomas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex
+.map}{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc
+} <./front/isep_wordmark_expanded_vintage.pdf>] [2]
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+(C:\Users\tomas\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd) [3{C:/Use
+rs/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [4])
+(front/4_frontmatterlists.tex (main.toc [5] [6]) [7] [8] (main.lof
+Overfull \hbox (3.39438pt too wide) in paragraph at lines 13--13
+ [][] [][]\T1/lmr/m/n/10.95 M�quina de es-ta-dos da apli-ca-��o. Em qual-quer e
+s-tado ar-mado, \T1/lmtt/m/n/10.95 DISARM 
+) [9{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}
+] [10] (main.lot [11]) (main.acr [12])) [13] [14] (chapters/01_introducao.tex
+Cap\'{\i }tulo 1.
+[1]
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-IMU, T-
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-CTL, T-
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-CTL, T-
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-IMU, T-
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--51
+[]|\T1/lmr/m/n/10 T-COM, T-
+[2]
+
+LaTeX Warning: Reference `ch:conclusao' on page 3 undefined on input line 79.
+
+) [3{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.
+enc}{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.
+enc}] [4] (chapters/02_estado_arte.tex
+Cap\'{\i }tulo 2.
+[5] [6{C:/Users/tomas/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathe
+x.enc}] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]) [19]
+(chapters/03_arquitetura.tex [20]
+Cap\'{\i }tulo 3.
+[21] [22] [23 <./figuras/montagem.png> <./figuras/montagem_inclinada.png>]
+[24 <./figuras/explodida.png>] [25 <./figuras/peca_caixa.png> <./figuras/peca_t
+ampa.png> <./figuras/peca_quadro.png> <./figuras/peca_plataforma.png> <./figura
+s/peca_tabuleiro.png>] [26] [27]
+Overfull \hbox (33.90326pt too wide) in paragraph at lines 259--260
+ [][] 
+[28] [29] [30] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 430--430
+[]|\T1/lmr/m/n/10 Vermelho in-ter-mi-
+[32]) [33] [34] (chapters/04_testes.tex
+Cap\'{\i }tulo 4.
+[35] [36]
+Overfull \hbox (3.7348pt too wide) in paragraph at lines 62--63
+[]\T1/lmr/bx/n/10.95 Procedimento: \T1/lmr/m/n/10.95 pri-meiro, sem ser-vos li-
+ga-dos, me-dir com o os-ci-los-c�-pio a frequ�n-
+[37]
+Overfull \hbox (3.39502pt too wide) in paragraph at lines 103--103
+[]|\T1/lmtt/m/n/10 $REF,-12.5,4.3,57*63|  
+
+Overfull \hbox (3.39502pt too wide) in paragraph at lines 103--103
+[]|\T1/lmtt/m/n/10 $REF,-12.5,4.3,57*00 
+
+Overfull \hbox (3.39502pt too wide) in paragraph at lines 103--103
+[]|\T1/lmtt/m/n/10 $REF,-80.0,0.0,58*65 
+[38] [39] [40]) [41] (chapters/05_componentes_custos.tex [42]
+Cap\'{\i }tulo 5.
+[43] [44]) [45] (chapters/06_seguranca.tex [46]
+Cap\'{\i }tulo 6.
+[47] [48] [49]) [50] (main.bbl (main.brf) [51] [52] [53] [54]) [55] (main.aux
+(front/title.aux) (front/4_frontmatterlists.aux) (chapters/01_introducao.aux)
+(chapters/02_estado_arte.aux)
+Runaway argument?
+{\contentsline {subsection}{\numberline {2.10.3}Métodos avançados}{\ETC.
+! File ended while scanning use of \@writefile.
+<inserted text> 
+                \par 
+l.22 \@input{chapters/02_estado_arte.aux}
+                                         
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on main.log.
