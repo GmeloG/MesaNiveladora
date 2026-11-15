@@ -1,81 +1,41 @@
-\chapter{Segurança e Conformidade}
+\chapter{Segurança e Medidas de Proteção}
 \label{ch:seguranca}
 
-Para a análise de segurança considerou-se que a plataforma seria comercializada como um brinquedo educativo, destinado a crianças a partir dos 8 anos, comandado pelo telemóvel. Esta hipótese é a mais exigente, porque os brinquedos têm requisitos próprios de segurança e o utilizador não tem formação técnica. Um protótipo académico, usado apenas em laboratório, não é colocado no mercado e não tem de ostentar a marcação \gls{ce} \cite{blueguide2022}; ainda assim, a análise permitiu incorporar no projeto medidas que um produto certificado teria de ter.
+Esta análise preliminar identifica os perigos da plataforma e as medidas previstas para os ensaios. Considera-se um protótipo académico utilizado em laboratório, sob supervisão, com dois servos e alimentação de baixa tensão. A implementação das proteções e a sua eficácia serão verificadas na entrega final através dos ensaios do capítulo~\ref{ch:testes}. Nesta fase não se declara conformidade nem aprovação dos requisitos de segurança.
 
-\section{Legislação e normas aplicáveis}
-Como brinquedo elétrico com um emissor Bluetooth e uma bateria, o produto ficaria abrangido pelos atos e normas da tabela~\ref{tab:legislacao}.
-
-\begin{table}[H]
-\centering\small
-\caption{Legislação e normas aplicáveis a um brinquedo com estas características.}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.6cm}Y}
-\toprule
-Legislação ou norma & Âmbito\\\midrule
-Diretiva 2009/48/CE \cite{toy2009} & Segurança dos brinquedos; em vigor\\
-Regulamento (UE) 2025/2509 \cite{toy2025} & Substitui a diretiva a partir de 1 de agosto de 2030; introduz o passaporte digital do produto e exige avaliar os riscos dos brinquedos ligados digitalmente \cite{eurofinstoy}\\
-Diretiva 2014/53/UE (\acrshort{red}) \cite{red2014} & Equipamentos de rádio (Bluetooth)\\
-Diretivas 2011/65/UE (\acrshort{rohs}) e 2012/19/UE (\acrshort{reee}) \cite{rohs2011,weee2012} & Substâncias perigosas e fim de vida do equipamento elétrico\\
-Regulamento (UE) 2023/1542 \cite{battery2023} & Baterias\\
-EN 71-1, EN 71-2 e EN 71-3 \cite{en71} & Propriedades mecânicas e físicas, inflamabilidade e migração de elementos químicos\\
-EN IEC 62115 \cite{en62115} & Segurança de brinquedos elétricos\\
-EN 300 328, EN 301 489-1 e -17 \cite{en300328,en301489} & Espetro e compatibilidade eletromagnética do rádio\\
-\bottomrule
-\end{tabularx}
-\label{tab:legislacao}
-\end{table}
-
-\section{Requisitos para brinquedos e resposta do projeto}
-A tabela~\ref{tab:brinquedo} cruza os principais requisitos de segurança dos brinquedos com a situação do protótipo.
+\section{Perigos e medidas previstas}
+Os principais perigos decorrem do movimento do mecanismo e das correntes dos atuadores. A baixa tensão reduz o perigo de contacto elétrico, mas não elimina o aquecimento de condutores, os curtos-circuitos ou os riscos associados à bateria. A tabela~\ref{tab:riscos} relaciona cada perigo com as medidas de projeto e a forma de verificação.
 
 \begin{table}[H]
 \centering\small
-\caption{Requisitos de segurança para brinquedos e situação do protótipo.}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm}YY}
+\caption{Perigos identificados e medidas de proteção previstas.}
+\begin{tabularx}{\textwidth}{p{2.5cm}YY}
 \toprule
-Requisito & Situação no protótipo & Alteração para um produto\\\midrule
-Tensão nominal não superior a \SI{24}{\volt} \cite{toy2009} & Cumpre: máximo de \SI{8.4}{\volt} (RNF12) & --\\
-Bateria e eletrónica inacessíveis sem ferramenta & Cumpre: caixa fechada com parafusos (SEG-08) & --\\
-Sem arestas vivas nem pontas (EN 71-1) & Peças impressas com arestas por acabar & Arredondar arestas e rever o acabamento\\
-Sem pontos de entalamento de dedos (EN 71-1) & Folgas entre quadro, plataforma e torres; servos com binário elevado & Proteger as zonas de rotação, limitar velocidade e binário, manter a paragem de emergência\\
-Temperatura das partes acessíveis (EN IEC 62115) & Servos e reguladores podem aquecer em bloqueio & Medir temperaturas; deteção de bloqueio em software\\
-Bateria segura & LiPo sem proteção própria & Usar bateria com circuito de proteção e carregamento integrado, sem intervenção da criança\\
-Materiais (EN 71-2, EN 71-3) & PLA sem tintas & Confirmar inflamabilidade e migração de elementos com o fornecedor do material\\
-Brinquedo ligado & Recebe apenas ângulos; não recolhe dados pessoais & Ligação protegida por emparelhamento; informação ao utilizador\\
-\bottomrule
-\end{tabularx}
-\label{tab:brinquedo}
-\end{table}
-
-O protótipo cumpre os requisitos elétricos de base, mas não está pronto para ser um brinquedo: as maiores lacunas são a bateria LiPo sem proteção e os pontos de entalamento no mecanismo. Ambas têm solução conhecida e baixo custo.
-
-\section{Análise de riscos}
-A análise seguiu o método da EN ISO 12100: identificar os perigos, estimar o risco como produto da gravidade (G) pela probabilidade (P), numa escala de 1 a 3, e definir medidas para o reduzir. Considera-se aceitável um risco residual igual ou inferior a 3.
-
-\begin{table}[H]
-\centering\scriptsize
-\caption{Análise de riscos.}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.4cm}ccc>{\raggedright\arraybackslash}Yc}
-\toprule
-Perigo & G & P & R & Medidas de redução & R res.\\\midrule
-Entalamento de dedos & 2 & 2 & 4 & Limites de amplitude e velocidade; proteção das zonas de rotação; paragem de emergência & 2\\
-Movimento inesperado & 2 & 2 & 4 & Arranque desarmado; armar explícito; \textit{watchdog}; modo seguro & 2\\
-Incêndio da bateria & 3 & 1 & 3 & Fusível; bateria com proteção; monitorização da tensão & 2\\
-Sobreaquecimento dos servos & 1 & 2 & 2 & Limites de comando; deteção de bloqueio & 1\\
-Arestas vivas & 1 & 2 & 2 & Acabamento das peças & 1\\
-Choque elétrico & 1 & 1 & 1 & Muito baixa tensão & 1\\
+Perigo & Medidas previstas & Verificação\\\midrule
+Entalamento e colisão & Janela angular calibrada, cabos fora das articulações e proteção das zonas de rotação acessíveis. & T-SRV e SEG-05: inspeção da gama completa, incluindo posições combinadas.\\
+Movimento inesperado & Estado desarmado, ordem explícita de armar, transições de referência suaves e indicação do modo. & SEG-01 e T-INT: arranque, armar, desarmar e mudanças de modo.\\
+Perda de comunicação ou do sensor & Deteção de referências em falta; regresso controlado ao nível quando a IMU estiver válida. Falha da IMU deverá inibir o controlo. & T-COM e SEG-04: medir a reação a cada falha separadamente.\\
+Bloqueio do programa & \textit{Watchdog} e retorno ao estado desarmado após reinício; corte físico independente do software. & SEG-02 e SEG-03.\\
+Sobrecorrente e aquecimento & Fonte própria para os servos, fusível, condutores dimensionados e prevenção de esforço contra os batentes. & T-ALIM: tensão, corrente, temperatura e ausência de reinícios.\\
+Bateria e curto-circuito & Fixação e isolamento da LiPo, carregador adequado e monitorização da tensão para impedir descarga excessiva. & T-ALIM e SEG-05: autonomia, limiar de paragem e inspeção da montagem.\\
+Arestas e peças soltas & Acabamento das peças impressas, fixações verificadas e caixa aparafusada. & SEG-05, antes dos ensaios com utilizadores.\\
 \bottomrule
 \end{tabularx}
 \label{tab:riscos}
 \end{table}
 
-\section{Funções de segurança implementadas}
-As medidas anteriores traduzem-se nas seguintes funções, verificadas pelos testes T-SEG (capítulo~\ref{ch:testes}):
-\begin{itemize}
-\item \textbf{Paragem de emergência por hardware:} corta a alimentação dos servos sem depender do microcontrolador.
-\item \textbf{Arranque seguro:} o sistema arranca desarmado e só se move depois de calibrado e armado.
-\item \textbf{Modo seguro:} sem referências válidas durante \SI{300}{\milli\second}, ou com bateria baixa, a plataforma volta suavemente à horizontal.
-\item \textbf{Limites em software:} amplitude, velocidade e largura de impulso dos servos limitadas.
-\item \textbf{\textit{Watchdog}:} reinício automático em caso de bloqueio do programa.
-\item \textbf{Proteção elétrica:} fusível, interruptor geral e eletrónica fechada numa caixa aparafusada.
-\end{itemize}
+A tabela constitui uma identificação qualitativa dos riscos. A avaliação do risco residual ficará dependente da montagem final e dos resultados dos ensaios. Não se atribuem valores numéricos de aceitabilidade sem justificar a escala, a exposição e a eficácia das medidas adotadas.
+
+\section{Proteções a implementar e validar}
+A paragem de emergência deverá retirar a alimentação aos servos sem depender da execução do programa. O circuito de corte será dimensionado para a corrente dos dois atuadores e deverá impedir a retoma automática após a reposição do contacto. O interruptor geral permitirá desligar o conjunto para intervenções na montagem.
+
+No arranque, o controlo deverá permanecer inibido até à calibração e à ordem de armar. A eventual centragem dos servos durante a inicialização deverá ser tratada como um movimento real: será realizada dentro da janela calibrada, com a plataforma próxima do neutro e sem intervenção nas articulações. O estado desarmado não deverá ser interpretado como isolamento elétrico dos motores.
+
+O supervisor deverá distinguir perda de referências e perda de medição. Na primeira situação, mantendo uma estimativa válida, prevê-se o regresso suave ao nível após \SI{300}{\milli\second} sem referências válidas, respeitando a meta de deteção inferior a \SI{0.5}{\second} de RNF5. Se a IMU falhar, não será possível garantir o nivelamento; a função de controlo deverá ser interrompida e a falha indicada. Os impulsos serão sempre limitados à janela determinada em T-SRV, e o \textit{watchdog} deverá provocar o reinício seguro em caso de bloqueio do programa.
+
+A distribuição de potência deverá separar a alimentação dos servos da eletrónica, mantendo uma referência de massa comum para os sinais. O fusível, os cabos e o regulador serão selecionados em conjunto, com base na corrente prevista e nas medições. A monitorização da bateria e a filtragem da alimentação deverão ser validadas antes dos ensaios autónomos. O orçamento do capítulo~\ref{ch:custos} inclui reservas para estes componentes, ainda sujeitas à seleção dos modelos.
+
+\section{Condições de utilização e limites da análise}
+Os primeiros ensaios serão realizados sem carga adicional e com amplitude reduzida. A carga só será aumentada após confirmar os sentidos de atuação e a ausência de colisões. A massa e a gama angular autorizadas serão registadas com os resultados. Qualquer ajuste mecânico exigirá desligar a alimentação dos servos; as mãos deverão permanecer fora das articulações durante o funcionamento.
+
+Uma utilização futura como brinquedo educativo exigiria uma análise própria dos utilizadores, dos materiais e do acesso às partes móveis, além do enquadramento de segurança de brinquedos, rádio e bateria referido nas fontes do projeto \cite{toy2009,red2014,battery2023}. Essa hipótese constitui trabalho futuro. O plano desta entrega centra-se nas condições de ensaio do protótipo e nas evidências necessárias para verificar RF7, RF8, RNF10 e RNF11.

@@ -1,64 +1,64 @@
 \chapter{Lista de Componentes e Análise de Custos}
 \label{ch:custos}
 
-\section{Lista de componentes}
-A tabela~\ref{tab:bom} apresenta a lista de componentes do protótipo, com os preços unitários consultados em lojas online em novembro de 2026. Os preços com fonte indicada foram confirmados na loja; os restantes, assinalados com (E), são estimativas para componentes genéricos. Os valores em libras e dólares foram convertidos aproximadamente para euros e não incluem portes.
+\section{Orçamento da solução prevista}
+A tabela~\ref{tab:bom} reúne os componentes previstos para a solução final. Os preços com referência bibliográfica são os valores recolhidos para o relatório em novembro de 2026; os restantes são estimativas, assinaladas com (E). O orçamento é preliminar: a seleção dos reguladores e das proteções será confirmada após a medição do consumo dos dois servos. Não se apresenta ainda um custo de aquisição efetivo.
 
 \begin{table}[H]
 \centering\small
-\caption{Lista de componentes e custo do protótipo.}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.4cm}c>{\raggedright\arraybackslash}Yrr}
+\caption{Orçamento preliminar dos componentes.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm}cYrr}
 \toprule
-Componente & Qtd. & Fonte do preço & Unit. (€) & Total (€)\\\midrule
-\multicolumn{5}{l}{\textit{Processamento, sensores e comunicação}}\\
-NUCLEO-F767ZI & 1 & TME \cite{tmenucleo} (s/ IVA) & 35,00 & 35,00\\
-Módulo GY-85 (9 eixos) & 1 & Hobby Electronica \cite{gy85} & 20,95 & 20,95\\
-Módulo Bluetooth modo duplo (HM-12) & 1 & Bot'n Roll \cite{hm12} & 12,90 & 12,90\\
-\multicolumn{5}{l}{\textit{Atuação}}\\
-Servo TowerPro MG996R & 2 & Waveshare \cite{waveshareMG996R} & 4,60 & 9,20\\
-\multicolumn{5}{l}{\textit{Alimentação e segurança}}\\
-Bateria LiPo 2S \SI{2200}{\milli\ampere\hour} & 1 & (E) & 20,00 & 20,00\\
-\acrshort{ubec} \SI{6}{\volt} & 1 & FlyingTech \cite{flyingtechubec} & 10,00 & 10,00\\
-Regulador \textit{buck} \SI{5}{\volt} & 1 & (E) & 4,00 & 4,00\\
-Botão de paragem de emergência (2 NF) & 1 & (E) & 5,00 & 5,00\\
-Fusível e porta-fusível & 1 & (E) & 2,00 & 2,00\\
+Componente & Qtd. & Base do preço & Unit. (€) & Total (€)\\\midrule
+NUCLEO-F767ZI & 1 & TME \cite{tmenucleo}, sem IVA & 35,00 & 35,00\\
+Módulo GY-85 & 1 & Hobby Electronica \cite{gy85} & 20,95 & 20,95\\
+Módulo Bluetooth HM-12 & 1 & Bot'n Roll \cite{hm12} & 12,90 & 12,90\\
+Servo MG996R & 2 & Waveshare \cite{waveshareMG996R} & 4,60 & 9,20\\
+Bateria LiPo 2S, \SI{2200}{\milli\ampere\hour} & 1 & (E) & 20,00 & 20,00\\
+Regulador dos servos, \SI{6}{\volt}, $\geq\SI{5}{\ampere}$ & 1 & (E), modelo por selecionar & 10,00 & 10,00\\
+Regulador da eletrónica, \SI{5}{\volt} & 1 & (E) & 4,00 & 4,00\\
+Paragem de emergência & 1 & (E), circuito por dimensionar & 5,00 & 5,00\\
+Fusível e porta-fusível & 1 & (E), calibre por selecionar & 2,00 & 2,00\\
 Interruptor geral & 1 & (E) & 1,00 & 1,00\\
-Condensador, resistências, \acrshort{led} & -- & (E) & 2,00 & 2,00\\
-\multicolumn{5}{l}{\textit{Mecânica}}\\
-Filamento PLA (cerca de \SI{400}{\gram}) & -- & (E) & 8,00 & 8,00\\
-Parafusos M2, M3 e M4, porcas e anilhas & -- & (E) & 8,00 & 8,00\\
-Cabos e conectores (XT60, Dupont) & -- & (E) & 5,00 & 5,00\\
+Condensador, resistências e LED & 1 lote & (E) & 2,00 & 2,00\\
+Filamento PLA, cerca de \SI{400}{\gram} & 1 lote & (E) & 8,00 & 8,00\\
+Parafusos, porcas e anilhas & 1 lote & (E) & 8,00 & 8,00\\
+Cabos e conectores & 1 lote & (E) & 5,00 & 5,00\\
 \midrule
-\multicolumn{4}{l}{\textbf{Total do protótipo}} & \textbf{143,05}\\
+\multicolumn{4}{l}{\textbf{Subtotal preliminar}} & \textbf{143,05}\\
 \bottomrule
 \end{tabularx}
 \label{tab:bom}
 \end{table}
 
-Ficam de fora da tabela o equipamento de laboratório (osciloscópio, multímetro, impressora 3D), que já existe, e alguns acessórios recomendados que não fazem parte do protótipo: um carregador balanceado para baterias LiPo e um saco de proteção para a carga, com um custo estimado de 25~€ e 8~€, respetivamente.
+As reservas de 10~€, 5~€ e 2~€ para o regulador dos servos, a emergência e o fusível são estimativas de planeamento, sem cotação de modelos selecionados. A corrente nominal e os contactos do circuito de corte terão de ser adequados à carga; a estimativa da emergência será revista se forem necessários componentes adicionais de comutação. A capacidade de corrente do regulador será verificada em T-ALIM, sem depender de uma limitação por software para compensar uma fonte insuficiente.
 
-\acompletar{preços efetivamente pagos, se forem diferentes}
+O subtotal combina preços de referência e estimativas. A NUCLEO está expressamente cotada sem IVA, pelo que o valor não deve ser apresentado como preço final com impostos uniformizados. Na entrega final serão registados os preços efetivos, o tratamento do IVA, eventuais conversões de moeda e os portes.
 
-\section{Análise de custos}
-O custo total estimado do protótipo é de cerca de 143~€, abaixo do limite de 150~€ definido no requisito RNF9. A figura~\ref{fig:custos} mostra a distribuição do custo por grupo.
+O equipamento de laboratório e o telemóvel não estão incluídos. Também ficam fora do subtotal o carregador balanceado e os acessórios de carga da LiPo, caso tenham de ser adquiridos. As estimativas anteriores de 25~€ para o carregador e 8~€ para um saco de proteção elevariam a previsão a 176,05~€, antes dos ajustes fiscais e de transporte. A disponibilidade de um carregador adequado deverá ser confirmada antes dos ensaios autónomos.
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[x=0.11cm]
-\foreach \lab/\val/\pos in {Alimentação e segurança/44.00/0, Processamento/35.00/1, Mecânica e cablagem/21.00/2, Sensores/20.95/3, Comunicação/12.90/4, Atuação/9.20/5}{
-  \node[anchor=east, font=\small] at (0,-\pos*0.7) {\lab};
-  \fill[blue!45] (0.5,-\pos*0.7-0.25) rectangle (0.5+\val,-\pos*0.7+0.25);
-  \node[anchor=west, font=\small] at (1+\val,-\pos*0.7) {\val\,€};
-}
-\end{tikzpicture}
-\caption{Distribuição do custo do protótipo por grupo.}
-\label{fig:custos}
-\end{figure}
+\section{Distribuição e limitações da estimativa}
+\begin{table}[H]
+\centering\small
+\caption{Distribuição do orçamento por função.}
+\begin{tabularx}{\textwidth}{Yrr}
+\toprule
+Grupo & Custo (€) & Parcela aproximada\\\midrule
+Alimentação e segurança & 44,00 & 30,8\,\%\\
+Processamento & 35,00 & 24,5\,\%\\
+Mecânica e cablagem & 21,00 & 14,7\,\%\\
+Sensores & 20,95 & 14,6\,\%\\
+Comunicação & 12,90 & 9,0\,\%\\
+Atuação & 9,20 & 6,4\,\%\\
+\midrule
+Total & 143,05 & 100,0\,\%\\
+\bottomrule
+\end{tabularx}
+\label{tab:grupos-custos}
+\end{table}
 
-A alimentação e a segurança representam o maior grupo (cerca de 31\,\% do total), mais do que o processamento. Isto resulta de a bateria e os reguladores terem de ser dimensionados para os picos de corrente dos servos e de se ter incluído desde o início uma paragem de emergência e proteção por fusível. A placa de desenvolvimento é o componente individual mais caro (25\,\%), seguida do GY-85 (15\,\%). Os sensores e os atuadores, que são o núcleo funcional do sistema, custam em conjunto cerca de 21\,\%.
+O grupo de alimentação e segurança inclui a bateria, os dois reguladores, a emergência, o fusível, o interruptor e o lote de componentes elétricos auxiliares. A separação torna explícito o custo das proteções e da fonte dos servos. A NUCLEO é o componente individual mais caro, mas a sua utilização evita, nesta fase, o projeto e fabrico de uma placa própria.
 
-A troca da MPU6050 pelo GY-85 aumentou o custo em cerca de 15~€. Uma segunda \gls{imu} na base, para a compensação antecipativa, acrescentaria outro tanto se fosse também um GY-85 e levaria o total acima dos 150~€; para essa função bastaria um sensor de seis eixos mais barato, já que o magnetómetro não é necessário.
+Uma segunda IMU não está incluída: a compensação antecipativa é uma possibilidade de evolução, a avaliar apenas se os ensaios de controlo justificarem essa alteração. Outro GY-85 com o preço de referência da tabela acrescentaria 20,95~€, levando o subtotal a 164,00~€.
 
-Se o sistema viesse a ser produzido em série, o custo por unidade poderia baixar bastante. A placa NUCLEO seria substituída por uma placa de circuito impresso própria, apenas com o microcontrolador e os componentes necessários, ou por um microcontrolador mais simples, já que o estudo do estado da arte mostrou que um filtro complementar e dois \gls{pid} não exigem um Cortex-M7. Um microcontrolador com Bluetooth integrado, como o ESP32-S3, eliminaria também o módulo de comunicação. Em contrapartida, um produto comercial teria custos que um protótipo não tem, como o projeto da placa, os ensaios de conformidade descritos no capítulo~\ref{ch:seguranca} e a embalagem.
-
-\acompletar{horas de trabalho da equipa, se se pretender incluir o custo de engenharia}
+Este orçamento serve para estimar os recursos necessários à conclusão do protótipo. A comparação com um limite de despesa só deverá ser feita se esse limite for formalmente definido nos requisitos. Custos de desenvolvimento, mão de obra e eventual avaliação de conformidade de um produto comercial não fazem parte desta estimativa académica.
